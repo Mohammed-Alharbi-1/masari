@@ -11,7 +11,7 @@ import NotFoundPage from "./pages/NotFoundPage";
 const titles: Record<string, string> = {
   "/": "بداية أوضح لمستقبلك",
   "/questionnaire": "اكتشف مسارك — قريبًا",
-  "/certifications": "الشهادات — قريبًا",
+  "/certifications": "استكشف الشهادات الاحترافية",
   "/roadmap": "خارطتي — قريبًا",
 };
 

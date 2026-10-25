@@ -1,48 +1,21 @@
 import { Link } from "react-router";
 import { Icon } from "../components/ui/Icon";
 import type { IconName } from "../components/ui/Icon";
+import { careerTracks } from "../data/careerTracks";
+import type { CareerTrack } from "../data/types";
 
-const directions: {
-  title: string;
-  english: string;
-  description: string;
-  icon: IconName;
-  color: string;
-  number: string;
-}[] = [
+const directionStyles: Record<CareerTrack, { icon: IconName; color: string }> =
   {
-    title: "تطوير الويب",
-    english: "WEB DEVELOPMENT",
-    description: "حوّل أفكارك إلى مواقع وتجارب رقمية تصنع الفرق.",
-    icon: "code",
-    color: "mint",
-    number: "01",
-  },
-  {
-    title: "الأمن السيبراني",
-    english: "CYBERSECURITY",
-    description: "افهم التهديدات، وابنِ مهارات حماية العالم الرقمي.",
-    icon: "shield",
-    color: "peach",
-    number: "02",
-  },
-  {
-    title: "الشبكات",
-    english: "NETWORKING",
-    description: "اكتشف كيف تتصل الأنظمة، وكيف تبني أساسها.",
-    icon: "network",
-    color: "blue",
-    number: "03",
-  },
-  {
-    title: "الحوسبة السحابية",
-    english: "CLOUD COMPUTING",
-    description: "تعرّف على البنية التي تقف خلف خدماتنا اليومية.",
-    icon: "cloud",
-    color: "lilac",
-    number: "04",
-  },
-];
+    "web-development": { icon: "code", color: "mint" },
+    cybersecurity: { icon: "shield", color: "peach" },
+    networking: { icon: "network", color: "blue" },
+    "cloud-computing": { icon: "cloud", color: "lilac" },
+  };
+const directions = careerTracks.map((track, index) => ({
+  ...track,
+  ...directionStyles[track.id],
+  number: String(index + 1).padStart(2, "0"),
+}));
 
 const steps = [
   {
@@ -171,7 +144,7 @@ export default function HomePage() {
             </div>
             <p className="phase-note">
               <Icon name="spark" />
-              هذه هي البداية. التوصيات ودليل الشهادات قادمان قريبًا.
+              دليل الشهادات متاح الآن. التوصيات الشخصية قادمة لاحقًا.
             </p>
           </div>
           <PathIllustration />
@@ -221,7 +194,7 @@ export default function HomePage() {
               <p>أربعة مجالات تقنية نبدأ منها. تعرّف على ما يلفتك.</p>
             </div>
             <span className="subtle-label">
-              مجالات المنصة المخطط لها
+              مجالات تقنية يغطيها الدليل
               <Icon name="spark" />
             </span>
           </div>
@@ -229,7 +202,7 @@ export default function HomePage() {
             {directions.map((direction) => (
               <article
                 className={`direction-card ${direction.color}`}
-                key={direction.title}
+                key={direction.id}
               >
                 <div className="direction-top">
                   <span className="direction-icon">
@@ -238,10 +211,10 @@ export default function HomePage() {
                   <span className="direction-number">/{direction.number}</span>
                 </div>
                 <span className="direction-english" lang="en" dir="ltr">
-                  {direction.english}
+                  {direction.nameEn}
                 </span>
-                <h3>{direction.title}</h3>
-                <p>{direction.description}</p>
+                <h3>{direction.nameAr}</h3>
+                <p>{direction.descriptionAr}</p>
                 <span className="direction-bottom">
                   مجال تعريفي
                   <span className="small-line" />

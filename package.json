@@ -8,7 +8,8 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && npm run validate:catalog && vite build",
+    "validate:catalog": "node scripts/validate-catalog.ts",
     "lint": "eslint . --max-warnings 0",
     "typecheck": "tsc -b",
     "preview": "vite preview"

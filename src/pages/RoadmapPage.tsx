@@ -11,6 +11,7 @@ import {
 import { readQuestionnaireNavigation } from "../utils/questionnaireNavigation";
 import { restoreQuestionnaire } from "../utils/questionnaireStorage";
 import { generatePersonalizedRoadmap } from "../utils/generateRoadmap";
+import { recommendLearningResources } from "../utils/recommendLearningResources";
 import { RoadmapStageCard } from "../components/roadmap/RoadmapStageCard";
 import { RoadmapCertification } from "../components/roadmap/RoadmapCertification";
 import "../styles/roadmap.css";
@@ -42,6 +43,7 @@ export default function RoadmapPage() {
     );
   const answers = source.answers;
   const roadmap = generatePersonalizedRoadmap(answers);
+  const resources = recommendLearningResources(answers, roadmap);
   const track = careerTracks.find((item) => item.id === roadmap.trackId)!;
   const names = (ids: string[]) =>
     ids.map((id) => skills.find((skill) => skill.id === id)!.nameAr).join("، ");
@@ -101,6 +103,7 @@ export default function RoadmapPage() {
             stage={stage}
             index={index}
             hasProviderPaths={roadmap.providerPaths.length > 0}
+            resources={resources[stage.stage]}
           />
         ))}
       </ol>

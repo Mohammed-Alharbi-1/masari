@@ -85,7 +85,7 @@ export function Header() {
         </nav>
         <span className="header-note">
           <span className="status-dot" />
-          خطوتك الأولى تبدأ هنا
+          بدون حساب، وبداية أوضح
         </span>
       </div>
     </header>

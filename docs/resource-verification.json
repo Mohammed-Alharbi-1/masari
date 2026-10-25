@@ -1,0 +1,524 @@
+{
+  "reviewedAt": "2026-10-25",
+  "scope": "Direct destinations and subject/free-access information inspected. Full playback, enrollment, exercise completion and every sublesson were not tested. Public access can change.",
+  "resources": [
+    {
+      "id": "elzero-html-ar",
+      "url": "https://www.youtube.com/playlist?list=PLDoPjvoNmBAw_t_XWUFbBX-c9MafPk9ji",
+      "evidence": [
+        {
+          "url": "https://elzero.org/study/html-2021-study-plan/",
+          "finding": "Opened publisher study page; links the exact HTML playlist and lists HTML topics and assignments."
+        },
+        {
+          "url": "https://www.youtube.com/playlist?list=PLDoPjvoNmBAw_t_XWUFbBX-c9MafPk9ji",
+          "finding": "Opened in browser while signed out; public title Learn HTML In Arabic 2021, Elzero Web School creator, 37 listed video lessons and Play action. No payment or registration gate shown. Full playback of every lesson was not tested."
+        }
+      ],
+      "notes": null
+    },
+    {
+      "id": "elzero-css-ar",
+      "url": "https://elzero.org/study/css-2021-study-plan/",
+      "evidence": [
+        {
+          "url": "https://elzero.org/study/css-2021-study-plan/",
+          "finding": "Opened public Arabic course plan with CSS lessons, assignment links, video links and no account/payment gate. Scope includes box model, layout and Flexbox; no course duration or completion certificate inferred."
+        }
+      ],
+      "notes": null
+    },
+    {
+      "id": "elzero-javascript-ar",
+      "url": "https://www.youtube.com/playlist?list=PLDoPjvoNmBAx3kiplQR_oeDqLDBUDYwVv",
+      "evidence": [
+        {
+          "url": "https://elzero.org/study/javascript-bootcamp-2021-study-plan/",
+          "finding": "Opened publisher course plan and read the actual playlist link: watch?v=GM6dQBmc-Xg&list=PLDoPjvoNmBAx3kiplQR_oeDqLDBUDYwVv&index=1. Lists language fundamentals through DOM, JSON, Fetch and promises."
+        },
+        {
+          "url": "https://www.youtube.com/playlist?list=PLDoPjvoNmBAx3kiplQR_oeDqLDBUDYwVv",
+          "finding": "Opened canonical playlist in browser; visible title Learn JavaScript in Arabic 2021 and creator Elzero Web School, with JavaScript introduction/environment lesson titles. Public signed-out access; no subscription gate shown. Not all lessons played."
+        }
+      ],
+      "notes": null
+    },
+    {
+      "id": "typescript-handbook",
+      "url": "https://www.typescriptlang.org/docs/handbook/intro.html",
+      "evidence": [
+        {
+          "url": "https://www.typescriptlang.org/docs/handbook/intro.html",
+          "finding": "Opened public full handbook introduction and contents; explicitly explains type checking and recommends JavaScript knowledge. No payment or account gate."
+        }
+      ],
+      "notes": null
+    },
+    {
+      "id": "react-quick-start",
+      "url": "https://react.dev/learn",
+      "evidence": [
+        {
+          "url": "https://react.dev/learn",
+          "finding": "Opened public Quick Start page with learning objectives, component/state examples and interactive embedded code. No account or payment gate."
+        }
+      ],
+      "notes": null
+    },
+    {
+      "id": "react-tic-tac-toe",
+      "url": "https://react.dev/learn/tutorial-tic-tac-toe",
+      "evidence": [
+        {
+          "url": "https://react.dev/learn/tutorial-tic-tac-toe",
+          "finding": "Opened full public project tutorial; introductory text states no existing React knowledge is assumed, with setup, components, props, state and history steps. Distinct hands-on tutorial from the Quick Start reference."
+        }
+      ],
+      "notes": null
+    },
+    {
+      "id": "github-introduction",
+      "url": "https://github.com/skills/introduction-to-github",
+      "evidence": [
+        {
+          "url": "https://github.com/skills/introduction-to-github",
+          "finding": "Opened public official GitHub Skills template README with explicit repository/branch/commit/pull-request learning goals. It instructs copying to personal account and recommends public repositories because private ones consume Actions minutes. Free access applies to public exercise, not unlimited private Actions or paid services."
+        }
+      ],
+      "notes": null
+    },
+    {
+      "id": "github-hello-actions",
+      "url": "https://github.com/skills/hello-github-actions",
+      "evidence": [
+        {
+          "url": "https://github.com/skills/hello-github-actions",
+          "finding": "Opened public official Skills template; README identifies workflow, job and run-step exercises, with Introduction to GitHub prerequisite. Public repository recommended to avoid private Actions-minute usage."
+        }
+      ],
+      "notes": null
+    },
+    {
+      "id": "java-language-basics",
+      "url": "https://dev.java/learn/language/constructs/basics/",
+      "evidence": [
+        {
+          "url": "https://dev.java/learn/language/constructs/basics/",
+          "finding": "Verified in browser after old /learn/language-basics/ redirects here. Visible official Oracle footer, tutorial topics including variables, primitive types, arrays, operators and control flow. Opened the full variables lesson and verified public examples and explanations without login/payment."
+        }
+      ],
+      "notes": null
+    },
+    {
+      "id": "microsoft-csharp-first-code",
+      "url": "https://learn.microsoft.com/en-us/training/paths/get-started-c-sharp-part-1/",
+      "evidence": [
+        {
+          "url": "https://learn.microsoft.com/en-us/training/paths/get-started-c-sharp-part-1/",
+          "finding": "Opened live beginner learning path listing four modules on C# syntax, variables, numeric operations and decision logic; prerequisites none."
+        },
+        {
+          "url": "https://learn.microsoft.com/en-us/training/support/faq",
+          "finding": "Official FAQ explicitly says Microsoft Learn training is free and profile creation is not required to consume content. No certification exam or paid cloud resource claim inferred."
+        }
+      ],
+      "notes": null
+    },
+    {
+      "id": "odin-foundations",
+      "url": "https://www.theodinproject.com/paths/foundations/courses/foundations",
+      "evidence": [
+        {
+          "url": "https://www.theodinproject.com/paths/foundations/courses/foundations",
+          "finding": "Opened complete public curriculum listing Git basics, HTML/CSS foundations, Flexbox, JavaScript and practical project lessons."
+        },
+        {
+          "url": "https://www.theodinproject.com/about",
+          "finding": "Official About page explicitly describes a free comprehensive open-source curriculum and project-based learning. No paid bootcamp or certificate inferred."
+        }
+      ],
+      "notes": null
+    },
+    {
+      "id": "playwright-writing-tests",
+      "url": "https://playwright.dev/docs/writing-tests",
+      "evidence": [
+        {
+          "url": "https://playwright.dev/docs/writing-tests",
+          "finding": "Opened public official documentation containing first-test example, actions, locators, assertions, isolation and hooks. No fee/account gate to content or local examples. Does not claim all third-party hosted testing is free."
+        }
+      ],
+      "notes": null
+    },
+    {
+      "id": "testing-library-react-example",
+      "url": "https://testing-library.com/docs/react-testing-library/example-intro/",
+      "evidence": [
+        {
+          "url": "https://testing-library.com/docs/react-testing-library/example-intro/",
+          "finding": "Opened official public example and annotated breakdown covering user-event, render, screen assertions, successful requests and error handling. No login/payment gate; mapped to testing skills, not canonical React skill outside web track."
+        }
+      ],
+      "notes": null
+    },
+    {
+      "id": "python-official-tutorial",
+      "url": "https://docs.python.org/3/tutorial/",
+      "evidence": [
+        {
+          "url": "https://docs.python.org/3/tutorial/",
+          "finding": "Public official English tutorial, with self-contained examples and links to syntax, data structures, modules and classes. It explicitly expects general programming knowledge; therefore tagged intermediate rather than an absolute beginner programming course."
+        }
+      ],
+      "notes": null
+    },
+    {
+      "id": "harvard-cs50-python",
+      "url": "https://cs50.harvard.edu/python/",
+      "evidence": [
+        {
+          "url": "https://cs50.harvard.edu/python/",
+          "finding": "The course's How to Take this Course section explicitly permits free study via OpenCourseWare. Actual topics include functions, conditionals, loops, exceptions, libraries, unit tests, files, regular expressions and OOP. It separately explains edX registration for assignment feedback and optional verified certificates."
+        }
+      ],
+      "notes": null
+    },
+    {
+      "id": "sqlbolt-select-introduction",
+      "url": "https://sqlbolt.com/lesson/select_queries_introduction",
+      "evidence": [
+        {
+          "url": "https://sqlbolt.com/lesson/select_queries_introduction",
+          "finding": "Public SELECT lesson includes SQL examples, an exercise table and five concrete tasks, with no sign-in or checkout gate and an optional donation link. Interactive execution was not independently run; content and tasks were inspected."
+        }
+      ],
+      "notes": null
+    },
+    {
+      "id": "postgresql-official-tutorial",
+      "url": "https://www.postgresql.org/docs/current/tutorial.html",
+      "evidence": [
+        {
+          "url": "https://www.postgresql.org/docs/current/tutorial.html",
+          "finding": "Official tutorial explicitly introduces PostgreSQL, relational concepts and SQL with hands-on experience; chapter contents inspected."
+        },
+        {
+          "url": "https://www.postgresql.org/about/licence/",
+          "finding": "Official license permits software and documentation use without fee and confirms continued free/open-source availability."
+        }
+      ],
+      "notes": null
+    },
+    {
+      "id": "postgresql-backup-restore",
+      "url": "https://www.postgresql.org/docs/current/backup.html",
+      "evidence": [
+        {
+          "url": "https://www.postgresql.org/docs/current/backup.html",
+          "finding": "Specific server-administration chapter includes SQL dump/restore, filesystem backup, continuous archiving and point-in-time recovery; public content inspected."
+        },
+        {
+          "url": "https://www.postgresql.org/about/licence/",
+          "finding": "Documentation and software are available without fee under the PostgreSQL license."
+        }
+      ],
+      "notes": null
+    },
+    {
+      "id": "pandas-getting-started",
+      "url": "https://pandas.pydata.org/docs/getting_started/intro_tutorials/index.html",
+      "evidence": [
+        {
+          "url": "https://pandas.pydata.org/docs/getting_started/intro_tutorials/index.html",
+          "finding": "Specific official tutorial collection visibly lists tabular data, import/export, selection, plots, derived columns, summary statistics, reshaping and table joins."
+        },
+        {
+          "url": "https://pandas.pydata.org/about/",
+          "finding": "Official project page describes free-to-use/modify open-source data analytics tools."
+        }
+      ],
+      "notes": null
+    },
+    {
+      "id": "microsoft-data-analytics-power-bi",
+      "url": "https://learn.microsoft.com/en-us/training/paths/data-analytics-microsoft/",
+      "evidence": [
+        {
+          "url": "https://learn.microsoft.com/en-us/training/paths/data-analytics-microsoft/",
+          "finding": "Original get-started-power-bi path redirects here. Actual Microsoft path is labeled Intermediate, has four modules, and describes Power BI reports/dashboards; its building-with-Power-BI module was also opened."
+        },
+        {
+          "url": "https://learn.microsoft.com/en-us/training/support/faq",
+          "finding": "Official FAQ explicitly states Microsoft Learn training is free and profile creation is not required to consume content."
+        }
+      ],
+      "notes": null
+    },
+    {
+      "id": "microsoft-excel-pivottable",
+      "url": "https://support.microsoft.com/en-us/excel/get-started/create-a-pivottable-to-analyze-worksheet-data",
+      "evidence": [
+        {
+          "url": "https://support.microsoft.com/en-us/excel/get-started/create-a-pivottable-to-analyze-worksheet-data",
+          "finding": "Specific official guide exposes complete Windows/Web/macOS steps, field arrangement, summaries and refresh guidance without payment or sign-in. It separately flags subscription-dependent features; reading this guide does not provide an Excel license."
+        }
+      ],
+      "notes": null
+    },
+    {
+      "id": "google-machine-learning-crash-course",
+      "url": "https://developers.google.com/machine-learning/crash-course/",
+      "evidence": [
+        {
+          "url": "https://developers.google.com/machine-learning/crash-course/",
+          "finding": "Current public course and module list inspected: regression, classification metrics, data, generalization/overfitting, neural networks and practical exercises."
+        },
+        {
+          "url": "https://developers.google.com/machine-learning/crash-course/prereqs-and-prework",
+          "finding": "Official prerequisites recommend Python familiarity plus algebra, linear algebra and statistics; therefore Masari tag is intermediate despite no prior ML requirement."
+        },
+        {
+          "url": "https://developers.googleblog.com/machine-learning-crash-course/",
+          "finding": "Official course announcement explicitly states MLCC is free; current course is publicly accessible and the 2024 update announcement confirms continuation of the open course."
+        },
+        {
+          "url": "https://research.google.com/colaboratory/faq.html",
+          "finding": "Official Colab FAQ states free-of-charge use with variable limits and no guaranteed resources."
+        }
+      ],
+      "notes": null
+    },
+    {
+      "id": "mit-linear-algebra",
+      "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/",
+      "evidence": [
+        {
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/",
+          "finding": "Official undergraduate linear-algebra course with Gilbert Strang, lecture videos, assignments and exams; video lecture collection was also opened."
+        },
+        {
+          "url": "https://ocw.mit.edu/about/",
+          "finding": "MIT explicitly states OCW is free/open, requires no enrollment/account, and provides no credit/certification."
+        }
+      ],
+      "notes": null
+    },
+    {
+      "id": "mit-probability-statistics",
+      "url": "https://ocw.mit.edu/courses/18-05-introduction-to-probability-and-statistics-spring-2022/",
+      "evidence": [
+        {
+          "url": "https://ocw.mit.edu/courses/18-05-introduction-to-probability-and-statistics-spring-2022/",
+          "finding": "Specific official undergraduate probability/statistics course with readings, problem sets and exams, taught by Jeremy Orloff and Jennifer French Kamrin."
+        },
+        {
+          "url": "https://ocw.mit.edu/courses/18-05-introduction-to-probability-and-statistics-spring-2022/pages/classes-reading-and-in-class-materials/",
+          "finding": "Actual class-materials page was opened and explicitly says Open Learning Library questions are free and can be viewed/used without enrollment."
+        },
+        {
+          "url": "https://ocw.mit.edu/about/",
+          "finding": "Official OCW free-access/no-account/no-credit policy inspected."
+        }
+      ],
+      "notes": null
+    },
+    {
+      "id": "tensorflow-beginner-quickstart",
+      "url": "https://www.tensorflow.org/tutorials/quickstart/beginner",
+      "evidence": [
+        {
+          "url": "https://www.tensorflow.org/tutorials/quickstart/beginner",
+          "finding": "Actual notebook-style tutorial exposes complete dataset/model/train/evaluate code, download/source links and Colab button. Tutorial calls itself beginner for TensorFlow but assumes Python/ML concepts; tagged intermediate for Masari."
+        },
+        {
+          "url": "https://research.google.com/colaboratory/faq.html",
+          "finding": "Official FAQ confirms free Colab use with fluctuating resource limits and optional paid plans; no unlimited-compute claim made."
+        }
+      ],
+      "notes": null
+    },
+    {
+      "id": "google-ml-problem-framing",
+      "url": "https://developers.google.com/machine-learning/problem-framing",
+      "evidence": [
+        {
+          "url": "https://developers.google.com/machine-learning/problem-framing",
+          "finding": "Actual public self-study course specifies determining whether ML suits a problem, choosing a model and defining success metrics. The linked lesson was also opened; content is openly readable under the page's Creative Commons notice without a payment gate."
+        },
+        {
+          "url": "https://developers.google.com/machine-learning/problem-framing/problem-framing",
+          "finding": "Specific course lesson is publicly readable and explains ML problem framing; no login/payment needed for text."
+        }
+      ],
+      "notes": null
+    },
+    {
+      "id": "cisco-networking-basics",
+      "url": "https://www.netacad.com/courses/networking-basics?courseLang=ar-SA",
+      "evidence": [
+        "https://www.netacad.com/courses/networking-basics?courseLang=ar-SA",
+        "https://www.cisco.com/site/us/en/learn/training-certifications/training/netacad/index.html"
+      ],
+      "notes": "Opened English and Arabic course pages in browser because web parser only exposed JS shell. Arabic course title, full curriculum, networking/IP/routing/troubleshooting outcomes and Free label observed. Get Started opened Cisco sign-in, confirming account required; did not sign in."
+    },
+    {
+      "id": "cisco-introduction-cybersecurity",
+      "url": "https://www.netacad.com/courses/introduction-to-cybersecurity?courseLang=ar-SA",
+      "evidence": [
+        "https://www.netacad.com/courses/introduction-to-cybersecurity?courseLang=ar-SA"
+      ],
+      "notes": "Browser language selector opened actual Arabic variant. Arabic syllabus has attacks/concepts/data privacy/organization protection; Free label and beginner status observed. Public overview inspected; course was not completed or enrolled."
+    },
+    {
+      "id": "cisco-computer-hardware",
+      "url": "https://www.netacad.com/courses/computer-hardware-basics?courseLang=ar-SA",
+      "evidence": [
+        "https://www.netacad.com/courses/computer-hardware-basics?courseLang=ar-SA"
+      ],
+      "notes": "Opened English and Arabic course pages in browser. Actual Arabic modules cover PCs, laptops, mobile devices, assembly and maintenance. Free label and Cisco publisher observed."
+    },
+    {
+      "id": "linux-foundation-introduction",
+      "url": "https://training.linuxfoundation.org/training/introduction-to-linux/",
+      "evidence": [
+        "https://training.linuxfoundation.org/training/introduction-to-linux/",
+        "https://trainingportal.linuxfoundation.org/learn/course/introduction-to-linux-lfs101/"
+      ],
+      "notes": "Official course page explicitly calls training free, shows $0, Login before enrolling, outline including commands/processes/files/Bash, and 90 Days of Access. Training portal requires JS/sign-in; no account created and no claims of lifetime access."
+    },
+    {
+      "id": "ubuntu-command-line",
+      "url": "https://ubuntu.com/desktop/docs/en/latest/tutorial/the-linux-command-line-for-beginners/",
+      "evidence": [
+        "https://ubuntu.com/desktop/docs/en/latest/tutorial/the-linux-command-line-for-beginners/",
+        "https://ubuntu.com/tutorials/command-line-for-beginners"
+      ],
+      "notes": "Opened full current tutorial text without sign-in or paywall. Old Ubuntu tutorial points to updated documentation. documentation.ubuntu.com mirror timed out, so selected working Ubuntu-owned URL."
+    },
+    {
+      "id": "microsoft-cloud-computing",
+      "url": "https://learn.microsoft.com/ar-sa/training/modules/describe-cloud-compute/",
+      "evidence": [
+        "https://learn.microsoft.com/ar-sa/training/modules/describe-cloud-compute/",
+        "https://learn.microsoft.com/ar-sa/training/modules/describe-cloud-compute/3-what-cloud-compute",
+        "https://learn.microsoft.com/en-us/training/support/faq"
+      ],
+      "notes": "Opened Arabic module and actual Arabic unit about cloud computing without login. Learn FAQ explicitly states training free, profile not required to consume content. Azure trial signup is separate, not the basis of free-content claim."
+    },
+    {
+      "id": "microsoft-azure-architecture",
+      "url": "https://learn.microsoft.com/ar-sa/training/modules/describe-core-architectural-components-of-azure/",
+      "evidence": [
+        "https://learn.microsoft.com/ar-sa/training/modules/describe-core-architectural-components-of-azure/",
+        "https://learn.microsoft.com/en-us/training/support/faq"
+      ],
+      "notes": "Opened Arabic module overview and unit list; title, objectives, regions/resource groups/subscriptions verified. One direct physical-infrastructure child fetch cache-missed; no claim of opening every unit. Free/profile claim verified in official FAQ."
+    },
+    {
+      "id": "microsoft-azure-infrastructure-security",
+      "url": "https://learn.microsoft.com/ar-sa/training/modules/describe-basic-security-capabilities-azure/",
+      "evidence": [
+        "https://learn.microsoft.com/ar-sa/training/modules/describe-basic-security-capabilities-azure/",
+        "https://learn.microsoft.com/en-us/training/support/faq"
+      ],
+      "notes": "Arabic module overview, beginner label, prerequisites and Azure DDoS/Firewall/Key Vault/segmentation units opened. Free-content claim follows official Learn FAQ. Did not claim to run cloud labs."
+    },
+    {
+      "id": "aws-overview",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/introduction.html",
+      "evidence": [
+        "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/introduction.html"
+      ],
+      "notes": "Opened public official AWS overview introduction with cloud service categories and consumption pricing; no sign-in/payment needed for text. Chosen as a transparent documentation fallback, not mislabeled as a free paid Skill Builder course."
+    },
+    {
+      "id": "google-cloud-overview",
+      "url": "https://docs.cloud.google.com/docs/overview",
+      "evidence": ["https://docs.cloud.google.com/docs/overview"],
+      "notes": "Opened full official document publicly, covering regions/zones/services/projects/CLI. Billing-account and pricing paragraphs explicitly distinguish documentation access from cloud runtime cost."
+    },
+    {
+      "id": "docker-containerized-application",
+      "url": "https://docs.docker.com/get-started/tutorials/run-an-app/",
+      "evidence": ["https://docs.docker.com/get-started/tutorials/run-an-app/"],
+      "notes": "Old /get-started/workshop/ redirects to this canonical tutorial. Publicly readable complete steps observed: container, compose stack, image build/share/cleanup; prerequisites explicitly Docker Desktop, Git, Docker account. No cloud-cost or software-license blanket-free promise."
+    },
+    {
+      "id": "kubernetes-basics",
+      "url": "https://kubernetes.io/docs/tutorials/kubernetes-basics/",
+      "evidence": ["https://kubernetes.io/docs/tutorials/kubernetes-basics/"],
+      "notes": "Opened official tutorial objectives and six modules: cluster/deploy/explore/expose/scale/update; links to local Minikube environment. No claim of a currently embedded interactive lab."
+    },
+    {
+      "id": "github-actions-quickstart",
+      "url": "https://docs.github.com/en/actions/get-started/quickstart",
+      "evidence": ["https://docs.github.com/en/actions/get-started/quickstart"],
+      "notes": "Opened canonical redirect target from older /writing-workflows/quickstart URL. Public article explicitly describes CI/CD, first workflow and prerequisites. Account required for exercise, optional for reading; no assertion that arbitrary runner use is free."
+    }
+  ],
+  "exclusions": [
+    {
+      "group": "web",
+      "findings": [
+        {
+          "url": "https://www.freecodecamp.org/learn/",
+          "reason": "Seed opened but web extraction returned no course contents. Do not claim specific freeCodeCamp interactive courses individually verified from this seed."
+        },
+        {
+          "url": "https://www.youtube.com/@freecodecamp",
+          "reason": "Opened as discovery seed only; channel shell did not provide specific course contents. Not used as a learning resource."
+        },
+        {
+          "url": "https://skills.github.com/",
+          "reason": "Seed now redirects to learn.github.com/skills, which did not yield content in web extraction. Specific official Skills repositories were opened and used instead."
+        },
+        {
+          "url": "https://java-programming.mooc.fi/",
+          "reason": "Opened and explicitly free, but publisher says legacy/unmaintained and no more ECTS credits. Prefer current official Dev.java tutorials verified in browser."
+        },
+        {
+          "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Testing/Your_first_test",
+          "reason": "Inaccessible via web tool. Not included or marked verified."
+        }
+      ]
+    },
+    {
+      "group": "data",
+      "findings": [
+        {
+          "url": "https://edu.gcfglobal.org/en/excel/",
+          "reason": "Redirected to https://www.learnfree.org/series/excel-foundations. The fetched page exposed only a title and little actual lesson content, so complete public free lesson access was not sufficiently verified. Replaced with a direct Microsoft Excel guide and explicit software-license caveat."
+        },
+        {
+          "url": "https://www.freecodecamp.org/learn/",
+          "reason": "Opened as a research seed; fetched response had no readable content. No course-specific freeCodeCamp record added by this researcher without independently inspectable content."
+        },
+        {
+          "url": "https://developers.google.com/machine-learning/crash-course/faq",
+          "reason": "Direct FAQ URL was inaccessible in this tool. Free access instead corroborated with the current course, prerequisites, official Google blog and Colab FAQ."
+        }
+      ]
+    },
+    {
+      "group": "systems",
+      "findings": [
+        {
+          "url": "https://explore.skillbuilder.aws/",
+          "reason": "Seed redirects to https://skillbuilder.aws/?showRedirectNotFoundBanner=true and web parser only shows JS Required. Did not verify a particular free course, subscription boundaries or labs; excluded as a recommendation."
+        },
+        {
+          "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/welcome.html",
+          "reason": "Inaccessible; replaced with verified direct introduction.html page."
+        },
+        {
+          "url": "https://documentation.ubuntu.com/desktop/en/latest/tutorial/the-linux-command-line-for-beginners/",
+          "reason": "Mirror fetch timed out. Working Ubuntu-owned canonical-like /desktop/docs URL verified and selected."
+        },
+        {
+          "url": "https://www.youtube.com/playlist?list=PLA48B49E7FB15439B",
+          "reason": "Cisco footer exposes this general channel playlist. Not verified as a specific skill course; not included."
+        }
+      ]
+    }
+  ]
+}

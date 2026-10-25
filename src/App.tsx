@@ -1,4 +1,5 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
+import { usePageMotion } from "./hooks/usePageMotion";
 import { Route, Routes, useLocation } from "react-router";
 import { Header } from "./components/layout/Header";
 import { Footer } from "./components/layout/Footer";
@@ -17,6 +18,8 @@ const titles: Record<string, string> = {
 
 export default function App() {
   const { pathname, key } = useLocation();
+  const main = useRef<HTMLElement>(null);
+  usePageMotion(main, key);
   useEffect(() => {
     document.title = `مساري — ${titles[pathname] ?? "الصفحة غير موجودة"}`;
     window.scrollTo({ top: 0, behavior: "instant" });
@@ -36,7 +39,7 @@ export default function App() {
         تخطّ إلى المحتوى
       </a>
       <Header />
-      <main id="main-content" tabIndex={-1}>
+      <main id="main-content" ref={main} tabIndex={-1}>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/questionnaire" element={<QuestionnairePage />} />

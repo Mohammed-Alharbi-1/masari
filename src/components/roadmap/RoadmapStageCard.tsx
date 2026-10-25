@@ -1,15 +1,19 @@
 import { skills } from "../../data/skills";
 import type { PersonalizedRoadmapStage } from "../../types/roadmap";
 import { RoadmapCertification } from "./RoadmapCertification";
+import { LearningResourcesSection } from "./LearningResourcesSection";
+import type { LearningResourceRecommendation } from "../../types/learningResources";
 
 export function RoadmapStageCard({
   stage,
   index,
   hasProviderPaths,
+  resources,
 }: {
   stage: PersonalizedRoadmapStage;
   index: number;
   hasProviderPaths: boolean;
+  resources: LearningResourceRecommendation[];
 }) {
   return (
     <li className="roadmap-stage" aria-labelledby={`stage-${stage.stage}`}>
@@ -73,6 +77,10 @@ export function RoadmapStageCard({
         <h3>مشروعك العملي</h3>
         <p>{stage.practicalMilestoneAr}</p>
       </div>
+      <LearningResourcesSection
+        recommendations={resources}
+        stageTitle={stage.titleAr}
+      />
       <section
         className="roadmap-stage-certifications"
         aria-label={`خيارات الشهادات في ${stage.titleAr}`}

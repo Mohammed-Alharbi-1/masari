@@ -26,18 +26,18 @@ const directions = careerTracks.map((track, index) => ({
 
 const steps = [
   {
-    title: "أخبرنا عن تخصصك واهتماماتك",
-    text: "نبدأ بما تعرفه وما تطمح إليه، لنفهم نقطة بدايتك.",
+    title: "عرّفنا على اهتماماتك",
+    text: "أسئلة بسيطة عن دراستك، مهاراتك، والمجال اللي يهمك.",
     icon: "target" as const,
   },
   {
-    title: "اكتشف الشهادات المناسبة لك",
-    text: "تعرّف على خيارات تناسب أهدافك ومستواك الحالي.",
+    title: "استلم خارطة واضحة",
+    text: "ثلاث مراحل بأولويات مهارات ومشاريع وخيارات شهادات.",
     icon: "book" as const,
   },
   {
-    title: "ابدأ رحلتك المهنية",
-    text: "تقدّم بخطوات تعلّم واضحة، خطوة بعد خطوة.",
+    title: "تعلّم وجرّب بنفسك",
+    text: "ابدأ بمصدر مجاني، وطبّق اللي تتعلمه في مشروعك.",
     icon: "path" as const,
   },
 ];
@@ -100,7 +100,7 @@ function PathIllustration() {
           </div>
         </div>
         <span className="board-caption">
-          رسم توضيحي · مسارك الشخصي قادم لاحقًا
+          رسم توضيحي · خارطتك تبدأ باختياراتك
         </span>
       </div>
       <div className="floating-note">
@@ -127,18 +127,18 @@ export default function HomePage() {
           <div className="hero-content">
             <span className="eyebrow hero-eyebrow">
               <span className="status-dot" />
-              من الجامعة، إلى طموحك
+              طريقك في التقنية يبدأ بفهم اختياراتك
             </span>
             <h1>
-              اكتشف الشهادات
+              من اهتمامك،
               <br />
-              المناسبة <span className="headline-accent">لمستقبلك</span>
+              إلى <span className="headline-accent">مسار واضح</span>
               <br />
-              المهني<span className="headline-dot">.</span>
+              لمستقبلك<span className="headline-dot">.</span>
             </h1>
             <p className="hero-description">
-              مساري يساعدك تختار الشهادات الاحترافية المناسبة لتخصصك ومستواك
-              وأهدافك، ويعطيك خطوات واضحة تبدأ منها بثقة.
+              حدّد المجال اللي يهمك، وخذ خارطة تجمع المهارات والمصادر المجانية
+              والمشاريع العملية. والشهادات؟ خيارات تفكر فيها، مو شرط لتبدأ.
             </p>
             <div className="hero-actions">
               <Link className="button button-primary" to="/questionnaire">
@@ -151,14 +151,14 @@ export default function HomePage() {
             </div>
             <p className="phase-note">
               <Icon name="spark" />
-              الاستبيان وخارطتك المهنية ودليل الشهادات متاحة الآن.
+              مجاني للطلاب · بدون حساب · إجاباتك تبقى في متصفحك
             </p>
           </div>
           <PathIllustration />
         </div>
         <div className="container hero-foot">
-          <span>بدايات مختلفة. طموح يجمعنا.</span>
-          <span>لطلاب علوم الحاسب، وهندسة البرمجيات، وتقنية المعلومات</span>
+          <span>{careerTracks.length} مجالًا تقنيًا</span>
+          <span>3 مراحل واضحة · مهارات، مصادر، وتطبيق عملي</span>
           <span className="hero-foot-icon">
             <Icon name="path" />
           </span>
@@ -167,12 +167,12 @@ export default function HomePage() {
 
       <section className="section how-section" aria-labelledby="how-title">
         <div className="container">
-          <div className="section-heading centered">
+          <div className="section-heading centered" data-reveal>
             <span className="eyebrow">الفكرة ببساطة</span>
             <h2 id="how-title">طريقك أوضح، في ثلاث خطوات</h2>
-            <p>رحلة نعمل على بنائها لتساعدك تتقدّم بثقة.</p>
+            <p>اختياراتك تحدد نقطة البداية. والممارسة تبني اللي بعدها.</p>
           </div>
-          <ol className="steps-grid">
+          <ol className="steps-grid" data-reveal>
             {steps.map((step, index) => (
               <li className="step" key={step.title}>
                 <div className="step-top">
@@ -194,7 +194,7 @@ export default function HomePage() {
         aria-labelledby="directions-title"
       >
         <div className="container">
-          <div className="section-heading split-heading">
+          <div className="section-heading split-heading" data-reveal>
             <div>
               <span className="eyebrow">أكثر من طريق لطموحك</span>
               <h2 id="directions-title">أي مجال يثير فضولك؟</h2>
@@ -212,6 +212,7 @@ export default function HomePage() {
             {directions.map((direction) => (
               <article
                 className={`direction-card ${direction.color}`}
+                data-reveal
                 key={direction.id}
               >
                 <div className="direction-top">
@@ -239,7 +240,7 @@ export default function HomePage() {
       </section>
 
       <section className="section why-section" aria-labelledby="why-title">
-        <div className="container why-grid">
+        <div className="container why-grid" data-reveal>
           <div className="why-intro">
             <span className="eyebrow">لماذا مساري؟</span>
             <h2 id="why-title">
@@ -253,36 +254,39 @@ export default function HomePage() {
             </p>
             <span className="planned-label">
               <span className="status-dot" />
-              ما نعمل على تقديمه في المراحل القادمة
+              إرشاد واضح، بدون وعود مبالغ فيها
             </span>
           </div>
           <div className="benefits-grid">
             <article>
               <Icon name="target" />
-              <h3>اختيارات تبدأ منك</h3>
-              <p>توصيات مبنية على تخصصك وأهدافك، وتراعي معرفتك الحالية.</p>
+              <h3>أولويات تبدأ منك</h3>
+              <p>مهارات تحتاجها، ومعرفة تبي تعمقها. كل اقتراح له سبب.</p>
             </article>
             <article>
               <Icon name="shield" />
-              <h3>معلومات من مصادرها</h3>
-              <p>مراجع رسمية للجهات المانحة، لتعرف ما تختاره ولماذا.</p>
+              <h3>شهادات بقرار واعي</h3>
+              <p>
+                خيارات اختيارية بمراجعها ومتطلباتها، دون افتراض الأهلية أو
+                السعر.
+              </p>
             </article>
             <article>
               <Icon name="book" />
-              <h3>بداية بلا تعقيد</h3>
-              <p>إرشاد مفهوم للمبتدئين، دون افتراض أنك تعرف كل المصطلحات.</p>
+              <h3>مصادر تبدأ فيها الآن</h3>
+              <p>دروس ومراجع مجانية للوصول، مرتبطة بمهارات خارطتك.</p>
             </article>
             <article>
               <Icon name="path" />
-              <h3>خطوة تتبعها خطوة</h3>
-              <p>مسارات تعلّم مرتبة، تربط المهارات بالشهادات المناسبة.</p>
+              <h3>معرفة تصير تطبيق</h3>
+              <p>مشروع عملي في كل مرحلة، عشان تختبر فهمك وتبني خبرة.</p>
             </article>
           </div>
         </div>
       </section>
 
       <section className="closing-section">
-        <div className="container closing-card">
+        <div className="container closing-card" data-reveal>
           <span className="closing-symbol" aria-hidden="true">
             ✳
           </span>
@@ -293,10 +297,10 @@ export default function HomePage() {
               <br />
               وابدأ من المكان المناسب لك.
             </h2>
-            <p>نتعرّف عليك أولًا، لنساعدك لاحقًا على رسم طريقك.</p>
+            <p>خطوة بسيطة، ومنها تتضح لك نقطة البداية.</p>
           </div>
           <Link className="button button-lime" to="/questionnaire">
-            تعرّف على اكتشاف المسار
+            اكتشف مسارك الآن
             <Icon name="arrow" />
           </Link>
         </div>

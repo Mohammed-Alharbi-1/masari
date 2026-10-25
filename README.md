@@ -2,7 +2,7 @@
 
 An Arabic-first, anonymous career and certification guidance website for university students in computing-related majors. Masari helps students understand career options and learning credentials without promising employment or requiring an account.
 
-**Current scope: Phase 4.** The static catalog contains **70 professional certifications**, **12 providers**, **11 career tracks**, **68 shared skills**, and **33 curated progression stages**. The anonymous questionnaire and rules-based personalized roadmaps are implemented. Long-term progress storage is **not implemented**.
+**Current scope: Phase 4.5.** The static catalog contains **70 professional certifications**, **12 providers**, **11 career tracks**, **68 shared skills**, and **33 curated progression stages**. The anonymous questionnaire, rules-based personalized roadmaps and **39 curated free-access learning resources** are implemented. Long-term progress storage is **not implemented**.
 
 ## Available features
 
@@ -16,11 +16,21 @@ An Arabic-first, anonymous career and certification guidance website for univers
 - Personalized three-stage roadmaps with prioritized skills, practical milestones, optional credential choices, reasons and prerequisite warnings.
 - Friendly roadmap empty state and an application-level 404 page.
 - Existing editorial templates provide the foundation for deterministic personalization; alternative cloud providers remain separate paths.
-- Lightweight data validation included in every production build.
+- Verified skill-linked learning resources: 9 Arabic and 30 English, covering 43 canonical skills across all 11 tracks.
+- Refined responsive typography/cards and restrained GSAP/ScrollTrigger enhancement with reduced-motion support.
+- Lightweight catalog, questionnaire, roadmap and learning-resource validation included in every production build.
+
+## Screenshots
+
+Actual production-build screenshots captured on 2026-10-25. The roadmap uses sample anonymous answers.
+
+![Masari homepage](docs/screenshots/homepage.jpg)
+
+![Skill-linked learning resources in a roadmap](docs/screenshots/roadmap-resources.jpg)
 
 ## Technology
 
-React, Vite, strict TypeScript, React Router with HashRouter, ordinary CSS variables, npm, GitHub Actions, and GitHub Pages. Fonts and SVG icons are local. There is no backend, database service, paid API, AI service, authentication, or additional state-management library. Phase 4 adds no dependencies.
+React, Vite, strict TypeScript, React Router with HashRouter, ordinary CSS variables, npm, GitHub Actions, and GitHub Pages. Fonts and SVG icons are local. There is no backend, database service, paid API, AI service, authentication, or additional state-management library. Phase 4.5 adds only GSAP 3.15.0 for optional animation enhancement. No backend or recommendation service is required.
 
 ## Install and run
 
@@ -33,14 +43,17 @@ npm run dev
 
 Open the local URL printed by Vite. Use `npm install` only when intentionally changing dependencies and the lockfile.
 
-| Command                    | Purpose                                                                         |
-| -------------------------- | ------------------------------------------------------------------------------- |
-| `npm run dev`              | Start development server                                                        |
-| `npm run lint`             | Run ESLint with zero allowed warnings                                           |
-| `npm run typecheck`        | Check application, Vite configuration, and validation script                    |
-| `npm run validate:catalog` | Validate credentials, providers, skills, tracks, templates, and search fixtures |
-| `npm run build`            | Typecheck, validate data, and generate `dist/`                                  |
-| `npm run preview`          | Preview the production output locally                                           |
+| Command                               | Purpose                                                                         |
+| ------------------------------------- | ------------------------------------------------------------------------------- |
+| `npm run dev`                         | Start development server                                                        |
+| `npm run lint`                        | Run ESLint with zero allowed warnings                                           |
+| `npm run typecheck`                   | Check application, Vite configuration, and validation script                    |
+| `npm run validate:catalog`            | Validate credentials, providers, skills, tracks, templates, and search fixtures |
+| `npm run validate:questionnaire`      | Check answer schema, taxonomy and storage error handling                        |
+| `npm run validate:roadmap`            | Check deterministic personalization and optional credential rules               |
+| `npm run validate:learning-resources` | Check resource metadata, references, safety and matching scenarios              |
+| `npm run build`                       | Typecheck, validate data, and generate `dist/`                                  |
+| `npm run preview`                     | Preview the production output locally                                           |
 
 The validation scripts run directly through Node's built-in TypeScript support. No testing framework or TypeScript runner dependency is required.
 
@@ -70,6 +83,22 @@ Navigation passes validated answers through router state, allowing immediate gen
 
 To maintain the rules, edit `generateRoadmap.ts` and add representative assertions to `scripts/validate-roadmap.ts`. Adjust the existing editorial template when its learning sequence changes; never invent IDs or bypass catalog validation. Candidate selection is deliberately bounded to curated IDs rather than every catalog match. Run `npm run validate:roadmap`; it also runs during `npm run build`. `src/types/roadmap.ts` stores canonical IDs, stage metadata, focus categories, optional credential explanations and provider paths without copying credential records. `src/components/roadmap/` and `src/styles/roadmap.css` render the Arabic RTL interface. See `PHASE4_REPORT.md` for examples, coverage and limitations.
 
+## Free learning resources
+
+The separate `src/data/learningResources.ts` catalog contains 39 manually reviewed resources: 2 YouTube playlists, 16 online courses, 5 interactive tutorials and 16 official documentation resources. No unverified individual video URL was added. It is independent from the 70 professional credentials. Each resource references canonical skills/tracks, language, editorial level, actual publisher, HTTPS destination, dated free-access verification and account/access caveats.
+
+`recommendLearningResources` supplements the existing generated roadmap without changing certification rules. It favors missing desired skills, missing stage skills, then known/desired deepening; additional interests outside template stages are routed to a suitable stage. Eligible resources need verified free access, a direct matching skill and track relevance. Stage level and optional self-assessment guide suitability, Arabic is preferred among eligible choices, and explicit language/platform interests prevent incompatible tutorials from being substituted. It selects up to four resources per stage, one per selected priority skill, and does not repeat a resource across stages. Missing coverage leaves skills/projects intact with an honest empty state.
+
+Free access means the stated learning content, not a paid exam, software license, cloud laboratory, compute quota or guaranteed certificate. Registration requirements and constraints are shown on each card. Nothing queries YouTube or a course service from the student's browser; links open the verified publisher destination. External publishers have their own account/privacy terms; questionnaire answers are not attached to links. There are no video embeds, scraped feeds or API credentials.
+
+See [resource maintenance](docs/learning-resources.md), [manual verification evidence](docs/resource-verification.json) and [Phase 4.5 report](PHASE4_5_REPORT.md). Public availability can change; verify the actual page before updating dates or claiming free access.
+
+## Animation and visual enhancement
+
+`src/hooks/usePageMotion.ts` lazily imports GSAP 3.15.0 and ScrollTrigger only when the current page has reveal targets. The homepage hero and selected section/card blocks receive brief vertical/opacity reveals; roadmap stages form a restrained vertical timeline. Ordinary hover/focus, form selection and menu presentation use CSS. Catalog results and all 70 cards are not individually scroll-animated.
+
+All selectors are scoped to the current main element. GSAP match-media context reverts animations and ScrollTriggers when preferences or navigation entries change; a disposal guard prevents late asynchronous imports from touching an unmounted page. Reduced-motion preference skips the imports initially and reverts active motion on a preference change. Content starts visible and never depends on animation success. No Arabic text splitting, pinning, scroll hijacking or persistent animation state is used. See [animation implementation and licensing](docs/animation-notes.md).
+
 ## Routes
 
 | Hash route                                | Page                                              |
@@ -85,26 +114,22 @@ To maintain the rules, edit `generateRoadmap.ts` and add representative assertio
 
 ```text
 src/
-  data/
-    types.ts              # Shared contracts, allowed values, Arabic UI labels
-    providers.ts          # Issuers and approved source domains
-    careerTracks.ts       # Eleven tracks; skill links derived from shared skills
-    skills.ts             # Canonical skill IDs, Arabic/English names, track links
-    certifications.ts     # Manually reviewed credential records
-    roadmapTemplates.ts   # Three editorial stages per track, data only
-    validateCatalog.ts    # Internal consistency and eligibility checks
-    catalogSearch.ts      # Simple client-side search and track selection
+  data/                   # Credentials/providers, canonical skills/tracks/templates, learning resources
+  types/                  # Questionnaire, generated roadmap and learning-resource contracts
+  utils/                  # Pure generation/matching, validators, session and router handling
+  hooks/usePageMotion.ts  # Scoped optional GSAP enhancement
   components/
-    certifications/CertificationCard.tsx
-    layout/               # Existing branding, header, footer
-    ui/                   # Local icons and Coming Soon presentation
-  pages/                  # Existing application routes
-  styles/
-    global.css            # Shared design tokens and responsive layout
-    catalog.css           # Catalog, search controls, and card styling
-scripts/validate-catalog.ts
+    layout/               # Brand, header and footer
+    certifications/       # Searchable catalog cards
+    questionnaire/        # Skill selectors and answer summary
+    roadmap/              # Stages, optional credentials and free learning resources
+    ui/                   # Existing shared icons and UI
+  pages/                  # Homepage, catalog, questionnaire, roadmap and 404
+  styles/                 # Existing tokens plus scoped page/resource/refinement styles
+scripts/                  # Four dependency-free validation suites
 .github/workflows/deploy.yml
-PHASE2_5_REPORT.md
+docs/                     # Resource/animation maintenance, evidence and real screenshots
+PHASE4_5_REPORT.md
 ```
 
 ## Maintaining the catalog
@@ -125,6 +150,7 @@ npm run typecheck
 npm run validate:catalog
 npm run validate:questionnaire
 npm run validate:roadmap
+npm run validate:learning-resources
 npm run build
 ```
 
@@ -146,7 +172,7 @@ The questionnaire consumes these canonical track and skill IDs directly. It does
 - Site: [Masari](https://mohammed-alharbi-1.github.io/masari/)
 - Branch: `main`
 
-GitHub Pages is configured to use GitHub Actions. The existing workflow follows the repository's actual default branch, runs `npm ci`, lint, and build, uploads `dist/`, and deploys with the official Pages actions. Catalog, questionnaire and roadmap validation are included through the build command.
+GitHub Pages is configured to use GitHub Actions. The existing workflow follows the repository's actual default branch, runs `npm ci`, lint, and build, uploads `dist/`, and deploys with the official Pages actions. Catalog, questionnaire, roadmap and learning-resource validation are included through the build command.
 
 For a fork or a new repository, select **Settings → Pages → Build and deployment → Source → GitHub Actions**, and allow the default branch in the `github-pages` environment if protection rules apply. Push to the default branch or run the workflow manually from it. Confirm the actual Actions result; a local build alone does not verify remote publication.
 
@@ -166,7 +192,7 @@ Rebuild after removing the variable to restore a root-path local build. HashRout
 
 ## Deferred work and verification limits
 
-Phase 4 provides deterministic personalized guidance. Phase 5 will add basic local progress tracking; no completion checkboxes, progress storage or roadmap history are implemented yet. Later exploration/comparison and final testing remain outside this phase.
+Phase 4.5 adds verified learning resources and visual refinement to deterministic personalized guidance. Phase 5 will add basic local progress tracking; no completion checkboxes, progress storage or roadmap history are implemented yet. Later exploration/comparison and final testing remain outside this phase.
 
 The validator checks internal consistency and source domains, not source freshness or educational suitability. The catalog is cloud-heavy and some areas rely more on practical projects than paid credentials. Technical reports document exclusions, coverage, actual commands, browser checks, and publication state. Historical Phase 1/2 reports retain their original language and pre-publication snapshots; new technical documentation is in English.
 

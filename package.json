@@ -8,14 +8,15 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && npm run validate:catalog && npm run validate:questionnaire && npm run validate:roadmap && npm run validate:learning-resources && vite build",
+    "build": "tsc -b && npm run validate:catalog && npm run validate:questionnaire && npm run validate:roadmap && npm run validate:learning-resources && npm run validate:progress && vite build",
     "validate:catalog": "node scripts/validate-catalog.ts",
     "lint": "eslint . --max-warnings 0",
     "typecheck": "tsc -b",
     "preview": "vite preview",
     "validate:questionnaire": "node scripts/validate-questionnaire.ts",
     "validate:roadmap": "node scripts/validate-roadmap.ts",
-    "validate:learning-resources": "node scripts/validate-learning-resources.ts"
+    "validate:learning-resources": "node scripts/validate-learning-resources.ts",
+    "validate:progress": "node scripts/validate-progress.ts"
   },
   "dependencies": {
     "@fontsource/ibm-plex-sans-arabic": "^5.2.8",

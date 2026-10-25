@@ -1,5 +1,16 @@
-import { useState } from "react";
-import { Link, useLocation } from "react-router";
+import { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router";
+import {
+  learningStore,
+  useLearningProgress,
+} from "../hooks/useLearningProgress";
+import { activitiesFor, answerIdentity } from "../utils/progressStorage";
+import { isCompleted, reconcileProgress } from "../utils/roadmapProgress";
+import { CompletionControl } from "../components/roadmap/CompletionControl";
+import { ProgressSummary } from "../components/roadmap/ProgressSummary";
+import { SavedRoadmapNotice } from "../components/roadmap/SavedRoadmapNotice";
+import type { StudentQuestionnaireAnswers } from "../types/questionnaire";
+import "../styles/progress.css";
 import { careerTracks } from "../data/careerTracks";
 import { skills } from "../data/skills";
 import { providers } from "../data/providers";
@@ -18,12 +29,23 @@ import "../styles/roadmap.css";
 
 export default function RoadmapPage() {
   const location = useLocation();
+  const navigate = useNavigate();
   const [source] = useState(() => {
     const incoming = readQuestionnaireNavigation(location.state as unknown);
     return incoming
       ? { answers: incoming.answers, status: "navigation" }
-      : restoreQuestionnaire(() => window.sessionStorage);
+      : learningStore().getSnapshot().active
+        ? {
+            answers: learningStore().getSnapshot().active!.answers,
+            status: "active",
+          }
+        : restoreQuestionnaire(() => window.sessionStorage);
   });
+  // Consume route snapshots after the child has opened the active session.
+  useEffect(() => {
+    if (readQuestionnaireNavigation(location.state as unknown))
+      void navigate(location.pathname, { replace: true, state: null });
+  }, [location.state, location.pathname, navigate]);
   if (!source.answers)
     return (
       <section className="container roadmap-page roadmap-empty">
@@ -39,11 +61,42 @@ export default function RoadmapPage() {
         <Link className="button button-primary" to="/questionnaire">
           ابدأ اكتشاف مسارك
         </Link>
+        <SavedRoadmapNotice />
       </section>
     );
-  const answers = source.answers;
+  return <LearningRoadmap answers={source.answers} />;
+}
+
+function LearningRoadmap({
+  answers,
+}: {
+  answers: StudentQuestionnaireAnswers;
+}) {
+  const { active, saved, notice, store } = useLearningProgress(answers);
   const roadmap = generatePersonalizedRoadmap(answers);
   const resources = recommendLearningResources(answers, roadmap);
+  const activities = activitiesFor(answers);
+  const data =
+    active && answerIdentity(active.answers) === answerIdentity(answers)
+      ? active
+      : {
+          version: 1 as const,
+          deviceOptIn: false,
+          answers,
+          progress: reconcileProgress(
+            active?.progress ?? null,
+            answers.careerTrack,
+            activities,
+          ),
+        };
+  const controls = {
+    completed: (kind: "skill" | "milestone" | "resource", id: string) =>
+      isCompleted(data.progress, { kind, id }),
+    toggle: (kind: "skill" | "milestone" | "resource", id: string) => {
+      store.open(answers);
+      store.toggle(kind, id);
+    },
+  };
   const track = careerTracks.find((item) => item.id === roadmap.trackId)!;
   const names = (ids: string[]) =>
     ids.map((id) => skills.find((skill) => skill.id === id)!.nameAr).join("، ");
@@ -88,6 +141,14 @@ export default function RoadmapPage() {
           </Link>
         </div>
       </header>
+      <ProgressSummary
+        data={data}
+        activities={activities}
+        roadmap={roadmap}
+        saved={saved}
+        notice={notice}
+        store={store}
+      />
       <aside className="roadmap-guidance" aria-label="إرشادات مهمة">
         <h2>قبل ما تبدأ</h2>
         <ul>
@@ -104,6 +165,9 @@ export default function RoadmapPage() {
             index={index}
             hasProviderPaths={roadmap.providerPaths.length > 0}
             resources={resources[stage.stage]}
+            controls={controls}
+            activities={activities}
+            trackId={roadmap.trackId}
           />
         ))}
       </ol>
@@ -127,6 +191,15 @@ export default function RoadmapPage() {
                     ? "لتعميق معرفة ذكرتها"
                     : "رغبة جديدة للتطوير"}
                 </small>
+                <CompletionControl
+                  kind="skill"
+                  activityId={id}
+                  label={`أنهيت تعلم ${names([id])}`}
+                  controls={controls}
+                  anchor={
+                    !roadmap.stages.some((stage) => stage.skillIds.includes(id))
+                  }
+                />
               </li>
             ))}
           </ul>
@@ -179,8 +252,9 @@ export default function RoadmapPage() {
         </section>
       )}
       <p className="roadmap-privacy">
-        تُنشأ الخارطة داخل متصفحك من الإجابات المتحققة؛ لا تُرسل لأي خدمة ولا
-        يُحفظ تقدم أو سجل خارطات. تقدر تعدّل إجاباتك وتعيد إنشاء المسار.
+        تُنشأ الخارطة ويُسجّل تقدمك داخل متصفحك، دون حساب أو إرسال الإجابات
+        والإنجازات لأي خدمة. الحفظ مؤقت إلا إذا اخترت حفظه على الجهاز. فتح مصدر
+        خارجي لا يسجل إنجازه.
       </p>
     </section>
   );

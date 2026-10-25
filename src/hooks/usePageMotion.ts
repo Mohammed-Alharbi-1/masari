@@ -50,7 +50,7 @@ export function usePageMotion(
                 },
               );
             const blocks = root!.querySelectorAll<HTMLElement>(
-              "[data-reveal], .roadmap-stage, .roadmap-extra",
+              "[data-reveal], .roadmap-stage-heading, .roadmap-extra > h2",
             );
             blocks.forEach((block) => {
               gsap.fromTo(

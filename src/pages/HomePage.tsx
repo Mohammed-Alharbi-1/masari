@@ -1,4 +1,6 @@
 import { Link } from "react-router";
+import { SavedRoadmapNotice } from "../components/roadmap/SavedRoadmapNotice";
+import "../styles/progress.css";
 import { Icon } from "../components/ui/Icon";
 import type { IconName } from "../components/ui/Icon";
 import { careerTracks } from "../data/careerTracks";
@@ -122,6 +124,7 @@ function PathIllustration() {
 export default function HomePage() {
   return (
     <>
+      <SavedRoadmapNotice />
       <section className="hero">
         <div className="container hero-grid">
           <div className="hero-content">

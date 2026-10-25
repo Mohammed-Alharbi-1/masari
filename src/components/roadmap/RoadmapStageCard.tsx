@@ -3,17 +3,28 @@ import type { PersonalizedRoadmapStage } from "../../types/roadmap";
 import { RoadmapCertification } from "./RoadmapCertification";
 import { LearningResourcesSection } from "./LearningResourcesSection";
 import type { LearningResourceRecommendation } from "../../types/learningResources";
+import type { CareerTrack } from "../../data/types";
+import type { LearningActivity } from "../../types/progress";
+import { milestoneId } from "../../utils/roadmapProgress";
+import { CompletionControl } from "./CompletionControl";
+import type { ProgressControls } from "./CompletionControl";
 
 export function RoadmapStageCard({
   stage,
   index,
   hasProviderPaths,
   resources,
+  controls,
+  activities,
+  trackId,
 }: {
   stage: PersonalizedRoadmapStage;
   index: number;
   hasProviderPaths: boolean;
   resources: LearningResourceRecommendation[];
+  controls: ProgressControls;
+  activities: LearningActivity[];
+  trackId: CareerTrack;
 }) {
   return (
     <li className="roadmap-stage" aria-labelledby={`stage-${stage.stage}`}>
@@ -55,6 +66,16 @@ export function RoadmapStageCard({
                       ? "تطبيق أعمق لما سبق"
                       : "لم تذكر معرفتها"}
             </small>
+            <CompletionControl
+              kind="skill"
+              activityId={id}
+              label={`أنهيت تعلم ${skills.find((skill) => skill.id === id)!.nameAr}`}
+              controls={controls}
+              anchor={
+                activities.find((a) => a.kind === "skill" && a.id === id)
+                  ?.stage === stage.stage
+              }
+            />
           </li>
         ))}
       </ul>
@@ -76,10 +97,17 @@ export function RoadmapStageCard({
         <span className="eyebrow">الممارسة هي الأساس</span>
         <h3>مشروعك العملي</h3>
         <p>{stage.practicalMilestoneAr}</p>
+        <CompletionControl
+          kind="milestone"
+          activityId={milestoneId(trackId, stage.stage)}
+          label={`أنهيت المشروع العملي في ${stage.titleAr}`}
+          controls={controls}
+        />
       </div>
       <LearningResourcesSection
         recommendations={resources}
         stageTitle={stage.titleAr}
+        controls={controls}
       />
       <section
         className="roadmap-stage-certifications"

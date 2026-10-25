@@ -3,13 +3,17 @@ import { skills } from "../../data/skills";
 import { resourceTypeLabels } from "../../types/learningResources";
 import type { LearningResourceRecommendation } from "../../types/learningResources";
 import "../../styles/learningResources.css";
+import { CompletionControl } from "./CompletionControl";
+import type { ProgressControls } from "./CompletionControl";
 
 export function LearningResourcesSection({
   recommendations,
   stageTitle,
+  controls,
 }: {
   recommendations: LearningResourceRecommendation[];
   stageTitle: string;
+  controls: ProgressControls;
 }) {
   return (
     <section
@@ -86,6 +90,12 @@ export function LearningResourcesSection({
                     </time>
                   </span>
                 </div>
+                <CompletionControl
+                  kind="resource"
+                  activityId={resource.id}
+                  label={`أنهيت المصدر: ${resource.title}`}
+                  controls={controls}
+                />
               </article>
             );
           })}

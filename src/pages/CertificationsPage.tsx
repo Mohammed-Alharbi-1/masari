@@ -1,13 +1,30 @@
-import { Link } from "react-router";
+import { useState } from "react";
+import { Link, useSearchParams } from "react-router";
 import { CertificationCard } from "../components/certifications/CertificationCard";
 import { Icon } from "../components/ui/Icon";
 import { certifications } from "../data/certifications";
 import { providers } from "../data/providers";
 import { careerTracks } from "../data/careerTracks";
 import { credentialTypeLabels } from "../data/types";
+import { getVisibleCertifications } from "../data/catalogSearch";
 import "../styles/catalog.css";
 
 export default function CertificationsPage() {
+  const [query, setQuery] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const requestedTrack = searchParams.get("track") ?? "";
+  const selectedTrack = careerTracks.some(
+    (track) => track.id === requestedTrack,
+  )
+    ? requestedTrack
+    : "";
+  const visibleCertifications = getVisibleCertifications(
+    certifications,
+    providers,
+    careerTracks,
+    query,
+    selectedTrack,
+  );
   const includedTypes = [
     ...new Set(certifications.map((record) => record.type)),
   ];
@@ -38,8 +55,8 @@ export default function CertificationsPage() {
                 <span>شهادة في الدليل</span>
               </strong>
               <p>
-                {providers.length} جهات مانحة · {careerTracks.length} مجالات
-                تقنية
+                {providers.length} جهة مانحة · {careerTracks.length} مجالًا
+                تقنيًا
               </p>
             </div>
           </div>
@@ -61,22 +78,76 @@ export default function CertificationsPage() {
             <span className="eyebrow">من المصادر الرسمية</span>
             <h2>خيارات تستحق أن تتعرّف عليها</h2>
           </div>
-          <span className="catalog-count">
-            {certifications.length} مؤهلًا مهنيًا
+          <span
+            className="catalog-count"
+            role="status"
+            aria-live="polite"
+            aria-atomic="true"
+          >
+            {visibleCertifications.length} من {certifications.length} مؤهلًا
           </span>
         </div>
         <p className="catalog-level-note">
           المجالات والمستوى الإرشادي تصنيف مساري استنادًا إلى نطاق الشهادة وخبرة
           المرشح الموصى بها؛ وليسا ترتيبًا للشهادات أو تقييمًا لصعوبة الاختبار.
         </p>
+        <div className="catalog-controls">
+          <div>
+            <label htmlFor="credential-search">ابحث في الدليل</label>
+            <input
+              id="credential-search"
+              type="search"
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder="اسم الشهادة أو الجهة أو مهارة مثل SQL"
+            />
+          </div>
+          <div>
+            <label htmlFor="credential-track">المجال المهني</label>
+            <select
+              id="credential-track"
+              value={selectedTrack}
+              onChange={(event) => {
+                const next = new URLSearchParams(searchParams);
+                if (event.target.value) next.set("track", event.target.value);
+                else next.delete("track");
+                setSearchParams(next, { replace: true });
+              }}
+            >
+              <option value="">جميع المجالات</option>
+              {careerTracks.map((track) => (
+                <option key={track.id} value={track.id}>
+                  {track.nameAr}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
         <div className="catalog-grid">
-          {certifications.map((certification) => (
+          {visibleCertifications.map((certification) => (
             <CertificationCard
               key={certification.id}
               certification={certification}
             />
           ))}
         </div>
+        {visibleCertifications.length === 0 && (
+          <div className="catalog-empty">
+            <Icon name="book" />
+            <h3>لم نعثر على نتائج مطابقة</h3>
+            <p>جرّب اسمًا أو مهارة أخرى، أو اختر جميع المجالات.</p>
+            <button
+              type="button"
+              className="button button-secondary"
+              onClick={() => {
+                setQuery("");
+                setSearchParams({});
+              }}
+            >
+              مسح البحث والمجال
+            </button>
+          </div>
+        )}
       </section>
       <aside
         className="container catalog-guidance"

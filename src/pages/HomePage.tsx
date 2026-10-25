@@ -10,6 +10,13 @@ const directionStyles: Record<CareerTrack, { icon: IconName; color: string }> =
     cybersecurity: { icon: "shield", color: "peach" },
     networking: { icon: "network", color: "blue" },
     "cloud-computing": { icon: "cloud", color: "lilac" },
+    "software-development": { icon: "code", color: "mint" },
+    devops: { icon: "path", color: "lilac" },
+    "data-analytics": { icon: "target", color: "blue" },
+    "artificial-intelligence": { icon: "spark", color: "lilac" },
+    "database-administration": { icon: "network", color: "blue" },
+    "it-support": { icon: "book", color: "peach" },
+    "software-testing": { icon: "check", color: "mint" },
   };
 const directions = careerTracks.map((track, index) => ({
   ...track,
@@ -191,14 +198,17 @@ export default function HomePage() {
             <div>
               <span className="eyebrow">أكثر من طريق لطموحك</span>
               <h2 id="directions-title">أي مجال يثير فضولك؟</h2>
-              <p>أربعة مجالات تقنية نبدأ منها. تعرّف على ما يلفتك.</p>
+              <p>
+                {careerTracks.length} مجالًا تقنيًا لتتعرّف على الخيارات التي
+                تثير اهتمامك.
+              </p>
             </div>
             <span className="subtle-label">
               مجالات تقنية يغطيها الدليل
               <Icon name="spark" />
             </span>
           </div>
-          <div className="directions-grid">
+          <div className="directions-grid directions-grid-expanded">
             {directions.map((direction) => (
               <article
                 className={`direction-card ${direction.color}`}
@@ -215,10 +225,13 @@ export default function HomePage() {
                 </span>
                 <h3>{direction.nameAr}</h3>
                 <p>{direction.descriptionAr}</p>
-                <span className="direction-bottom">
-                  مجال تعريفي
-                  <span className="small-line" />
-                </span>
+                <Link
+                  className="direction-bottom direction-catalog-link"
+                  to={`/certifications?track=${direction.id}`}
+                  aria-label={`استعرض شهادات ${direction.nameAr}`}
+                >
+                  استعرض شهادات المجال <Icon name="arrow" />
+                </Link>
               </article>
             ))}
           </div>

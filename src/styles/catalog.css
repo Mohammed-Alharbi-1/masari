@@ -94,6 +94,74 @@
 .catalog-content {
   padding-block: 48px 35px;
 }
+.catalog-controls {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 18px;
+  margin-block: 20px 28px;
+}
+.catalog-controls label {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+.catalog-controls input,
+.catalog-controls select {
+  width: 100%;
+  min-width: 0;
+  min-height: 48px;
+  padding: 11px 14px;
+  font: inherit;
+  font-size: 13px;
+  color: var(--ink);
+  background: var(--white);
+  border: 1px solid #cbd6c4;
+  border-radius: 8px;
+}
+.catalog-controls input::placeholder {
+  color: var(--muted);
+  opacity: 1;
+}
+.catalog-empty {
+  text-align: center;
+  padding: 55px 20px;
+  border: 1px dashed var(--line);
+  border-radius: var(--radius);
+}
+.catalog-empty > .icon {
+  color: var(--teal);
+  margin-bottom: 15px;
+}
+.catalog-empty h3 {
+  font-size: 20px;
+  font-weight: 500;
+}
+.catalog-empty p {
+  font-size: 13px;
+  color: var(--muted);
+  margin-block: 10px 20px;
+}
+.certification-details {
+  margin-bottom: 13px;
+  font-size: 11px;
+}
+.certification-details summary {
+  cursor: pointer;
+  padding-block: 12px;
+  min-height: 44px;
+  color: var(--teal);
+}
+.certification-details p {
+  color: var(--muted);
+  padding-block: 5px;
+  font-size: 11px;
+  line-height: 1.9;
+}
+.certification-details strong {
+  font-weight: 500;
+  color: var(--ink);
+}
 .catalog-section-heading {
   display: flex;
   align-items: center;
@@ -344,6 +412,10 @@
   }
 }
 @media (max-width: 700px) {
+  .catalog-controls {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 15px;
+  }
   .catalog-hero {
     padding-top: 15px;
   }

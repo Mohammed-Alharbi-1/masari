@@ -1,156 +1,143 @@
-# مساري — Masari
+# Masari — مساري
 
-موقع عربي يساعد طلاب الجامعة في التخصصات التقنية على فهم خيارات الشهادات الاحترافية، تمهيدًا لاختيار مسار تعلّم يناسب تخصصهم ومعرفتهم وطموحهم.
+An Arabic-first, anonymous career and certification guidance website for university students in computing-related majors. Masari helps students understand career options and learning credentials without promising employment or requiring an account.
 
-**حالة المشروع: المرحلة الثانية — كتالوج الشهادات.** تتوفر الواجهة الأساسية ودليل يضم 12 شهادة احترافية من 5 جهات. لا توجد توصيات شخصية أو استبيان أو حفظ للتقدم بعد. لا يشترط المشروع جامعة بعينها، ويبدأ بطلاب علوم الحاسب وهندسة البرمجيات وتقنية المعلومات والتخصصات القريبة.
+**Current scope: Phase 2.5.** The static catalog contains **70 professional certifications**, **12 providers**, **11 career tracks**, **68 shared skills**, and **33 curated progression stages**. The questionnaire, personalized recommendations, generated roadmaps, and student progress storage are **not implemented**.
 
-## المتاح حاليًا
+## Available features
 
-- صفحة رئيسية عربية واتجاه RTL، مع هوية بصرية متجاوبة وخط IBM Plex Sans Arabic محلي.
-- تعريف بالفكرة وخطواتها المستقبلية ومجالات تطوير الويب والأمن السيبراني والشبكات والحوسبة السحابية.
-- دليل شهادات للقراءة مع روابط رسمية وتصنيف المجالات والمستوى ونوع المؤهل وحالة التحقق وتاريخه.
-- تنقل فعلي وصفحتا «قريبًا» للاستبيان والخارطة، وصفحة للرابط غير الموجود.
-- بيانات محلية منفصلة للجهات والمجالات والشهادات، وأداة تحقق تعمل ضمن البناء.
-- قائمة جوال، دعم لوحة المفاتيح وزر Escape وحالات تركيز ظاهرة ورابط لتخطي التنقل.
-- إعدادات بناء ثابتة وGitHub Actions للنشر على GitHub Pages.
+- Arabic RTL homepage and responsive navigation, including an accessible mobile menu.
+- Eleven concise career cards linking to the corresponding catalog category.
+- Local certification catalog with one search field, one career-track filter, and a live result count.
+- Search by credential name, exam code, provider, Arabic description, track, or canonical skill name. Arabic diacritics and common alef variants are normalized.
+- Cards show issuer, credential type, broad guidance level, availability, dated verification, official links, and expandable preparation/skill information.
+- Empty-result recovery and safe official links opening in a new tab.
+- Intentional Coming Soon pages for the questionnaire and personal roadmap, plus an application-level 404 page.
+- Static, editorial progression data for later phases; it is not displayed as a personalized roadmap.
+- Lightweight data validation included in every production build.
 
-## المراحل القادمة — غير منفذة
+## Technology
 
-1. **المرحلة 3:** استبيان التخصص والسنة والاتجاه المهني والمعرفة والميزانية والوقت والمهارات الاختيارية.
-2. **المرحلة 4:** توصيات شفافة مبنية على قواعد، مع أسباب الاختيار والمتطلبات والبدائل.
-3. **المرحلة 5:** خارطة شخصية ومتابعة الإنجاز وحفظه وإعادة ضبطه محليًا باستخدام localStorage.
-4. **المرحلة 6:** توسيع الاستكشاف بالبحث والتصفية والتفاصيل والمقارنة.
-5. **المرحلة 7:** الاختبارات النهائية للتجاوب والإتاحة والحفظ المحلي والنشر والأداء والتوثيق.
+React, Vite, strict TypeScript, React Router with HashRouter, ordinary CSS variables, npm, GitHub Actions, and GitHub Pages. Fonts and SVG icons are local. There is no backend, database service, paid API, AI service, authentication, or additional state-management library. Phase 2.5 adds no dependencies.
 
-لا يوجد حساب أو مزامنة عبر الأجهزة أو ذكاء اصطناعي أو خادم خلفي. المحتوى العام داخل ملفات المشروع، والتقدم المستقبلي سيُحفظ في متصفح الطالب فقط. المنصة للإرشاد التعليمي ولا تضمن الحصول على وظيفة.
+## Install and run
 
-## التقنيات
-
-React، Vite، TypeScript مع `strict`، React Router باستخدام `HashRouter`، CSS عادي مع متغيرات، ESLint، npm، GitHub Pages وGitHub Actions. الأيقونات SVG محلية ضمن مكوّن صغير، دون مكتبة واجهات أو أنيميشن. تُثبت إصدارات الاعتماديات بواسطة `package-lock.json`.
-
-## التثبيت والتشغيل
-
-يتطلب المشروع Node.js **24** وnpm. من مجلد المشروع:
+Use **Node.js 24 or later** and npm from the project directory:
 
 ```sh
 npm ci
 npm run dev
 ```
 
-افتح الرابط المحلي الذي يطبعه Vite. لإضافة اعتماديات أو تحديث القفل استخدم `npm install` بدل `npm ci`.
+Open the local URL printed by Vite. Use `npm install` only when intentionally changing dependencies and the lockfile.
 
-| الأمر                      | الوظيفة                                         |
-| -------------------------- | ----------------------------------------------- |
-| `npm run dev`              | تشغيل خادم التطوير                              |
-| `npm run lint`             | فحص ESLint ومنع التحذيرات                       |
-| `npm run typecheck`        | فحص TypeScript للمصدر وإعدادات Vite             |
-| `npm run validate:catalog` | فحص الكتالوج واختبار حالات البيانات غير الصالحة |
-| `npm run build`            | فحص TypeScript والكتالوج ثم إنشاء `dist/`       |
-| `npm run preview`          | معاينة ناتج البناء محليًا                       |
+| Command                    | Purpose                                                                         |
+| -------------------------- | ------------------------------------------------------------------------------- |
+| `npm run dev`              | Start development server                                                        |
+| `npm run lint`             | Run ESLint with zero allowed warnings                                           |
+| `npm run typecheck`        | Check application, Vite configuration, and validation script                    |
+| `npm run validate:catalog` | Validate credentials, providers, skills, tracks, templates, and search fixtures |
+| `npm run build`            | Typecheck, validate data, and generate `dist/`                                  |
+| `npm run preview`          | Preview the production output locally                                           |
+
+The validation script runs directly through Node's built-in TypeScript support. No testing framework or TypeScript runner dependency is required.
+
+## Routes
+
+| Hash route                                | Page                                       |
+| ----------------------------------------- | ------------------------------------------ |
+| `#/`                                      | Homepage                                   |
+| `#/certifications`                        | Searchable certification catalog           |
+| `#/certifications?track=software-testing` | Catalog with a selected career track       |
+| `#/questionnaire`                         | Questionnaire information — Coming Soon    |
+| `#/roadmap`                               | Personal roadmap information — Coming Soon |
+| Any other application route               | 404 with working return link               |
+
+## Data and source structure
+
+```text
+src/
+  data/
+    types.ts              # Shared contracts, allowed values, Arabic UI labels
+    providers.ts          # Issuers and approved source domains
+    careerTracks.ts       # Eleven tracks; skill links derived from shared skills
+    skills.ts             # Canonical skill IDs, Arabic/English names, track links
+    certifications.ts     # Manually reviewed credential records
+    roadmapTemplates.ts   # Three editorial stages per track, data only
+    validateCatalog.ts    # Internal consistency and eligibility checks
+    catalogSearch.ts      # Simple client-side search and track selection
+  components/
+    certifications/CertificationCard.tsx
+    layout/               # Existing branding, header, footer
+    ui/                   # Local icons and Coming Soon presentation
+  pages/                  # Existing application routes
+  styles/
+    global.css            # Shared design tokens and responsive layout
+    catalog.css           # Catalog, search controls, and card styling
+scripts/validate-catalog.ts
+.github/workflows/deploy.yml
+PHASE2_5_REPORT.md
+```
+
+## Maintaining the catalog
+
+1. Open the actual issuer page and confirm the official name, issuer, assessment type, availability, exam version, and any mandatory prerequisites. A search snippet or a working URL alone is not verification.
+2. Add or update a `Certification` in `src/data/certifications.ts`. Keep its stable ID when the exam version changes. All original Phase 2 IDs are retained.
+3. Reference an existing `providerId`, career-track IDs, and `skillIds`. Do not add free-form skill names to certification records. Add a genuinely distinct skill once in `skills.ts` and reuse its ID.
+4. Add new issuers to `providers.ts` with their official website and approved `sourceDomains`. GitHub certifications are officially hosted on Microsoft Learn; CNCF works with The Linux Foundation. Domain approval is not a substitute for reading the source.
+5. Set `verified` and the actual `lastVerifiedAt` date only after direct inspection. Use `pending` with `lastVerifiedAt: null` when not checked, `unknown` for unconfirmed availability, and `null` for unknown optional fields. Retired and unknown records have explicit UI labels.
+6. Distinguish mandatory exam/certification/experience requirements from recommended preparation. Passing a professional exam does not necessarily satisfy the requirements to receive the full credential, particularly for experience-based ISC2 certifications or Microsoft Expert certifications.
+7. Do not infer fees, currency conversions, Saudi pricing, free exams, HRDF support, or reimbursement. Current `examPrice` and `currency` values are all `null`, meaning unverified rather than free.
+8. Record material issuer notices in `notesAr`. AWS Developer and Solutions Architect Professional, some Python exams, and selected Microsoft exam objectives have upcoming changes noted in the current snapshot. Recheck the live issuer page before booking.
+9. Run all four quality commands before publishing:
 
 ```sh
 npm run lint
+npm run typecheck
+npm run validate:catalog
 npm run build
-npm run preview
 ```
 
-خادم المعاينة للفحص المحلي فقط. ملفات `dist/` لا تُضاف إلى Git.
+The current snapshot was manually reviewed on **2026-10-25**. Verification is dated, not continuous monitoring. Broad beginner/intermediate/advanced levels and skill/track mappings are Masari editorial classifications, not universal issuer difficulty ratings.
 
-## المسارات
+## Skills and progression policy
 
-| المسار داخل HashRouter | الصفحة                |
-| ---------------------- | --------------------- |
-| `#/`                   | الرئيسية              |
-| `#/questionnaire`      | اكتشف مسارك — قريبًا  |
-| `#/certifications`     | دليل الشهادات الفعلي  |
-| `#/roadmap`            | خارطتي — قريبًا       |
-| أي مسار آخر            | صفحة 404 داخل التطبيق |
+`skills.ts` defines 68 reusable skills. Each has one stable English ID, an Arabic student-facing name, an English name, and associated tracks. Track `skillIds` are derived from those associations to avoid two inconsistent lists. The old certification `skills` strings were migrated to `skillIds`; the existing 12 records keep their identities and official references.
 
-## بنية المشروع
+Each template in `roadmapTemplates.ts` contains exactly **foundation → intermediate → advanced**, with skill references, a practical milestone, and zero or more optional certification IDs. `certificationChoice: "optional-options"` means that no purchase is mandatory and options may cover different roles. Foundational cloud credentials are alternative vendor choices; students generally do not need all three. Advanced stages have `futureGoal: true` and remain subject to issuer eligibility and real experience.
 
-```text
-.github/workflows/deploy.yml
-public/favicon.svg
-public/fonts/OFL.txt
-src/
-  components/
-    certifications/ # بطاقة شهادة من البيانات المحلية
-    layout/         # الهوية والترويسة والتذييل
-    ui/             # الأيقونات وقالب صفحات قريبًا
-  data/
-    types.ts         # العقود والتصنيفات وتسميات الواجهة
-    providers.ts     # الجهات ومجالات مصادرها المعتمدة
-    careerTracks.ts  # تعريف المجالات مركزيًا
-    certifications.ts # سجلات الشهادات
-    validateCatalog.ts # فحص الاتساق، دون طلبات شبكة
-  pages/
-    HomePage.tsx
-    QuestionnairePage.tsx
-    CertificationsPage.tsx
-    RoadmapPage.tsx
-    NotFoundPage.tsx
-  styles/global.css # الخطوط والتصميم والتجاوب
-  styles/catalog.css # تنسيق الدليل ضمن هوية مساري
-  App.tsx           # المسارات والتركيز وعناوين الصفحات
-  main.tsx          # نقطة الدخول وHashRouter
-eslint.config.js
-vite.config.ts
-tsconfig*.json
-scripts/validate-catalog.ts
-PHASE2_REPORT.md
-```
+Templates are editorial learning sequences, **not issuer-mandated prerequisites** or automatic recommendations. Empty certification arrays are intentional where practice is more appropriate: advanced web development, intermediate AI, and advanced IT support currently use project milestones without a credential suggestion. The validator rejects inactive/unverified suggestions, mismatched track references, inappropriate advanced foundation suggestions, and invalid skill references.
 
-## صيانة كتالوج الشهادات
+The future anonymous questionnaire can consume track and skill IDs for existing/desired skills without another migration. It must not request a name, email, university ID, or account. No questionnaire, student answer model, localStorage flow, skill scoring, or generated roadmap is implemented now.
 
-الكتالوج في `src/data/certifications.ts`، والعقود في `types.ts`، والجهات في `providers.ts`، والمجالات الأربعة في `careerTracks.ts`. الصفحة والرئيسية تقرآن تعريف المجالات نفسه. السجلات الحالية 12 شهادة احترافية، وليست شهادات إتمام دورات أو شارات تعلم. شهادات GitHub وAWS المرتبطة بالويب تتناول أدوات التطوير أو التطبيقات السحابية، ولا تمثل شهادة شاملة في بناء الواجهات الأمامية.
+## Deployment
 
-لإضافة شهادة أو تحديثها:
+- Repository: [Mohammed-Alharbi-1/masari](https://github.com/Mohammed-Alharbi-1/masari)
+- Site: [Masari](https://mohammed-alharbi-1.github.io/masari/)
+- Branch: `main`
 
-1. اقرأ صفحة الجهة الرسمية مباشرة، وتأكد من الاسم والنوع والحالة والمتطلبات وإصدار الاختبار. لا يكفي وجود رابط لوصف السجل بأنه موثّق.
-2. أضف سجلًا يطابق `Certification` بمعرّف ثابت مثل `issuer-credential`. استخدم `providerId` موجودًا وواحدًا أو أكثر من معرّفات المجالات المركزية. لا تنشئ سجلًا جديدًا لمجرد تحديث إصدار الاختبار نفسه.
-3. عند إضافة جهة، أضفها إلى `providers.ts` مع موقع HTTPS و`sourceDomains` للنطاقات الرسمية المسموحة. مثال: شهادات GitHub مستضافة رسميًا على Microsoft Learn؛ إضافة النطاق للقائمة لا تستبدل المراجعة البشرية.
-4. حدّث `officialUrl` و`sourceUrl` بعد فتح الصفحة الجديدة ومراجعتها. استخدم `verified` وتاريخ المراجعة الفعلي فقط بعد التحقق. عند الشك استخدم `pending` و`lastVerifiedAt: null`، و`status: "unknown"` إذا لم تتأكد من استمرار الإتاحة.
-5. استخدم `prerequisitesAr: null` للمعلومة غير الموثقة، وميّز في النص بين الشروط الإلزامية والاستعداد الموصى به. استخدم `level: "unknown"` عند تعذر التصنيف. مستويات مبتدئ/متوسط تصنيف إرشادي واسع يستند إلى وصف الجهة وخبرة المرشح، ولا تعني سهولة الاختبار.
-6. أبقِ `examPrice` و`currency` بقيمة `null` عند عدم التحقق من سعر مناسب للسياق المحلي؛ لا تحول العملات أو تعتبر التدريب المجاني اختبارًا مجانيًا. الأسعار الحالية كلها `null` لعدم التحقق من تكلفة سعودية شاملة. إذا أضفت سعرًا موثقًا فاذكر سياقه ومصدره بوضوح، واستخدم رمز عملة من ثلاثة أحرف.
-7. سجل تنبيهات التغييرات المهمة في `notesAr`. إعلان تحديث اختبار AWS Developer مذكور في سجله ويحتاج مراجعة قبل التسجيل. الحالتان `retired` و`unknown` تظهران بتسميات صريحة، وليستا «متاحة».
-8. شغّل `npm run validate:catalog` ثم lint وtypecheck وbuild. أداة التحقق تختبر الاتساق والنطاقات والتواريخ وتحتوي حالات سلبية؛ لا تزور المواقع ولا تثبت دقة المحتوى أو أسعار السوق. المراجعة البشرية مطلوبة عند كل تحديث.
+GitHub Pages is configured to use GitHub Actions. The existing workflow follows the repository's actual default branch, runs `npm ci`, lint, and build, uploads `dist/`, and deploys with the official Pages actions. Catalog validation is included through the build command.
 
-لا توجد أداة بحث أو فلترة أو مقارنة أو استبيان أو محرك توصيات في هذه المرحلة. اقرأ `PHASE2_REPORT.md` لقائمة المصادر التي فُتحت وتفاصيل الاختبارات وحدود البيانات.
+For a fork or a new repository, select **Settings → Pages → Build and deployment → Source → GitHub Actions**, and allow the default branch in the `github-pages` environment if protection rules apply. Push to the default branch or run the workflow manually from it. Confirm the actual Actions result; a local build alone does not verify remote publication.
 
-## النشر على GitHub Pages
+`vite.config.ts` derives the project asset base from `GITHUB_REPOSITORY`. Renaming a repository requires a rebuild, not a hardcoded source change. User-site repositories ending in `.github.io` use `/`. For a custom domain, set `VITE_BASE_PATH: /` in the build environment and configure the domain separately.
 
-**مستودع المشروع:** [Mohammed-Alharbi-1/masari](https://github.com/Mohammed-Alharbi-1/masari). رفع المصدر لا يعني أن الموقع نُشر؛ يتطلب نشر الموقع إعداد Pages ونجاح workflow.
-
-1. تأكد من رفع ملفات المشروع إلى المستودع، بما فيها `package-lock.json` وملف workflow. لا ترفع `node_modules` أو `dist`. عند استخدام نسخة أخرى من المشروع، أي اسم مستودع مدعوم.
-2. من **Settings → Pages → Build and deployment → Source** اختر **GitHub Actions**.
-3. تأكد أن Actions مسموح بها، وأن بيئة `github-pages` تسمح بالنشر من الفرع الافتراضي.
-4. عند الرفع إلى الفرع الافتراضي يعمل workflow، أو شغله يدويًا من **Actions → Deploy Masari to GitHub Pages → Run workflow** مع اختيار الفرع الافتراضي.
-5. ينفذ workflow `npm ci` ثم lint وbuild، ويرفع `dist` وينشره باستخدام إجراءات Pages الرسمية. يظهر الرابط الحقيقي في environment وSettings → Pages بعد نجاح النشر.
-
-### اسم المستودع ومسار الأصول
-
-يستخرج `vite.config.ts` اسم المستودع من `GITHUB_REPOSITORY` الذي يضبطه GitHub Actions تلقائيًا، ويستخدم `/<REPOSITORY>/` كـ`base`. عند تغيير اسم المستودع لا يلزم تغيير الكود، وإنما إعادة تشغيل workflow. مستودع موقع المستخدم المنتهي بـ`.github.io` يستخدم `/`. الفرع الافتراضي يُقرأ من حدث GitHub ولا يُفترض أنه `main`.
-
-للنشر على نطاق مخصص، عيّن `VITE_BASE_PATH: /` في `env` لخطوة البناء، وأكمل إعدادات النطاق داخل GitHub بنفسك. لأي مسار آخر يمكن تعيين `VITE_BASE_PATH` على صيغة `/your-path/`.
-
-لمحاكاة مستودع فرعي محليًا في PowerShell:
+To test a different repository path in PowerShell:
 
 ```powershell
 $env:GITHUB_REPOSITORY = 'example/renamed-repository'
 npm run build
 npm run preview
-# افتح مسار /renamed-repository/ على خادم المعاينة
+# Open /renamed-repository/ on the printed preview server
 Remove-Item Env:GITHUB_REPOSITORY
 ```
 
-بعد إزالة المتغير أعد `npm run build` لاستعادة البناء المحلي على `/`. الخطوط تُستورد من المصدر وتعالجها Vite، والأيقونة تستخدم `%BASE_URL%`، والتنقل يتم بعد `#`، لذلك لا تحتاج الروابط الداخلية إلى قواعد rewrite على GitHub Pages.
+Rebuild after removing the variable to restore a root-path local build. HashRouter keeps client routes after `#`; fonts are processed by Vite and the favicon uses `BASE_URL`. See the [official Vite deployment guide](https://vite.dev/guide/static-deploy#github-pages).
 
-مرجع الإعداد: [دليل نشر Vite الرسمي](https://vite.dev/guide/static-deploy#github-pages). وتفسير حفظ المسار بعد `#`: [توثيق HashRouter](https://api.reactrouter.com/v7/functions/react-router.HashRouter.html).
+## Deferred work and verification limits
 
-## حدود التحقق
+Phase 3 is the anonymous questionnaire. Later phases cover transparent recommendations, personalized roadmaps and locally stored progress, followed by deeper exploration/comparison and final testing. None is implemented by Phase 2.5.
 
-النجاح المحلي لا يثبت نجاح النشر البعيد. تشغيل Actions ونشر Pages موثقان في تقرير كل مرحلة والرد النهائي المصاحب له. صفحات الاستبيان والخارطة تعريفية فقط، وصفحة الشهادات دليل فعلي للقراءة؛ رسم المسار في الرئيسية توضيحي ولا يمثل نتائج طالب. التحقق من المصادر مؤرخ وليس مراقبة مستمرة، ولا توجد ادعاءات بدعم مالي أو ضمان توظيف.
+The validator checks internal consistency and source domains, not source freshness or educational suitability. The catalog is cloud-heavy and some areas rely more on practical projects than paid credentials. Technical reports document exclusions, coverage, actual commands, browser checks, and publication state. Historical Phase 1/2 reports retain their original language and pre-publication snapshots; new technical documentation is in English.
 
-## الخط المستخدم
-
-يُضمّن IBM Plex Sans Arabic بواسطة حزمة Fontsource مع ملفات WOFF2 العربية للأوزان 400 و500 و600 و700، دون طلب خط من شبكة خارجية أثناء التصفح. الخط مرخص بموجب SIL Open Font License؛ نسخة الترخيص في `public/fonts/OFL.txt`.
+IBM Plex Sans Arabic is bundled through Fontsource. Its SIL Open Font License is included in `public/fonts/OFL.txt`. No external images, issuer logos, or font-service requests are required during browsing.

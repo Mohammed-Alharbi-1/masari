@@ -3,6 +3,13 @@ export const careerTrackIds = [
   "cybersecurity",
   "networking",
   "cloud-computing",
+  "software-development",
+  "devops",
+  "data-analytics",
+  "artificial-intelligence",
+  "database-administration",
+  "it-support",
+  "software-testing",
 ] as const;
 export type CareerTrack = (typeof careerTrackIds)[number];
 
@@ -34,7 +41,7 @@ export interface Certification {
   /** Masari's broad guidance level; not an exam difficulty rating. */
   level: CertificationLevel;
   descriptionAr: string;
-  skills: string[];
+  skillIds: string[];
   officialUrl: string;
   sourceUrl: string;
   /** Explicitly distinguishes recommended preparation from mandatory prerequisites. */
@@ -61,6 +68,39 @@ export interface CareerTrackInfo {
   nameAr: string;
   nameEn: string;
   descriptionAr: string;
+  skillIds: string[];
+}
+
+export interface Skill {
+  id: string;
+  nameAr: string;
+  nameEn: string;
+  tracks: CareerTrack[];
+}
+
+export const roadmapStages = [
+  "foundation",
+  "intermediate",
+  "advanced",
+] as const;
+export type RoadmapStage = (typeof roadmapStages)[number];
+
+export interface CareerRoadmapStage {
+  stage: RoadmapStage;
+  titleAr: string;
+  descriptionAr: string;
+  skillIds: string[];
+  /** Optional choices, never a list of mandatory purchases or guaranteed equivalents. */
+  suggestedCertificationIds: string[];
+  certificationChoice: "optional-options";
+  /** Advanced suggestions are long-term goals, subject to issuer eligibility. */
+  futureGoal: boolean;
+  practicalMilestoneAr: string;
+}
+
+export interface CareerRoadmapTemplate {
+  trackId: CareerTrack;
+  stages: CareerRoadmapStage[];
 }
 
 export const levelLabels: Record<CertificationLevel, string> = {

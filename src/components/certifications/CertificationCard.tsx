@@ -1,5 +1,6 @@
 import { careerTracks } from "../../data/careerTracks";
 import { providers } from "../../data/providers";
+import { skills } from "../../data/skills";
 import {
   credentialTypeLabels,
   levelLabels,
@@ -71,6 +72,20 @@ export function CertificationCard({
         <span className="status-dot" />
         {statusLabels[certification.status]}
       </p>
+      <details className="certification-details">
+        <summary>المهارات والاستعداد المطلوب</summary>
+        <p>
+          <strong>المهارات:</strong>{" "}
+          {skills
+            .filter((skill) => certification.skillIds.includes(skill.id))
+            .map((skill) => skill.nameAr)
+            .join("، ")}
+        </p>
+        <p>
+          {certification.prerequisitesAr ??
+            "لم تُوثّق المتطلبات هنا. راجع شروط الجهة قبل التسجيل."}
+        </p>
+      </details>
       {certification.notesAr && (
         <p className="certification-notice">
           <Icon name="spark" />

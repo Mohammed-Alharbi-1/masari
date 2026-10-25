@@ -2,7 +2,7 @@
 
 An Arabic-first, anonymous career and certification guidance website for university students in computing-related majors. Masari helps students understand career options and learning credentials without promising employment or requiring an account.
 
-**Current scope: Phase 2.5.** The static catalog contains **70 professional certifications**, **12 providers**, **11 career tracks**, **68 shared skills**, and **33 curated progression stages**. The questionnaire, personalized recommendations, generated roadmaps, and student progress storage are **not implemented**.
+**Current scope: Phase 3.** The static catalog contains **70 professional certifications**, **12 providers**, **11 career tracks**, **68 shared skills**, and **33 curated progression stages**. The anonymous four-step questionnaire is implemented. Personalized recommendations, generated roadmaps, and long-term progress storage are **not implemented**.
 
 ## Available features
 
@@ -12,13 +12,14 @@ An Arabic-first, anonymous career and certification guidance website for univers
 - Search by credential name, exam code, provider, Arabic description, track, or canonical skill name. Arabic diacritics and common alef variants are normalized.
 - Cards show issuer, credential type, broad guidance level, availability, dated verification, official links, and expandable preparation/skill information.
 - Empty-result recovery and safe official links opening in a new tab.
-- Intentional Coming Soon pages for the questionnaire and personal roadmap, plus an application-level 404 page.
+- Four-step anonymous questionnaire with relevant skill selection, optional learning preferences, answer summary, editing, reset, and validated session restoration.
+- Intentional Coming Soon page for the personal roadmap, plus an application-level 404 page.
 - Static, editorial progression data for later phases; it is not displayed as a personalized roadmap.
 - Lightweight data validation included in every production build.
 
 ## Technology
 
-React, Vite, strict TypeScript, React Router with HashRouter, ordinary CSS variables, npm, GitHub Actions, and GitHub Pages. Fonts and SVG icons are local. There is no backend, database service, paid API, AI service, authentication, or additional state-management library. Phase 2.5 adds no dependencies.
+React, Vite, strict TypeScript, React Router with HashRouter, ordinary CSS variables, npm, GitHub Actions, and GitHub Pages. Fonts and SVG icons are local. There is no backend, database service, paid API, AI service, authentication, or additional state-management library. Phase 3 adds no dependencies.
 
 ## Install and run
 
@@ -40,7 +41,17 @@ Open the local URL printed by Vite. Use `npm install` only when intentionally ch
 | `npm run build`            | Typecheck, validate data, and generate `dist/`                                  |
 | `npm run preview`          | Preview the production output locally                                           |
 
-The validation script runs directly through Node's built-in TypeScript support. No testing framework or TypeScript runner dependency is required.
+The validation scripts run directly through Node's built-in TypeScript support. No testing framework or TypeScript runner dependency is required.
+
+## Anonymous questionnaire
+
+Open `#/questionnaire`. Required academic major and year are followed by one student-selected career track, two independent skill selections, and optional self-assessed level, budget preference, and weekly study availability. Major does not constrain career choice. Skill options come from `Skill.tracks`; each selection may be empty and the same skill may appear in both. Changing tracks clears both selections with an inline explanation while keeping academic information and preferences.
+
+Only complete, validated submissions are stored under `sessionStorage["masari_questionnaire_v1"]`. Reloading the same browser session restores the summary. Editing is in memory until resubmission; reloading during editing restores the last saved submission. Reset clears the saved result. Drafts are not autosaved and leaving the route discards unsaved edits. Answers do not synchronize across devices or go to a remote service. Browser session restoration policies may retain tabs; session storage is not a secure deletion guarantee.
+
+Invalid JSON, obsolete identifiers, unrelated skills, duplicates within one selection, missing fields, and extra fields are rejected. Blocked reads/writes/deletion show an Arabic notice and preserve in-memory operation. If deletion is blocked, a previously saved submission may return on reload. Optional skipped preferences are `null`; no costs, recommendations, eligibility, or learning times are inferred.
+
+Implementation: `src/data/questionnaireOptions.ts`, `src/types/questionnaire.ts`, `src/utils/questionnaireValidation.ts`, `src/utils/questionnaireStorage.ts`, `src/pages/QuestionnairePage.tsx`, `src/components/questionnaire/`, and `src/styles/questionnaire.css`. Run `npm run validate:questionnaire` for dependency-free validation/storage checks; the same checks run during production builds. See `PHASE3_REPORT.md` for the full implementation and actual test coverage.
 
 ## Routes
 
@@ -49,7 +60,7 @@ The validation script runs directly through Node's built-in TypeScript support. 
 | `#/`                                      | Homepage                                   |
 | `#/certifications`                        | Searchable certification catalog           |
 | `#/certifications?track=software-testing` | Catalog with a selected career track       |
-| `#/questionnaire`                         | Questionnaire information — Coming Soon    |
+| `#/questionnaire`                         | Anonymous student questionnaire            |
 | `#/roadmap`                               | Personal roadmap information — Coming Soon |
 | Any other application route               | 404 with working return link               |
 
@@ -108,7 +119,7 @@ Each template in `roadmapTemplates.ts` contains exactly **foundation → interme
 
 Templates are editorial learning sequences, **not issuer-mandated prerequisites** or automatic recommendations. Empty certification arrays are intentional where practice is more appropriate: advanced web development, intermediate AI, and advanced IT support currently use project milestones without a credential suggestion. The validator rejects inactive/unverified suggestions, mismatched track references, inappropriate advanced foundation suggestions, and invalid skill references.
 
-The future anonymous questionnaire can consume track and skill IDs for existing/desired skills without another migration. It must not request a name, email, university ID, or account. No questionnaire, student answer model, localStorage flow, skill scoring, or generated roadmap is implemented now.
+The questionnaire consumes these canonical track and skill IDs directly. It does not request identifying information or an account. No localStorage flow, skill scoring, or generated roadmap is implemented.
 
 ## Deployment
 
@@ -116,7 +127,7 @@ The future anonymous questionnaire can consume track and skill IDs for existing/
 - Site: [Masari](https://mohammed-alharbi-1.github.io/masari/)
 - Branch: `main`
 
-GitHub Pages is configured to use GitHub Actions. The existing workflow follows the repository's actual default branch, runs `npm ci`, lint, and build, uploads `dist/`, and deploys with the official Pages actions. Catalog validation is included through the build command.
+GitHub Pages is configured to use GitHub Actions. The existing workflow follows the repository's actual default branch, runs `npm ci`, lint, and build, uploads `dist/`, and deploys with the official Pages actions. Catalog and questionnaire validation are included through the build command.
 
 For a fork or a new repository, select **Settings → Pages → Build and deployment → Source → GitHub Actions**, and allow the default branch in the `github-pages` environment if protection rules apply. Push to the default branch or run the workflow manually from it. Confirm the actual Actions result; a local build alone does not verify remote publication.
 
@@ -136,7 +147,7 @@ Rebuild after removing the variable to restore a root-path local build. HashRout
 
 ## Deferred work and verification limits
 
-Phase 3 is the anonymous questionnaire. Later phases cover transparent recommendations, personalized roadmaps and locally stored progress, followed by deeper exploration/comparison and final testing. None is implemented by Phase 2.5.
+Phase 3 implements the anonymous questionnaire only. Later phases cover transparent recommendations, personalized roadmaps and locally stored progress, followed by deeper exploration/comparison and final testing. These later features remain unimplemented.
 
 The validator checks internal consistency and source domains, not source freshness or educational suitability. The catalog is cloud-heavy and some areas rely more on practical projects than paid credentials. Technical reports document exclusions, coverage, actual commands, browser checks, and publication state. Historical Phase 1/2 reports retain their original language and pre-publication snapshots; new technical documentation is in English.
 

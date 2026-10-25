@@ -8,11 +8,12 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && npm run validate:catalog && vite build",
+    "build": "tsc -b && npm run validate:catalog && npm run validate:questionnaire && vite build",
     "validate:catalog": "node scripts/validate-catalog.ts",
     "lint": "eslint . --max-warnings 0",
     "typecheck": "tsc -b",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "validate:questionnaire": "node scripts/validate-questionnaire.ts"
   },
   "dependencies": {
     "@fontsource/ibm-plex-sans-arabic": "^5.2.8",

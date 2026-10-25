@@ -148,9 +148,17 @@ Final local Vite output: entry JS approximately 499.04 kB (135.83 kB gzip), CSS 
 
 Repository: [Mohammed-Alharbi-1/masari](https://github.com/Mohammed-Alharbi-1/masari), PUBLIC, branch `main`. Initial verified baseline: `9ac2c491a8e35f2915206f290d3082176eaf73fd`. Authentication succeeded using the existing GitHub CLI keyring session, and the initial fetch showed HEAD/origin/main at 0/0 divergence with a clean tree.
 
-Publication is pending final staged review and push at this report snapshot. No remote deployment success is claimed yet. The required implementation commit message is `feat: add anonymous roadmap progress tracking`. Actual commit and deployment evidence will be recorded after publication.
+**Publication PASSED.** Implementation commit: [`8856875f20dddb62acd92cc5d3582bfa3146d7dd`](https://github.com/Mohammed-Alharbi-1/masari/commit/8856875f20dddb62acd92cc5d3582bfa3146d7dd), message `feat: add anonymous roadmap progress tracking`. It pushed 20 relevant files to `main` after a fresh 0/0 fetch comparison. Staged whitespace, forbidden-path and secret-pattern checks passed. No force push, repository deletion or visibility change occurred.
 
-The existing GitHub Pages workflow is unchanged. It installs dependencies, runs lint and build (including progress validation), uploads `dist/` and deploys to the `github-pages` environment. For a new fork, use Settings → Pages → Source → GitHub Actions and permit the default branch in environment protection settings. No additional configuration is expected for the existing configured repository.
+The GitHub commit API returned the same commit and Git tree as local HEAD: `4005942a9b7ed8ab65f1e5a5f3b48fd5deb2eeef`. This verifies that the remote project files match the reviewed local commit, including the new progress model, components, tests and screenshot.
+
+GitHub Actions [run 40246867788](https://github.com/Mohammed-Alharbi-1/masari/actions/runs/40246867788): **PASSED**, build 21 seconds, deploy 11 seconds, both jobs successful for the implementation commit. The Pages API reports `build_type: workflow` and the configured URL [https://mohammed-alharbi-1.github.io/masari/](https://mohammed-alharbi-1.github.io/masari/). The API's generic `status` field was null; deployment success is established by the successful Actions jobs and live browser check.
+
+Live browser verification: **PASSED**. Reloaded the deployed web roadmap with existing synthetic answers and saw 0/20 recorded activities. Completed a skill, practical milestone and learning resource; 3/20 survived reload. Explicit device saving remained enabled after another reload. Confirmed persistent-data removal cleared that mode while preserving session progress, with no application console errors/warnings. The live proof image was saved outside the repository as `masari-phase5-live.jpg`; the repository screenshot remains the documented local production-preview capture.
+
+This publication evidence is added in a subsequent documentation-only commit; it does not change the application code above. The final delivery response identifies the resulting repository HEAD and its Actions verification.
+
+The existing GitHub Pages workflow is unchanged. It installs dependencies, runs lint and build (including progress validation), uploads `dist/` and deploys to the `github-pages` environment. For a new fork, use Settings → Pages → Source → GitHub Actions and permit the default branch in environment protection settings. No manual deployment setting change is required for this already configured repository.
 
 ## 12. Next-Phase Readiness
 

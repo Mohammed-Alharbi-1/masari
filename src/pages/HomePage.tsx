@@ -151,7 +151,7 @@ export default function HomePage() {
             </div>
             <p className="phase-note">
               <Icon name="spark" />
-              دليل الشهادات متاح الآن. التوصيات الشخصية قادمة لاحقًا.
+              الاستبيان وخارطتك المهنية ودليل الشهادات متاحة الآن.
             </p>
           </div>
           <PathIllustration />

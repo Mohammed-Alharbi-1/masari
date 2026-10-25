@@ -2,7 +2,7 @@
 
 An Arabic-first, anonymous career and certification guidance website for university students in computing-related majors. Masari helps students understand career options and learning credentials without promising employment or requiring an account.
 
-**Current scope: Phase 3.** The static catalog contains **70 professional certifications**, **12 providers**, **11 career tracks**, **68 shared skills**, and **33 curated progression stages**. The anonymous four-step questionnaire is implemented. Personalized recommendations, generated roadmaps, and long-term progress storage are **not implemented**.
+**Current scope: Phase 4.** The static catalog contains **70 professional certifications**, **12 providers**, **11 career tracks**, **68 shared skills**, and **33 curated progression stages**. The anonymous questionnaire and rules-based personalized roadmaps are implemented. Long-term progress storage is **not implemented**.
 
 ## Available features
 
@@ -13,13 +13,14 @@ An Arabic-first, anonymous career and certification guidance website for univers
 - Cards show issuer, credential type, broad guidance level, availability, dated verification, official links, and expandable preparation/skill information.
 - Empty-result recovery and safe official links opening in a new tab.
 - Four-step anonymous questionnaire with relevant skill selection, optional learning preferences, answer summary, editing, reset, and validated session restoration.
-- Intentional Coming Soon page for the personal roadmap, plus an application-level 404 page.
-- Static, editorial progression data for later phases; it is not displayed as a personalized roadmap.
+- Personalized three-stage roadmaps with prioritized skills, practical milestones, optional credential choices, reasons and prerequisite warnings.
+- Friendly roadmap empty state and an application-level 404 page.
+- Existing editorial templates provide the foundation for deterministic personalization; alternative cloud providers remain separate paths.
 - Lightweight data validation included in every production build.
 
 ## Technology
 
-React, Vite, strict TypeScript, React Router with HashRouter, ordinary CSS variables, npm, GitHub Actions, and GitHub Pages. Fonts and SVG icons are local. There is no backend, database service, paid API, AI service, authentication, or additional state-management library. Phase 3 adds no dependencies.
+React, Vite, strict TypeScript, React Router with HashRouter, ordinary CSS variables, npm, GitHub Actions, and GitHub Pages. Fonts and SVG icons are local. There is no backend, database service, paid API, AI service, authentication, or additional state-management library. Phase 4 adds no dependencies.
 
 ## Install and run
 
@@ -49,20 +50,36 @@ Open `#/questionnaire`. Required academic major and year are followed by one stu
 
 Only complete, validated submissions are stored under `sessionStorage["masari_questionnaire_v1"]`. Reloading the same browser session restores the summary. Editing is in memory until resubmission; reloading during editing restores the last saved submission. Reset clears the saved result. Drafts are not autosaved and leaving the route discards unsaved edits. Answers do not synchronize across devices or go to a remote service. Browser session restoration policies may retain tabs; session storage is not a secure deletion guarantee.
 
-Invalid JSON, obsolete identifiers, unrelated skills, duplicates within one selection, missing fields, and extra fields are rejected. Blocked reads/writes/deletion show an Arabic notice and preserve in-memory operation. If deletion is blocked, a previously saved submission may return on reload. Optional skipped preferences are `null`; no costs, recommendations, eligibility, or learning times are inferred.
+Invalid JSON, obsolete identifiers, unrelated skills, duplicates within one selection, missing fields, and extra fields are rejected. Blocked reads/writes/deletion show an Arabic notice and preserve in-memory operation. If deletion is blocked, a previously saved submission may return on reload. Optional skipped preferences are `null`; no costs, eligibility, or certification learning times are inferred.
 
 Implementation: `src/data/questionnaireOptions.ts`, `src/types/questionnaire.ts`, `src/utils/questionnaireValidation.ts`, `src/utils/questionnaireStorage.ts`, `src/pages/QuestionnairePage.tsx`, `src/components/questionnaire/`, and `src/styles/questionnaire.css`. Run `npm run validate:questionnaire` for dependency-free validation/storage checks; the same checks run during production builds. See `PHASE3_REPORT.md` for the full implementation and actual test coverage.
 
+## Personalized roadmaps
+
+After reviewing the submitted questionnaire, use **Create My Career Path** to open `#/roadmap`. `generatePersonalizedRoadmap` in `src/utils/generateRoadmap.ts` is a pure deterministic TypeScript function, not an AI service. It validates answers, reads the chosen track template, and returns the three existing stages in foundation → intermediate → advanced order. No current date, randomness, storage or network access affects the engine.
+
+Within a stage, priority is: desired skills not reported known; other missing stage skills; known skills the student wants to deepen; remaining familiar skills. Familiarity never marks work complete. Priorities are assigned once across stages; repeated concepts remain labeled for deeper practice. Desired skills outside the displayed template appear in additional focus. Self-assessed level changes starting guidance without skipping missing foundations. Academic major/year supply context and do not restrict career choice. Projects come directly from the curated templates.
+
+Only existing template credential IDs can be considered. Candidates must exist, be active, verified, relevant to the selected track, and suitable for the stage level. A lexicographic comparison favors missing desired skills, overlapping known/desired skills, then other missing track skills. Template order breaks ties. A stage highlights at most one optional credential with at most two collapsed alternatives; no suitable candidate means projects and skills remain the path. Reasons name actual skill matches. Official URLs, prerequisite text, dated verification and issuer notices resolve from the catalog. Advanced options are future goals. Eligibility is not inferred from free-form prerequisite notes, and passing an exam is distinguished from qualifying for the full credential.
+
+Software-development and testing paths do not impose Python or Python credentials without a Python signal. Explicit desired JavaScript, TypeScript, Java or C# takes priority over Python reported only as familiar. Cloud preferences use desired `aws` / `azure` / `google-cloud` first, then known platforms. One clear platform keeps all three credential stages on that provider. Multiple interests expose those provider paths as parallel alternatives; no platform interest exposes all three without a default winner. These paths are collapsed groups after the shared skill/project stages, not an AWS → Azure → Google ladder. Other tracks exclude explicitly conflicting platform-specific credentials when there is one clear preference.
+
+Budget preferences add an unknown-price note, never a cost filter or affordability claim. Weekly availability changes generic study advice, never a credential duration or calendar. All catalog prices remain unknown. These are optional learning choices, not employer guarantees or mandatory purchases.
+
+Navigation passes validated answers through router state, allowing immediate generation even when sessionStorage is blocked. A direct route falls back to validated session answers, otherwise shows an Arabic questionnaire link. The roadmap Edit action passes explicit edit intent to the existing form. That edit payload is consumed once so later resets/reloads cannot revive an older navigation snapshot. No generated roadmap is persisted. Browser history may retain navigation state as part of ordinary routing; no history feature is implemented.
+
+To maintain the rules, edit `generateRoadmap.ts` and add representative assertions to `scripts/validate-roadmap.ts`. Adjust the existing editorial template when its learning sequence changes; never invent IDs or bypass catalog validation. Candidate selection is deliberately bounded to curated IDs rather than every catalog match. Run `npm run validate:roadmap`; it also runs during `npm run build`. `src/types/roadmap.ts` stores canonical IDs, stage metadata, focus categories, optional credential explanations and provider paths without copying credential records. `src/components/roadmap/` and `src/styles/roadmap.css` render the Arabic RTL interface. See `PHASE4_REPORT.md` for examples, coverage and limitations.
+
 ## Routes
 
-| Hash route                                | Page                                       |
-| ----------------------------------------- | ------------------------------------------ |
-| `#/`                                      | Homepage                                   |
-| `#/certifications`                        | Searchable certification catalog           |
-| `#/certifications?track=software-testing` | Catalog with a selected career track       |
-| `#/questionnaire`                         | Anonymous student questionnaire            |
-| `#/roadmap`                               | Personal roadmap information — Coming Soon |
-| Any other application route               | 404 with working return link               |
+| Hash route                                | Page                                              |
+| ----------------------------------------- | ------------------------------------------------- |
+| `#/`                                      | Homepage                                          |
+| `#/certifications`                        | Searchable certification catalog                  |
+| `#/certifications?track=software-testing` | Catalog with a selected career track              |
+| `#/questionnaire`                         | Anonymous student questionnaire                   |
+| `#/roadmap`                               | Personalized roadmap or questionnaire empty state |
+| Any other application route               | 404 with working return link                      |
 
 ## Data and source structure
 
@@ -100,12 +117,14 @@ PHASE2_5_REPORT.md
 6. Distinguish mandatory exam/certification/experience requirements from recommended preparation. Passing a professional exam does not necessarily satisfy the requirements to receive the full credential, particularly for experience-based ISC2 certifications or Microsoft Expert certifications.
 7. Do not infer fees, currency conversions, Saudi pricing, free exams, HRDF support, or reimbursement. Current `examPrice` and `currency` values are all `null`, meaning unverified rather than free.
 8. Record material issuer notices in `notesAr`. AWS Developer and Solutions Architect Professional, some Python exams, and selected Microsoft exam objectives have upcoming changes noted in the current snapshot. Recheck the live issuer page before booking.
-9. Run all four quality commands before publishing:
+9. Run the quality commands before publishing:
 
 ```sh
 npm run lint
 npm run typecheck
 npm run validate:catalog
+npm run validate:questionnaire
+npm run validate:roadmap
 npm run build
 ```
 
@@ -119,7 +138,7 @@ Each template in `roadmapTemplates.ts` contains exactly **foundation → interme
 
 Templates are editorial learning sequences, **not issuer-mandated prerequisites** or automatic recommendations. Empty certification arrays are intentional where practice is more appropriate: advanced web development, intermediate AI, and advanced IT support currently use project milestones without a credential suggestion. The validator rejects inactive/unverified suggestions, mismatched track references, inappropriate advanced foundation suggestions, and invalid skill references.
 
-The questionnaire consumes these canonical track and skill IDs directly. It does not request identifying information or an account. No localStorage flow, skill scoring, or generated roadmap is implemented.
+The questionnaire consumes these canonical track and skill IDs directly. It does not request identifying information or an account. The generated roadmap reuses the same IDs. No localStorage flow or numeric proficiency scoring is implemented.
 
 ## Deployment
 
@@ -127,7 +146,7 @@ The questionnaire consumes these canonical track and skill IDs directly. It does
 - Site: [Masari](https://mohammed-alharbi-1.github.io/masari/)
 - Branch: `main`
 
-GitHub Pages is configured to use GitHub Actions. The existing workflow follows the repository's actual default branch, runs `npm ci`, lint, and build, uploads `dist/`, and deploys with the official Pages actions. Catalog and questionnaire validation are included through the build command.
+GitHub Pages is configured to use GitHub Actions. The existing workflow follows the repository's actual default branch, runs `npm ci`, lint, and build, uploads `dist/`, and deploys with the official Pages actions. Catalog, questionnaire and roadmap validation are included through the build command.
 
 For a fork or a new repository, select **Settings → Pages → Build and deployment → Source → GitHub Actions**, and allow the default branch in the `github-pages` environment if protection rules apply. Push to the default branch or run the workflow manually from it. Confirm the actual Actions result; a local build alone does not verify remote publication.
 
@@ -147,7 +166,7 @@ Rebuild after removing the variable to restore a root-path local build. HashRout
 
 ## Deferred work and verification limits
 
-Phase 3 implements the anonymous questionnaire only. Later phases cover transparent recommendations, personalized roadmaps and locally stored progress, followed by deeper exploration/comparison and final testing. These later features remain unimplemented.
+Phase 4 provides deterministic personalized guidance. Phase 5 will add basic local progress tracking; no completion checkboxes, progress storage or roadmap history are implemented yet. Later exploration/comparison and final testing remain outside this phase.
 
 The validator checks internal consistency and source domains, not source freshness or educational suitability. The catalog is cloud-heavy and some areas rely more on practical projects than paid credentials. Technical reports document exclusions, coverage, actual commands, browser checks, and publication state. Historical Phase 1/2 reports retain their original language and pre-publication snapshots; new technical documentation is in English.
 

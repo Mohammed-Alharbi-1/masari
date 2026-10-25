@@ -96,12 +96,19 @@ export function QuestionnaireSummary({
         )}
       </dl>
       <p className="questionnaire-notice">
-        خارطة الطريق الشخصية والتوصيات راح تتوفر في المرحلة القادمة. حاليًا تقدر
-        تستكشف الشهادات المرتبطة بمجالك.
+        جاهز لخطوتك الجاية؟ أنشئ خارطة مهارات ومشاريع وخيارات شهادات مبنية على
+        إجاباتك. الشهادات اختيارية، وتقدر تعدّل اختياراتك لاحقًا.
       </p>
       <div className="questionnaire-actions">
         <Link
           className="button button-primary"
+          to="/roadmap"
+          state={{ answers }}
+        >
+          إنشاء مساري المهني
+        </Link>
+        <Link
+          className="button button-secondary"
           to={`/certifications?track=${answers.careerTrack}`}
         >
           استعراض الشهادات

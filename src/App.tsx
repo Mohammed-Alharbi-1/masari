@@ -12,11 +12,11 @@ const titles: Record<string, string> = {
   "/": "بداية أوضح لمستقبلك",
   "/questionnaire": "اكتشف مسارك",
   "/certifications": "استكشف الشهادات الاحترافية",
-  "/roadmap": "خارطتي — قريبًا",
+  "/roadmap": "خارطتي المهنية",
 };
 
 export default function App() {
-  const { pathname } = useLocation();
+  const { pathname, key } = useLocation();
   useEffect(() => {
     document.title = `مساري — ${titles[pathname] ?? "الصفحة غير موجودة"}`;
     window.scrollTo({ top: 0, behavior: "instant" });
@@ -41,7 +41,7 @@ export default function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/questionnaire" element={<QuestionnairePage />} />
           <Route path="/certifications" element={<CertificationsPage />} />
-          <Route path="/roadmap" element={<RoadmapPage />} />
+          <Route path="/roadmap" element={<RoadmapPage key={key} />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>

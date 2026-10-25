@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import type { FormEvent } from "react";
+import { useLocation, useNavigate } from "react-router";
+import { readQuestionnaireNavigation } from "../utils/questionnaireNavigation";
 import { careerTracks } from "../data/careerTracks";
 import {
   majorOptions,
@@ -79,21 +81,43 @@ function SelectField({
   );
 }
 export default function QuestionnairePage() {
-  const [restored] = useState(() => restoreQuestionnaire(storage));
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [restored] = useState(() => {
+    const incoming = readQuestionnaireNavigation(location.state as unknown);
+    return incoming
+      ? {
+          status: "navigation",
+          answers: incoming.answers,
+          editing: incoming.edit,
+        }
+      : { ...restoreQuestionnaire(storage), editing: false };
+  });
+  // Consume the validated edit payload once. Later reloads must use the latest
+  // submission, not an older snapshot left in this history entry.
+  useEffect(() => {
+    if (readQuestionnaireNavigation(location.state as unknown)) {
+      void navigate(location.pathname, { replace: true, state: null });
+    }
+  }, [location.state, location.pathname, navigate]);
   const [draft, setDraft] = useState<StudentQuestionnaireDraft>(
     () => restored.answers ?? createEmptyDraft(),
   );
   const [submitted, setSubmitted] =
-    useState<StudentQuestionnaireAnswers | null>(restored.answers);
+    useState<StudentQuestionnaireAnswers | null>(
+      restored.editing ? null : restored.answers,
+    );
   const [step, setStep] = useState(0);
   const [errors, setErrors] = useState<QuestionnaireErrors>({});
   const [trackChanged, setTrackChanged] = useState(false);
   const [notice, setNotice] = useState(
-    restored.status === "invalid"
-      ? "تجاهلنا إجابات محفوظة بصيغة غير صالحة أو قديمة. ابدأ بإجابات جديدة."
-      : restored.status === "unavailable"
-        ? unavailableMessage
-        : "",
+    restored.editing
+      ? "عدّل إجاباتك ثم أكمل لحفظها وإعادة إنشاء خارطتك. النسخة السابقة تبقى حتى تكمل التعديل."
+      : restored.status === "invalid"
+        ? "تجاهلنا إجابات محفوظة بصيغة غير صالحة أو قديمة. ابدأ بإجابات جديدة."
+        : restored.status === "unavailable"
+          ? unavailableMessage
+          : "",
   );
   const heading = useRef<HTMLHeadingElement>(null);
   useEffect(() => {

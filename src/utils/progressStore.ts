@@ -188,7 +188,7 @@ export function createProgressStore(
       }
       return true;
     },
-    resume() {
+    resume(expectedSaved: SavedRoadmap | null = state.saved) {
       const current = readLearningData(local, true);
       if (!current.data) {
         state = {
@@ -196,6 +196,18 @@ export function createProgressStore(
           saved: null,
           notice:
             "لا توجد نسخة محفوظة صالحة متاحة الآن. يمكنك استخدام الاستبيان.",
+        };
+        emit();
+        return null;
+      }
+      // Confirm the snapshot the student actually reviewed, not a newer scope
+      // another tab may have saved while this confirmation was open.
+      if (JSON.stringify(current.data) !== JSON.stringify(expectedSaved)) {
+        state = {
+          ...state,
+          saved: current.data,
+          notice:
+            "تغيرت الخارطة المحفوظة منذ فتح التأكيد. راجع المجال الظاهر ثم اختر المتابعة مجددًا؛ خارطتك الحالية لم تتغير.",
         };
         emit();
         return null;

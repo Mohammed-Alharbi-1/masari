@@ -130,10 +130,10 @@ export const learningResources: LearningResource[] = [
       "تمرين رسمي على المستودعات والفروع وCommits وPull Requests، باستخدام مستودع تدريبي في حسابك.",
     url: "https://github.com/skills/introduction-to-github",
     freeAccessVerified: true,
-    lastVerifiedAt: "2026-10-25",
+    lastVerifiedAt: "2026-10-26",
     registration: "required",
     freeAccessNoteAr:
-      "قراءة التعليمات مجانية؛ التطبيق يحتاج حساب GitHub مجاني ومستودعًا عامًا. المستودعات الخاصة قد تستهلك دقائق Actions.",
+      "قراءة التعليمات مجانية؛ التطبيق يحتاج حساب GitHub، ويُنصح بمستودع عام لأن المستودعات الخاصة قد تستهلك دقائق Actions.",
   },
   {
     id: "github-hello-actions",

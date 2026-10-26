@@ -1,0 +1,636 @@
+{
+  "auditedAt": "2026-10-26",
+  "scope": "Primary publisher content and access metadata review. HTTP success alone was not accepted. No enrollment, full course completion, playback or account operation was tested. Original historical verification evidence remains in resource-verification.json.",
+  "resources": [
+    {
+      "id": "elzero-html-ar",
+      "url": "https://www.youtube.com/playlist?list=PLDoPjvoNmBAw_t_XWUFbBX-c9MafPk9ji",
+      "auditedAt": "2026-10-26",
+      "status": "PASSED",
+      "evidenceUrls": [
+        "https://www.youtube.com/playlist?list=PLDoPjvoNmBAw_t_XWUFbBX-c9MafPk9ji",
+        "https://elzero.org/study/html-2021-study-plan/"
+      ],
+      "findings": [
+        "Actual playlist URL was opened. Web output contains the HTML Arabic playlist title but only generic YouTube footer links, with an old crawl timestamp. The current publisher study plan opens substantively and links the same playlist ID; it lists HTML elements, forms and accessibility lessons, consistent with subject, publisher and Arabic-language description."
+      ],
+      "limitations": "Web extraction initially exposed a shell; browser-rendered page content was inspected instead. Full playback, enrollment, every lesson, and account-only behavior remain NOT RUN. This is a dated content/access-metadata review, not a guarantee of future availability.",
+      "proposedFix": null,
+      "extractionStatus": "NOT RUN",
+      "extractionLimitations": [
+        "Fresh public playlist/video access, payment gating and registration could not be inspected through web extraction. No browser UI was used, as instructed. Prior 2026-10-25 verification is not refreshed by this audit. No broken destination is demonstrated."
+      ],
+      "browserEvidence": "Supplemental real-browser inspection while signed out loaded the expected Elzero Web School Arabic playlist title, lesson list and public Play action. HTML showed its introductory lesson topics; JavaScript showed 188 listed videos with JavaScript topics. No payment or mandatory sign-in gate appeared on the playlist. No playback or every-video availability test was performed."
+    },
+    {
+      "id": "elzero-css-ar",
+      "url": "https://elzero.org/study/css-2021-study-plan/",
+      "auditedAt": "2026-10-26",
+      "status": "PASSED",
+      "evidenceUrls": ["https://elzero.org/study/css-2021-study-plan/"],
+      "findings": [
+        "Opened substantive Arabic publisher course plan, not merely an HTTP response. It contains lesson links and assignments on selectors, styling, box model, Flexbox, Grid and responsive media queries, directly supporting css. The public page provides this material without account/payment gating; the publisher and Arabic instructions match the catalog."
+      ],
+      "limitations": [
+        "Individual linked video playback and every assignment destination were not exhaustively tested; this result covers the specified course-plan destination."
+      ],
+      "proposedFix": null
+    },
+    {
+      "id": "elzero-javascript-ar",
+      "url": "https://www.youtube.com/playlist?list=PLDoPjvoNmBAx3kiplQR_oeDqLDBUDYwVv",
+      "auditedAt": "2026-10-26",
+      "status": "PASSED",
+      "evidenceUrls": [
+        "https://www.youtube.com/playlist?list=PLDoPjvoNmBAx3kiplQR_oeDqLDBUDYwVv",
+        "https://elzero.org/study/javascript-bootcamp-2021-study-plan/"
+      ],
+      "findings": [
+        "Actual playlist URL was opened. Extraction yielded only a Google-account iframe, platform boilerplate and the JavaScript Arabic playlist title. The publisher's current Arabic JavaScript plan opens and links this exact playlist ID, with lesson subjects from fundamentals to DOM, JSON and promises; the publisher-linked watch URL failed fetch with cache miss."
+      ],
+      "limitations": "Web extraction initially exposed a shell; browser-rendered page content was inspected instead. Full playback, enrollment, every lesson, and account-only behavior remain NOT RUN. This is a dated content/access-metadata review, not a guarantee of future availability.",
+      "proposedFix": null,
+      "extractionStatus": "NOT RUN",
+      "extractionLimitations": [
+        "Could not freshly inspect public lesson availability, free-access restrictions or registration on YouTube. No browser UI used. This is a verification limitation, not evidence the playlist is broken; preserve the older verification date rather than claiming a new one."
+      ],
+      "browserEvidence": "Supplemental real-browser inspection while signed out loaded the expected Elzero Web School Arabic playlist title, lesson list and public Play action. HTML showed its introductory lesson topics; JavaScript showed 188 listed videos with JavaScript topics. No payment or mandatory sign-in gate appeared on the playlist. No playback or every-video availability test was performed."
+    },
+    {
+      "id": "typescript-handbook",
+      "url": "https://www.typescriptlang.org/docs/handbook/intro.html",
+      "auditedAt": "2026-10-26",
+      "status": "PASSED",
+      "evidenceUrls": [
+        "https://www.typescriptlang.org/docs/handbook/intro.html"
+      ],
+      "findings": [
+        "Opened full official English handbook content and table of contents. It explains TypeScript static checking and links basics, types, narrowing, functions, objects and classes. It recommends JavaScript preparation, matching intermediate positioning. Reading the substantive content did not require account/payment; Microsoft/TypeScript publisher and typescript skill mapping are supported."
+      ],
+      "limitations": [
+        "Reading access was inspected; no compilation exercise or every linked chapter was executed."
+      ],
+      "proposedFix": null
+    },
+    {
+      "id": "react-quick-start",
+      "url": "https://react.dev/learn",
+      "auditedAt": "2026-10-26",
+      "status": "PASSED",
+      "evidenceUrls": ["https://react.dev/learn"],
+      "findings": [
+        "Opened official English React Quick Start with actual component, JSX, events, state and shared-data explanations and code examples. It is substantively relevant to react and beginner React learning. Content is publicly readable without fee or account prompt; publisher/language and free-reading claims match."
+      ],
+      "limitations": [
+        "Did not interact with every embedded code editor or verify third-party external resources; no certificate or exam is claimed."
+      ],
+      "proposedFix": null
+    },
+    {
+      "id": "react-tic-tac-toe",
+      "url": "https://react.dev/learn/tutorial-tic-tac-toe",
+      "auditedAt": "2026-10-26",
+      "status": "PASSED",
+      "evidenceUrls": ["https://react.dev/learn/tutorial-tic-tac-toe"],
+      "findings": [
+        "Opened the complete official English project tutorial with a tic-tac-toe game, setup, components, props, state and history sections. It explicitly accommodates learners without prior React knowledge. Public instructions/code are provided without payment/account gate, supporting react, beginner level and the stated free/local-practice distinction."
+      ],
+      "limitations": [
+        "Did not finish or run the complete project in this bounded research audit."
+      ],
+      "proposedFix": null
+    },
+    {
+      "id": "github-introduction",
+      "url": "https://github.com/skills/introduction-to-github",
+      "auditedAt": "2026-10-26",
+      "status": "PASSED",
+      "evidenceUrls": ["https://github.com/skills/introduction-to-github"],
+      "findings": [
+        "Official English GitHub Skills README is accessible and teaches repositories, branches, commits and pull requests, matching git and beginner scope. Reading is public. Interactive exercise requires copying a repository into the learner's account, so account registration is correctly disclosed. However, catalog copy says the exercise needs a public repository, while the publisher recommends a public repository because private repositories consume Actions minutes; public visibility is not stated as mandatory."
+      ],
+      "limitations": [
+        "No repository was created and no account exercise was executed. This is a demonstrated wording issue, not a broken link or evidence of a paywall."
+      ],
+      "proposedFix": {
+        "field": "freeAccessNoteAr",
+        "replacement": "قراءة التعليمات مجانية؛ التطبيق يحتاج حساب GitHub، ويُنصح بمستودع عام لأن المستودعات الخاصة قد تستهلك دقائق Actions.",
+        "reason": "Accurately distinguish required account from recommended public visibility; retain the Actions-usage caveat."
+      },
+      "initialStatus": "FAILED",
+      "resolution": "Corrected the Arabic public-repository wording to recommended rather than mandatory, retaining the account and private Actions usage caveats. Catalog verification date updated only for this directly reinspected corrected record."
+    },
+    {
+      "id": "github-hello-actions",
+      "url": "https://github.com/skills/hello-github-actions",
+      "auditedAt": "2026-10-26",
+      "status": "PASSED",
+      "evidenceUrls": ["https://github.com/skills/hello-github-actions"],
+      "findings": [
+        "Official English GitHub Skills public README teaches creating a workflow, adding a job/run step, running it and merging a pull request; it lists Introduction to GitHub as preparation. This supports ci-cd/git and intermediate placement. It instructs copying to an account and recommends public repositories to avoid private Actions-minute use, consistent with the catalog's account and usage caveats. Reading instructions is free/public."
+      ],
+      "limitations": [
+        "Interactive GitHub-account exercise and billing behavior were not executed or independently measured; paid services are expressly outside the catalog claim."
+      ],
+      "proposedFix": null
+    },
+    {
+      "id": "java-language-basics",
+      "url": "https://dev.java/learn/language/constructs/basics/",
+      "auditedAt": "2026-10-26",
+      "status": "PASSED",
+      "evidenceUrls": [
+        "https://dev.java/learn/language/constructs/basics/",
+        "https://dev.java/learn/language/constructs/basics/variables/"
+      ],
+      "findings": [
+        "Opened actual Java basics index and its variables lesson. English public content covers variables, primitive types, arrays, operators, expressions and control flow, with code and explanations. Oracle footer/Java publisher identity is present. No reading account/payment requirement is imposed. java and programming-fundamentals associations and the distinction from Java subscriptions/exams are supported."
+      ],
+      "limitations": [
+        "Local Java examples were not executed. Some foundational text has an older last-update label; no claim of recent lesson revision is made."
+      ],
+      "proposedFix": null
+    },
+    {
+      "id": "microsoft-csharp-first-code",
+      "url": "https://learn.microsoft.com/en-us/training/paths/get-started-c-sharp-part-1/",
+      "auditedAt": "2026-10-26",
+      "status": "PASSED",
+      "evidenceUrls": [
+        "https://learn.microsoft.com/en-us/training/paths/get-started-c-sharp-part-1/",
+        "https://learn.microsoft.com/en-us/training/modules/csharp-write-first/",
+        "https://learn.microsoft.com/en-us/training/support/faq"
+      ],
+      "findings": [
+        "Opened actual English beginner C# learning path and first module with syntax, console output, variables/operations and decision-logic learning material. Microsoft Learn's current FAQ expressly states training is free and profiles are not required to consume content; first-module page distinguishes signing in for an assessed profile result. Publisher/language, csharp/programming-fundamentals mapping, optional registration and separation from certification exams are supported."
+      ],
+      "limitations": [
+        "No signed-in assessment or exercises were completed. FAQ extraction contains a generic authorization notice but also exposes the substantive public free-training/profile policy; no account was used."
+      ],
+      "proposedFix": null
+    },
+    {
+      "id": "odin-foundations",
+      "url": "https://www.theodinproject.com/paths/foundations/courses/foundations",
+      "auditedAt": "2026-10-26",
+      "status": "PASSED",
+      "evidenceUrls": [
+        "https://www.theodinproject.com/paths/foundations/courses/foundations",
+        "https://www.theodinproject.com/about",
+        "https://www.theodinproject.com/lessons/foundations-how-this-course-will-work"
+      ],
+      "findings": [
+        "Opened actual Foundations curriculum and an introductory lesson: it lists Git, HTML, CSS, JavaScript and practical landing-page/calculator projects. Publisher About page explicitly calls its curriculum free and open source. Introductory lesson states the curriculum is English and offers sign-in for tracking progress; substantive lessons are public. The four skill associations, free-access claim and optional-account note are supported."
+      ],
+      "limitations": [
+        "External resources aggregated by the curriculum were not exhaustively audited; no project completion or employment claim is inferred."
+      ],
+      "proposedFix": null
+    },
+    {
+      "id": "playwright-writing-tests",
+      "url": "https://playwright.dev/docs/writing-tests",
+      "auditedAt": "2026-10-26",
+      "status": "PASSED",
+      "evidenceUrls": ["https://playwright.dev/docs/writing-tests"],
+      "findings": [
+        "Opened full official English Writing tests guide. Concrete first-test examples and explanations cover actions, locators, assertions, isolation and hooks, supporting test-automation/testing-fundamentals. The guide is public with no reading account/payment gate; stated free documentation access and separation from paid hosted testing are accurate."
+      ],
+      "limitations": [
+        "Did not install or execute Playwright in this audit; this is content/access inspection, not a test of every supported runtime or hosted service."
+      ],
+      "proposedFix": null
+    },
+    {
+      "id": "testing-library-react-example",
+      "url": "https://testing-library.com/docs/react-testing-library/example-intro/",
+      "auditedAt": "2026-10-26",
+      "status": "PASSED",
+      "evidenceUrls": [
+        "https://testing-library.com/docs/react-testing-library/example-intro/"
+      ],
+      "findings": [
+        "Opened official English Testing Library example and annotated/full-example sections. Actual code demonstrates rendering React, user-event interaction, waiting for results, assertions and request-error handling. These substantively support testing-fundamentals/test-automation. Explanation/code are public without payment or account gate, and no credential is offered or implied."
+      ],
+      "limitations": [
+        "Example dependencies and tests were not executed. This resource is documentation/example material, not a full accredited course."
+      ],
+      "proposedFix": null
+    },
+    {
+      "id": "python-official-tutorial",
+      "url": "https://docs.python.org/3/tutorial/",
+      "status": "PASSED",
+      "checkedAt": "2026-10-26",
+      "evidenceUrls": ["https://docs.python.org/3/tutorial/"],
+      "findings": [
+        "Actual English Python tutorial loaded, not merely a status response. It explains Python language features and offers self-contained examples and chapter links.",
+        "The primary page explicitly targets programmers new to Python rather than people new to programming, consistent with the existing intermediate tag.",
+        "Publisher, Python skill association, no-account public reading and free-documentation wording remain appropriate."
+      ],
+      "limitations": [
+        "No example code was executed or full course completion tested. Audit covers public content and access metadata."
+      ],
+      "proposedFix": null
+    },
+    {
+      "id": "harvard-cs50-python",
+      "url": "https://cs50.harvard.edu/python/",
+      "status": "PASSED",
+      "checkedAt": "2026-10-26",
+      "evidenceUrls": ["https://cs50.harvard.edu/python/"],
+      "findings": [
+        "Actual English CS50 Python course content and its functions, conditions, loops, testing, files and project structure were inspected.",
+        "The How to Take this Course section explicitly permits free OpenCourseWare study and separately requires an edX account for assignment feedback.",
+        "Optional paid verified certificates are distinguished from free access, matching the stored note. Python/programming-fundamentals associations and Harvard/CS50 publisher remain accurate."
+      ],
+      "limitations": [
+        "No enrollment, edX account creation, assignment submission or certificate purchase was attempted."
+      ],
+      "proposedFix": null
+    },
+    {
+      "id": "sqlbolt-select-introduction",
+      "url": "https://sqlbolt.com/lesson/select_queries_introduction",
+      "status": "PASSED",
+      "checkedAt": "2026-10-26",
+      "evidenceUrls": [
+        "https://sqlbolt.com/lesson/select_queries_introduction"
+      ],
+      "findings": [
+        "The actual English SELECT lesson, query syntax, movie-table exercise and specific exercise tasks loaded publicly.",
+        "Content is directly relevant to SQL and carries SQLBolt branding. There is no account/checkout barrier to the inspected lesson; donation is optional.",
+        "The existing caveat that exercises require a modern browser remains appropriate."
+      ],
+      "limitations": [
+        "Interactive SQL execution was not run. Verification covers the exposed lesson and exercise content, not runtime compatibility across browsers."
+      ],
+      "proposedFix": null
+    },
+    {
+      "id": "postgresql-official-tutorial",
+      "url": "https://www.postgresql.org/docs/current/tutorial.html",
+      "status": "PASSED",
+      "checkedAt": "2026-10-26",
+      "evidenceUrls": [
+        "https://www.postgresql.org/docs/current/tutorial.html",
+        "https://www.postgresql.org/about/licence/"
+      ],
+      "findings": [
+        "The English official tutorial explicitly introduces PostgreSQL, relational database concepts and SQL with hands-on learning, matching all three skill IDs.",
+        "Public documentation is accessible without account creation. The official license allows software/documentation use without fee.",
+        "Publisher and beginner positioning are consistent with the introductory source; the current-version URL remains valid."
+      ],
+      "limitations": [
+        "No PostgreSQL installation or exercises were performed. The current-version URL may advance to a later release over time."
+      ],
+      "proposedFix": null
+    },
+    {
+      "id": "postgresql-backup-restore",
+      "url": "https://www.postgresql.org/docs/current/backup.html",
+      "status": "PASSED",
+      "checkedAt": "2026-10-26",
+      "evidenceUrls": [
+        "https://www.postgresql.org/docs/current/backup.html",
+        "https://www.postgresql.org/about/licence/"
+      ],
+      "findings": [
+        "The actual English server-administration chapter explains the three backup approaches and links to SQL dump, filesystem backup, continuous archiving and recovery instructions.",
+        "This is directly relevant to PostgreSQL administration and backup/recovery; publisher and intermediate tag are reasonable.",
+        "Public no-account access and official documentation-without-fee policy support the existing free-reading claim."
+      ],
+      "limitations": [
+        "No backup/restore operation or production-data handling was performed."
+      ],
+      "proposedFix": null
+    },
+    {
+      "id": "pandas-getting-started",
+      "url": "https://pandas.pydata.org/docs/getting_started/intro_tutorials/index.html",
+      "status": "PASSED",
+      "checkedAt": "2026-10-26",
+      "evidenceUrls": [
+        "https://pandas.pydata.org/docs/getting_started/intro_tutorials/index.html",
+        "https://pandas.pydata.org/docs/getting_started/intro_tutorials/06_calculate_statistics.html",
+        "https://pandas.pydata.org/about/"
+      ],
+      "findings": [
+        "The actual English tutorial collection lists tabular-data handling, plotting, summary statistics, reshaping and joins; the summary-statistics lesson was opened as a content check.",
+        "Python, statistics and data-visualization associations are supported, rather than inferred only from the site's title.",
+        "Official project material is publicly readable without accounts and the project describes its tools as free/open source; intermediate positioning appropriately assumes basic Python."
+      ],
+      "limitations": [
+        "No pandas examples were executed. Reading access was verified, not notebook/environment setup."
+      ],
+      "proposedFix": null
+    },
+    {
+      "id": "microsoft-data-analytics-power-bi",
+      "url": "https://learn.microsoft.com/en-us/training/paths/data-analytics-microsoft/",
+      "status": "PASSED",
+      "checkedAt": "2026-10-26",
+      "evidenceUrls": [
+        "https://learn.microsoft.com/en-us/training/paths/data-analytics-microsoft/",
+        "https://learn.microsoft.com/en-us/training/modules/get-started-with-power-bi/",
+        "https://learn.microsoft.com/en-us/training/support/faq"
+      ],
+      "findings": [
+        "The actual English Microsoft path loaded with Power BI reports/dashboards content, four modules and an explicit Intermediate label. A linked Power BI module was also opened.",
+        "Microsoft Learn's primary FAQ confirms training is free and a profile is not needed to consume content; signing in provides progress-related extras.",
+        "Existing resource notes distinguish free learning content, potentially licensed sharing tools, and separate professional exams. Publisher, language and skill IDs remain accurate."
+      ],
+      "limitations": [
+        "No Microsoft profile, learning achievement or Power BI service workload was created. The FAQ includes a generic authorization banner, but its relevant policy text and the course/module content were readable."
+      ],
+      "proposedFix": null
+    },
+    {
+      "id": "microsoft-excel-pivottable",
+      "url": "https://support.microsoft.com/en-us/excel/get-started/create-a-pivottable-to-analyze-worksheet-data",
+      "status": "PASSED",
+      "checkedAt": "2026-10-26",
+      "evidenceUrls": [
+        "https://support.microsoft.com/en-us/excel/get-started/create-a-pivottable-to-analyze-worksheet-data"
+      ],
+      "findings": [
+        "The actual English Microsoft guide includes concrete PivotTable creation steps, field arrangement, summarization and refresh instructions.",
+        "The Excel association and Microsoft Support publisher are accurate; the guide is directly readable without payment or account creation.",
+        "The stored caveat correctly distinguishes free reading from software/subscription licensing; the page flags license-dependent features separately."
+      ],
+      "limitations": [
+        "No Excel license or application workflow was tested. Free content access does not establish that all illustrated product features are free."
+      ],
+      "proposedFix": null
+    },
+    {
+      "id": "google-machine-learning-crash-course",
+      "url": "https://developers.google.com/machine-learning/crash-course/",
+      "status": "PASSED",
+      "checkedAt": "2026-10-26",
+      "evidenceUrls": [
+        "https://developers.google.com/machine-learning/crash-course/",
+        "https://developers.google.com/machine-learning/crash-course/numerical-data/normalization",
+        "https://developers.google.com/machine-learning/crash-course/prereqs-and-prework",
+        "https://developers.googleblog.com/machine-learning-crash-course/",
+        "https://research.google.com/colaboratory/faq.html"
+      ],
+      "findings": [
+        "The actual English course lists regression/classification, evaluation metrics, data handling, generalization and neural-network material.",
+        "A numerical-data normalization lesson was inspected; its Z-score/mean/standard-deviation teaching supports the statistics association alongside ML/model evaluation.",
+        "The official announcement explicitly states free course access, and current lessons are publicly readable. Colab policy confirms a free tier with varying limits; prerequisites support intermediate positioning.",
+        "Optional Google account usage for saved achievements or hosted exercises and the absence of a professional certification are honestly distinguished in the existing note."
+      ],
+      "limitations": [
+        "No Colab runtime, quiz or Google profile was used. The free-access announcement is historical corroboration; current public lesson access was checked independently."
+      ],
+      "proposedFix": null
+    },
+    {
+      "id": "mit-linear-algebra",
+      "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/",
+      "status": "PASSED",
+      "checkedAt": "2026-10-26",
+      "evidenceUrls": [
+        "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/",
+        "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/video_galleries/video-lectures/",
+        "https://ocw.mit.edu/about/"
+      ],
+      "findings": [
+        "The actual English undergraduate course identifies Gilbert Strang and supplies linear-algebra lecture, reading and assignment material; the lecture collection was also opened.",
+        "The mathematics skill association and MIT OpenCourseWare publisher are accurate.",
+        "MIT's primary OCW policy states free/open access without enrollment/accounts and no credit/certification, matching the stored free-access note."
+      ],
+      "limitations": [
+        "No complete lecture playback or assignment completion was attempted. This is a dated archived course, not a claim of current enrollment."
+      ],
+      "proposedFix": null
+    },
+    {
+      "id": "mit-probability-statistics",
+      "url": "https://ocw.mit.edu/courses/18-05-introduction-to-probability-and-statistics-spring-2022/",
+      "status": "PASSED",
+      "checkedAt": "2026-10-26",
+      "evidenceUrls": [
+        "https://ocw.mit.edu/courses/18-05-introduction-to-probability-and-statistics-spring-2022/",
+        "https://ocw.mit.edu/courses/18-05-introduction-to-probability-and-statistics-spring-2022/pages/classes-reading-and-in-class-materials/",
+        "https://ocw.mit.edu/about/"
+      ],
+      "findings": [
+        "The actual English course presents probability/statistics readings, lecture notes, problems and exam materials, matching mathematics/statistics skills.",
+        "The specific class-materials page explicitly states free Open Learning Library access and the ability to view/use materials without enrolling.",
+        "Optional enrollment for progress and absence of professional credit are consistent with the stored notes and MIT OCW policy."
+      ],
+      "limitations": [
+        "No Open Learning Library enrollment, problem submission or full course completion was attempted. Its archive provides course materials, not a live class seat."
+      ],
+      "proposedFix": null
+    },
+    {
+      "id": "tensorflow-beginner-quickstart",
+      "url": "https://www.tensorflow.org/tutorials/quickstart/beginner",
+      "status": "PASSED",
+      "checkedAt": "2026-10-26",
+      "evidenceUrls": [
+        "https://www.tensorflow.org/tutorials/quickstart/beginner",
+        "https://research.google.com/colaboratory/faq.html"
+      ],
+      "findings": [
+        "The actual English tutorial exposes data loading, building/training a Keras neural network and evaluating accuracy, matching ML/deep-learning/model-evaluation skills.",
+        "Notebook download/source and local execution paths are available, alongside the optional Colab launch path.",
+        "Public reading is free; Colab's primary FAQ confirms its free tier and variable resource limits. The stored account/compute caveat avoids unlimited-compute claims."
+      ],
+      "limitations": [
+        "No code/runtime was executed, Google account used or paid compute tested. Intermediate is Masari's broad prerequisite-based classification; the publisher's title calls it a TensorFlow beginner quickstart."
+      ],
+      "proposedFix": null
+    },
+    {
+      "id": "google-ml-problem-framing",
+      "url": "https://developers.google.com/machine-learning/problem-framing",
+      "status": "PASSED",
+      "checkedAt": "2026-10-26",
+      "evidenceUrls": [
+        "https://developers.google.com/machine-learning/problem-framing",
+        "https://developers.google.com/machine-learning/problem-framing/problem-framing"
+      ],
+      "findings": [
+        "The actual English course explains whether ML suits a problem, how to outline an ML solution and how to define model success metrics; its linked lesson was also opened.",
+        "Google for Developers publisher and ML/model-evaluation associations remain accurate.",
+        "Lesson text is publicly readable without login or payment, while sign-in is offered for account-based collections; the current optional-registration note remains appropriate."
+      ],
+      "limitations": [
+        "No signed-in collection, quiz or course credential was tested. Audit verifies public course content rather than an official certification outcome."
+      ],
+      "proposedFix": null
+    },
+    {
+      "id": "cisco-networking-basics",
+      "url": "https://www.netacad.com/courses/networking-basics?courseLang=ar-SA",
+      "status": "PASSED",
+      "evidenceUrls": [
+        "https://www.netacad.com/courses/networking-basics?courseLang=ar-SA",
+        "https://www.cisco.com/site/us/en/learn/training-certifications/training/netacad/index.html"
+      ],
+      "findings": "The actual destination retains an Arabic course title. Cisco's separate publisher overview still lists Networking Basics as a beginner course within its free self-paced offerings. No demonstrated broken destination or paid-course mismatch.",
+      "limitations": "Web extraction initially exposed a shell; browser-rendered page content was inspected instead. Full playback, enrollment, every lesson, and account-only behavior remain NOT RUN. This is a dated content/access-metadata review, not a guarantee of future availability.",
+      "proposedFix": null,
+      "checkedAt": "2026-10-26",
+      "extractionStatus": "NOT RUN",
+      "extractionLimitations": "Fresh Arabic syllabus, enrollment requirement, and complete course-access inspection could not be performed: the actual destination exposed only a JavaScript-required shell to the web tool. Browser UI was explicitly excluded from this bounded audit. Preserve the existing verification date; do not claim fresh full-content verification.",
+      "browserEvidence": "Supplemental real-browser inspection loaded the actual Arabic course overview/curriculum, Arabic language option, expected networking/cybersecurity/hardware subject, explicit FREE label, and login/sign-up/self-paced start controls. No enrollment or account-only lesson was executed."
+    },
+    {
+      "id": "cisco-introduction-cybersecurity",
+      "url": "https://www.netacad.com/courses/introduction-to-cybersecurity?courseLang=ar-SA",
+      "status": "PASSED",
+      "evidenceUrls": [
+        "https://www.netacad.com/courses/introduction-to-cybersecurity?courseLang=ar-SA",
+        "https://www.cisco.com/site/us/en/learn/training-certifications/training/netacad/index.html"
+      ],
+      "findings": "The actual destination retains an Arabic cybersecurity course title. Cisco's static overview independently describes its beginner introductory cybersecurity course among free self-paced training. This partially supports publisher, subject and free-course positioning, not fresh destination content verification.",
+      "limitations": "Web extraction initially exposed a shell; browser-rendered page content was inspected instead. Full playback, enrollment, every lesson, and account-only behavior remain NOT RUN. This is a dated content/access-metadata review, not a guarantee of future availability.",
+      "proposedFix": null,
+      "checkedAt": "2026-10-26",
+      "extractionStatus": "NOT RUN",
+      "extractionLimitations": "Actual course body is JavaScript-only in the web tool. Arabic lessons, login flow and current complete free-access terms were not freshly inspected, and no browser UI actions were permitted. Do not update the resource's verification date solely from the title/overview.",
+      "browserEvidence": "Supplemental real-browser inspection loaded the actual Arabic course overview/curriculum, Arabic language option, expected networking/cybersecurity/hardware subject, explicit FREE label, and login/sign-up/self-paced start controls. No enrollment or account-only lesson was executed."
+    },
+    {
+      "id": "cisco-computer-hardware",
+      "url": "https://www.netacad.com/courses/computer-hardware-basics?courseLang=ar-SA",
+      "status": "PASSED",
+      "evidenceUrls": [
+        "https://www.netacad.com/courses/computer-hardware-basics?courseLang=ar-SA"
+      ],
+      "findings": "Destination still returns the Arabic Computer Hardware Basics title rather than a missing-page title. No evidence of a broken link or changed publisher was demonstrated.",
+      "limitations": "Web extraction initially exposed a shell; browser-rendered page content was inspected instead. Full playback, enrollment, every lesson, and account-only behavior remain NOT RUN. This is a dated content/access-metadata review, not a guarantee of future availability.",
+      "proposedFix": null,
+      "checkedAt": "2026-10-26",
+      "extractionStatus": "NOT RUN",
+      "extractionLimitations": "The destination body contains only a JavaScript-required message. Hardware syllabus, Arabic course content, free-access and registration conditions could not be freshly inspected using web tools alone. Retain the prior manual-verification date pending a real-browser content check.",
+      "browserEvidence": "Supplemental real-browser inspection loaded the actual Arabic course overview/curriculum, Arabic language option, expected networking/cybersecurity/hardware subject, explicit FREE label, and login/sign-up/self-paced start controls. No enrollment or account-only lesson was executed."
+    },
+    {
+      "id": "linux-foundation-introduction",
+      "url": "https://training.linuxfoundation.org/training/introduction-to-linux/",
+      "status": "PASSED",
+      "evidenceUrls": [
+        "https://training.linuxfoundation.org/training/introduction-to-linux/"
+      ],
+      "findings": "The English publisher page still identifies LFS101 as beginner Linux training, with files, processes, command-line operations and Bash scripting in its outline. It explicitly lists a zero course price, login before enrollment and 90-day content access. Existing account/access-window/exam-separation disclosure is accurate.",
+      "limitations": "Public syllabus and published commercial/access terms inspected; no enrollment, account creation, full lesson completion or access after expiry tested.",
+      "proposedFix": null,
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "ubuntu-command-line",
+      "url": "https://ubuntu.com/desktop/docs/en/latest/tutorial/the-linux-command-line-for-beginners/",
+      "status": "PASSED",
+      "evidenceUrls": [
+        "https://ubuntu.com/desktop/docs/en/latest/tutorial/the-linux-command-line-for-beginners/"
+      ],
+      "findings": "The actual Ubuntu English tutorial is publicly readable and includes command-line navigation, paths, file operations, command composition and administrator-power guidance. Linux skill relevance and the no-account reading/local Linux practice caveat remain supported.",
+      "limitations": "Text and example instructions inspected; terminal exercises were not executed and no operating-system installation was performed.",
+      "proposedFix": null,
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "microsoft-cloud-computing",
+      "url": "https://learn.microsoft.com/ar-sa/training/modules/describe-cloud-compute/",
+      "status": "PASSED",
+      "evidenceUrls": [
+        "https://learn.microsoft.com/ar-sa/training/modules/describe-cloud-compute/",
+        "https://learn.microsoft.com/en-us/training/support/faq"
+      ],
+      "findings": "The Arabic Microsoft Learn module describes cloud models, shared responsibility and consumption concepts at beginner level. Its unit list and optional sign-in assessment notice are present. The official FAQ supports free training and consuming content without a profile; Azure signup/trials are separate from reading access.",
+      "limitations": "Public module overview, objectives and units inspected; no assessment submission, progress account or Azure deployment tested. Not a claim that every linked lab/service is free.",
+      "proposedFix": null,
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "microsoft-azure-architecture",
+      "url": "https://learn.microsoft.com/ar-sa/training/modules/describe-core-architectural-components-of-azure/",
+      "status": "PASSED",
+      "evidenceUrls": [
+        "https://learn.microsoft.com/ar-sa/training/modules/describe-core-architectural-components-of-azure/",
+        "https://learn.microsoft.com/en-us/training/support/faq"
+      ],
+      "findings": "The actual Arabic Microsoft module still teaches regions, availability zones, datacenters, resource groups, subscriptions and management hierarchy. Its publisher/subject/language/level match the catalog. The free-reading and optional profile disclosure is supported; resource consumption is not represented as free.",
+      "limitations": "Overview, objectives and unit list inspected, not completion of every individual unit or cloud exercise.",
+      "proposedFix": null,
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "microsoft-azure-infrastructure-security",
+      "url": "https://learn.microsoft.com/ar-sa/training/modules/describe-basic-security-capabilities-azure/",
+      "status": "PASSED",
+      "evidenceUrls": [
+        "https://learn.microsoft.com/ar-sa/training/modules/describe-basic-security-capabilities-azure/",
+        "https://learn.microsoft.com/en-us/training/support/faq"
+      ],
+      "findings": "The Arabic module retains network/VM protection objectives and Azure Firewall, DDoS, segmentation, NSGs, Bastion and Key Vault topics. It identifies prerequisites and optional assessment sign-in. Existing skill relevance, publisher/language and free-content-versus-paid-services notes remain accurate.",
+      "limitations": "Public module material and metadata inspected; no Azure protection services provisioned, billed or exercised.",
+      "proposedFix": null,
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "aws-overview",
+      "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/introduction.html",
+      "status": "PASSED",
+      "evidenceUrls": [
+        "https://docs.aws.amazon.com/whitepapers/latest/aws-overview/introduction.html"
+      ],
+      "findings": "The actual English AWS whitepaper introduction remains public, explains AWS service families and cloud infrastructure, and explicitly describes pay-as-you-go services. It supports AWS/cloud-foundamentals relevance. The existing free-reading/no-account claim does not falsely extend to running services or certification exams.",
+      "limitations": "Introduction/document access inspected; no AWS account, service usage, lab, exam, or full whitepaper completion tested.",
+      "proposedFix": null,
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "google-cloud-overview",
+      "url": "https://docs.cloud.google.com/docs/overview",
+      "status": "PASSED",
+      "evidenceUrls": ["https://docs.cloud.google.com/docs/overview"],
+      "findings": "The actual English Google Cloud overview remains publicly readable and covers regions/zones, services, projects, tooling and interactions. It separately describes project billing accounts and pricing. The catalog correctly distinguishes free documentation from billable platform use.",
+      "limitations": "Documentation inspected without signing in; no Google Cloud project, free-credit enrollment or service usage tested.",
+      "proposedFix": null,
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "docker-containerized-application",
+      "url": "https://docs.docker.com/get-started/tutorials/run-an-app/",
+      "status": "PASSED",
+      "evidenceUrls": [
+        "https://docs.docker.com/get-started/tutorials/run-an-app/"
+      ],
+      "findings": "The actual English Docker tutorial remains publicly readable and contains run-container, Compose stack, image build and image sharing steps. Its prerequisites name Docker Desktop, Git and a Docker account. Existing optional-registration-for-reading and account-for-publishing disclosure correctly qualifies free content access.",
+      "limitations": "Instructions inspected but Docker software/license eligibility, local execution, account creation and image publication were not tested.",
+      "proposedFix": null,
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "kubernetes-basics",
+      "url": "https://kubernetes.io/docs/tutorials/kubernetes-basics/",
+      "status": "PASSED",
+      "evidenceUrls": [
+        "https://kubernetes.io/docs/tutorials/kubernetes-basics/"
+      ],
+      "findings": "The English Kubernetes tutorial still exposes the create/deploy/explore/expose/scale/update modules and deployment/debugging learning objectives. It links local learning environments and Minikube. Public reading needs no account; the existing cloud-cost caveat remains appropriate.",
+      "limitations": "Tutorial overview and module links inspected; no cluster creation, cloud allocation or completion of exercises tested. Intermediate level remains Masari's editorial suitability choice.",
+      "proposedFix": null,
+      "checkedAt": "2026-10-26"
+    },
+    {
+      "id": "github-actions-quickstart",
+      "url": "https://docs.github.com/en/actions/get-started/quickstart",
+      "status": "PASSED",
+      "evidenceUrls": [
+        "https://docs.github.com/en/actions/get-started/quickstart"
+      ],
+      "findings": "The actual English GitHub guide remains public and covers CI/CD, a first workflow and inspecting run results. Prerequisites require a writable repository and Actions access for the exercise. Existing free-reading/optional-account-for-reading and usage/billing caveats remain accurate.",
+      "limitations": "Documentation inspected only; no GitHub account/repository created, workflow run or Actions bill generated.",
+      "proposedFix": null,
+      "checkedAt": "2026-10-26"
+    }
+  ]
+}

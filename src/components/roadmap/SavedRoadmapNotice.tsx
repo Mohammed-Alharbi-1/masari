@@ -7,6 +7,7 @@ export function SavedRoadmapNotice() {
   const { saved, notice, store } = useLearningProgress();
   const [confirm, setConfirm] = useState<"resume" | "clear" | null>(null);
   const trigger = useRef<HTMLButtonElement>(null);
+  const clearTrigger = useRef<HTMLButtonElement>(null);
   const navigate = useNavigate();
   return (
     <aside className="saved-roadmap container" aria-label="الخارطة المحفوظة">
@@ -48,9 +49,16 @@ export function SavedRoadmapNotice() {
                 className="button button-primary"
                 onClick={() => {
                   if (confirm === "resume") {
-                    const answers = store.resume();
+                    const answers = store.resume(saved);
                     if (answers)
                       void navigate("/roadmap", { state: { answers } });
+                    else
+                      requestAnimationFrame(() =>
+                        (
+                          trigger.current ??
+                          document.getElementById("main-content")
+                        )?.focus(),
+                      );
                   } else {
                     store.clearDevice();
                     requestAnimationFrame(() =>
@@ -66,7 +74,12 @@ export function SavedRoadmapNotice() {
                 className="button button-secondary"
                 onClick={() => {
                   setConfirm(null);
-                  requestAnimationFrame(() => trigger.current?.focus());
+                  requestAnimationFrame(() =>
+                    (confirm === "clear"
+                      ? clearTrigger
+                      : trigger
+                    ).current?.focus(),
+                  );
                 }}
               >
                 إلغاء
@@ -74,6 +87,7 @@ export function SavedRoadmapNotice() {
             </div>
           )}
           <button
+            ref={clearTrigger}
             className="progress-text-button"
             onClick={() => setConfirm("clear")}
           >

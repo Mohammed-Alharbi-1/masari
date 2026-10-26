@@ -397,6 +397,42 @@ check("Other tabs cannot silently replace a different saved roadmap", () => {
   assert.equal(store.save(null), false);
 });
 check(
+  "Resume rejects a different snapshot saved after confirmation was offered",
+  () => {
+    const session = memory(),
+      local = memory();
+    const store = createProgressStore(
+      () => session,
+      () => local,
+    );
+    store.open(answers);
+    store.save(null);
+    const offered = store.getSnapshot().saved;
+    const otherAnswers = {
+      ...answers,
+      careerTrack: "cybersecurity" as const,
+      existingSkillIds: [],
+      desiredSkillIds: [],
+    };
+    local.setItem(
+      localProgressKey,
+      JSON.stringify({
+        ...data,
+        deviceOptIn: true,
+        answers: otherAnswers,
+        progress: emptyProgress("cybersecurity"),
+      }),
+    );
+    assert.equal(store.resume(offered), null);
+    assert.deepEqual(store.getSnapshot().active?.answers, answers);
+    assert.equal(
+      store.getSnapshot().saved?.answers.careerTrack,
+      "cybersecurity",
+    );
+    assert.deepEqual(store.resume(store.getSnapshot().saved), otherAnswers);
+  },
+);
+check(
   "All eleven tracks have unique activities, scoped milestones, correct summaries",
   () => {
     for (const track of careerTracks) {

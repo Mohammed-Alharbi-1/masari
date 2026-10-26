@@ -2,7 +2,7 @@
 
 An Arabic-first, anonymous career and certification guidance website for university students in computing-related majors. Masari helps students understand career options and learning credentials without promising employment or requiring an account.
 
-**Current scope: Phase 5.** The static catalog contains **70 professional certifications**, **12 providers**, **11 career tracks**, **68 shared skills**, and **33 curated progression stages**. The anonymous questionnaire, rules-based personalized roadmaps and **39 curated free-access learning resources** now support self-reported learning progress, session restoration and optional device saving.
+**Current release candidate: Phase 6 — READY WITH LIMITATIONS.** The static catalog contains **70 professional certifications**, **12 providers**, **11 career tracks**, **68 shared skills**, and **33 curated progression stages**. The anonymous questionnaire, rules-based personalized roadmaps and **39 curated free-access learning resources** support self-reported learning progress, session restoration and optional device saving. Phase 6 stabilizes these features without expanding the architecture. See the [release report](PHASE6_RELEASE_REPORT.md) for actual checks, publication evidence and remaining verification limits.
 
 ## Available features
 
@@ -33,6 +33,10 @@ Actual production-build screenshots captured on 2026-10-25. The roadmap uses sam
 Phase 5 activity summary, captured from the production preview on 2026-10-26 with synthetic student answers:
 
 ![Recorded activity progress and stage summaries](docs/screenshots/roadmap-progress.jpg)
+
+Actual Phase 6 production preview at a simulated 390 px viewport on 2026-10-26, showing manual completion and keyboard focus:
+
+![Mobile roadmap completion controls](docs/screenshots/release-mobile-roadmap.jpg)
 
 ## Technology
 
@@ -99,7 +103,7 @@ The separate `src/data/learningResources.ts` catalog contains 39 manually review
 
 Free access means the stated learning content, not a paid exam, software license, cloud laboratory, compute quota or guaranteed certificate. Registration requirements and constraints are shown on each card. Nothing queries YouTube or a course service from the student's browser; links open the verified publisher destination. External publishers have their own account/privacy terms; questionnaire answers are not attached to links. There are no video embeds, scraped feeds or API credentials.
 
-See [resource maintenance](docs/learning-resources.md), [manual verification evidence](docs/resource-verification.json) and [Phase 4.5 report](PHASE4_5_REPORT.md). Public availability can change; verify the actual page before updating dates or claiming free access.
+See [resource maintenance](docs/learning-resources.md), [manual verification evidence](docs/resource-verification.json), the [Phase 6 reinspection of all 39 destinations](docs/phase6-resource-audit.json) and [Phase 4.5 report](PHASE4_5_REPORT.md). The reinspection checked publisher content and access disclosures; it did not enroll, play every video or complete the courses. Public availability can change; verify the actual page before updating dates or claiming free access.
 
 ## Animation and visual enhancement
 
@@ -117,7 +121,7 @@ One active roadmap is held in a small browser-memory store exposed through React
 
 Only checking **حفظ مساري وتقدمي على هذا الجهاز**, with confirmation when a snapshot already exists, writes `localStorage["masari_learning_device_v1"]`. The version-1 envelope stores `deviceOptIn: true`, minimum validated questionnaire answers and progress IDs; it contains no generated certification text or React structures. The progress schema has version, track ID, completed canonical skill IDs, stable `track:stage:practice` milestone IDs and resource IDs. No identifying information, timestamps, account, remote synchronization or backend is introduced.
 
-The homepage and an empty roadmap offer **متابعة مساري السابق** for a valid opted-in device snapshot. Resume requires confirmation and regenerates recommendations through the existing engine. It replaces the active learning session without writing over the questionnaire's separately saved submission. One device snapshot is supported, with no multi-profile history. Other users of the browser profile can access it; browser-data clearing can remove it permanently. This storage is not encrypted or independent evidence of completion.
+The homepage and an empty roadmap offer **متابعة مساري السابق** for a valid opted-in device snapshot. Resume requires confirmation and regenerates recommendations through the existing engine. If another tab changes that snapshot while confirmation is open, resume stops, shows the new saved scope and asks the student to review again. It replaces the active learning session without writing over the questionnaire's separately saved submission. One device snapshot is supported, with no multi-profile history. Other users of the browser profile can access it; browser-data clearing can remove it permanently. This storage is not encrypted or independent evidence of completion.
 
 When answers change within the same track, keep only completed skills, milestones and resources still present in the regenerated activity set. Removed IDs are discarded, and newly relevant activities start incomplete. A different track starts a fresh scope, even for shared skills; changing back does not recover an older active scope automatically. Every answer change pauses device saving and leaves the old snapshot untouched until explicit confirmed replacement or removal. Skill-array reordering alone does not constitute an answer change. Recommendation/template maintenance can change the denominator; IDs are revalidated against current catalogs and generated activities on restore.
 
@@ -204,7 +208,9 @@ GitHub Pages is configured to use GitHub Actions. The existing workflow follows 
 
 For a fork or a new repository, select **Settings → Pages → Build and deployment → Source → GitHub Actions**, and allow the default branch in the `github-pages` environment if protection rules apply. Push to the default branch or run the workflow manually from it. Confirm the actual Actions result; a local build alone does not verify remote publication.
 
-`vite.config.ts` derives the project asset base from `GITHUB_REPOSITORY`. Renaming a repository requires a rebuild, not a hardcoded source change. User-site repositories ending in `.github.io` use `/`. For a custom domain, set `VITE_BASE_PATH: /` in the build environment and configure the domain separately.
+`vite.config.ts` derives the project asset base, root canonical URL and `og:url` from `GITHUB_REPOSITORY`. Renaming a repository requires a rebuild, not a hardcoded source change. User-site repositories ending in `.github.io` use `/`. A local build with no repository environment omits public URL tags rather than publishing a localhost canonical. For a custom domain, set `VITE_BASE_PATH: /` and a public `VITE_SITE_URL` such as `https://example.com/` in the build environment, and configure the domain separately. The URL must use HTTPS without credentials, a query or a hash.
+
+Arabic language/direction, description, favicon and text Open Graph metadata are present. HashRouter route titles update in the browser, while search/social indexing primarily sees the static root document. This is not server-rendered, per-route SEO; no dedicated social preview image is supplied.
 
 To test a different repository path in PowerShell:
 
@@ -220,7 +226,9 @@ Rebuild after removing the variable to restore a root-path local build. HashRout
 
 ## Deferred work and verification limits
 
-Phase 5 adds anonymous local learning progress to the existing resources and personalized guidance. No accounts, cloud sync, course playback monitoring, verified credentials, gamification or notifications are implemented. Final quality and release work remain outside this phase. Self-reports cannot establish learning quality, professional competence, certification success or employment readiness.
+Phase 6 completes the scoped release audit with targeted fixes, current resource reinspection, metadata and English release evidence. The decision is **READY WITH LIMITATIONS**, with no known release-blocking defect in tested flows. Actual screen-reader, native browser zoom/motion switching, independent Firefox/WebKit/Chromium runs, physical-device tests, Lighthouse and field Core Web Vitals were NOT RUN in the available environment. The tested in-app browser exposes viewport simulation, not those audit capabilities. See [machine-readable audit evidence](docs/phase6-check-evidence.json) and the release report for measured local results and their limits.
+
+No accounts, cloud sync, course playback monitoring, verified credentials, gamification or notifications are implemented. Self-reports cannot establish learning quality, professional competence, certification success or employment readiness. Browser-profile storage and external learning pages retain the limitations described above.
 
 The validator checks internal consistency and source domains, not source freshness or educational suitability. The catalog is cloud-heavy and some areas rely more on practical projects than paid credentials. Technical reports document exclusions, coverage, actual commands, browser checks, and publication state. Historical Phase 1/2 reports retain their original language and pre-publication snapshots; new technical documentation is in English.
 

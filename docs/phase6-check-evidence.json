@@ -1,0 +1,411 @@
+{
+  "date": "2026-10-26",
+  "baselineAssets": [
+    {
+      "name": "gsap-CtDIrg4F.js",
+      "bytes": 69931,
+      "gzipBytes": 27192
+    },
+    {
+      "name": "ibm-plex-sans-arabic-arabic-400-normal-CyU-ddYS.woff2",
+      "bytes": 42848,
+      "gzipBytes": 42875
+    },
+    {
+      "name": "ibm-plex-sans-arabic-arabic-500-normal-C4MQITzh.woff2",
+      "bytes": 45296,
+      "gzipBytes": 45318
+    },
+    {
+      "name": "ibm-plex-sans-arabic-arabic-600-normal-0pRdybE_.woff2",
+      "bytes": 45688,
+      "gzipBytes": 45721
+    },
+    {
+      "name": "ibm-plex-sans-arabic-arabic-700-normal-DrtBj6UE.woff2",
+      "bytes": 44280,
+      "gzipBytes": 44308
+    },
+    {
+      "name": "index-CfWr94SZ.js",
+      "bytes": 499047,
+      "gzipBytes": 134907
+    },
+    {
+      "name": "index-Dg93NiET.css",
+      "bytes": 54239,
+      "gzipBytes": 11113
+    },
+    {
+      "name": "ScrollTrigger-kZaVfF_-.js",
+      "bytes": 42736,
+      "gzipBytes": 17422
+    }
+  ],
+  "finalAssets": [
+    {
+      "name": "gsap-CtDIrg4F.js",
+      "bytes": 69931,
+      "gzipBytes": 27192
+    },
+    {
+      "name": "ibm-plex-sans-arabic-arabic-400-normal-CyU-ddYS.woff2",
+      "bytes": 42848,
+      "gzipBytes": 42875
+    },
+    {
+      "name": "ibm-plex-sans-arabic-arabic-500-normal-C4MQITzh.woff2",
+      "bytes": 45296,
+      "gzipBytes": 45318
+    },
+    {
+      "name": "ibm-plex-sans-arabic-arabic-600-normal-0pRdybE_.woff2",
+      "bytes": 45688,
+      "gzipBytes": 45721
+    },
+    {
+      "name": "ibm-plex-sans-arabic-arabic-700-normal-DrtBj6UE.woff2",
+      "bytes": 44280,
+      "gzipBytes": 44308
+    },
+    {
+      "name": "index-Bt8Aqo1E.js",
+      "bytes": 499474,
+      "gzipBytes": 135030
+    },
+    {
+      "name": "index-Dg93NiET.css",
+      "bytes": 54239,
+      "gzipBytes": 11113
+    },
+    {
+      "name": "ScrollTrigger-kZaVfF_-.js",
+      "bytes": 42736,
+      "gzipBytes": 17422
+    }
+  ],
+  "recommendationMatrix": {
+    "date": "2026-10-26",
+    "status": "PASSED",
+    "matrixScenarios": 99,
+    "tracks": 11,
+    "levels": ["beginner", "intermediate", "advanced"],
+    "profiles": ["empty", "partial-known-and-desired", "all-known-and-desired"],
+    "foundationPolicy": "Optional Python is excluded from the non-technology foundation invariant; the existing Python/JavaScript regression suite verifies that policy separately.",
+    "catalogSearch": {
+      "calls": 600,
+      "medianMs": 0.4897,
+      "p95Ms": 0.7564,
+      "environment": "Unthrottled Node 24 helper calls, not browser interaction latency"
+    }
+  },
+  "localLab": {
+    "labOnly": true,
+    "throttling": "none",
+    "cls": 0.021219265798725708,
+    "lcpMs": 216,
+    "fcpMs": 88,
+    "domContentLoadedMs": 78.6000000089407,
+    "loadMs": 96.1000000089407,
+    "longTaskCount": 1,
+    "longTaskTotalMs": 76,
+    "longTaskMaxMs": 76,
+    "resources": [
+      {
+        "url": "/assets/index-Bt8Aqo1E.js",
+        "durationMs": 29.600000008940697,
+        "transferSize": 135330,
+        "decodedBodySize": 499474
+      },
+      {
+        "url": "/assets/index-Dg93NiET.css",
+        "durationMs": 16.299999997019768,
+        "transferSize": 11413,
+        "decodedBodySize": 54239
+      },
+      {
+        "url": "/assets/ibm-plex-sans-arabic-arabic-700-normal-DrtBj6UE.woff2",
+        "durationMs": 85.6000000089407,
+        "transferSize": 44580,
+        "decodedBodySize": 44280
+      },
+      {
+        "url": "/assets/ibm-plex-sans-arabic-arabic-400-normal-CyU-ddYS.woff2",
+        "durationMs": 86.20000000298023,
+        "transferSize": 43148,
+        "decodedBodySize": 42848
+      },
+      {
+        "url": "/assets/ibm-plex-sans-arabic-arabic-500-normal-C4MQITzh.woff2",
+        "durationMs": 89.70000000298023,
+        "transferSize": 45596,
+        "decodedBodySize": 45296
+      },
+      {
+        "url": "/assets/ibm-plex-sans-arabic-arabic-600-normal-0pRdybE_.woff2",
+        "durationMs": 90.09999999403954,
+        "transferSize": 45988,
+        "decodedBodySize": 45688
+      },
+      {
+        "url": "/assets/gsap-CtDIrg4F.js",
+        "durationMs": 12.799999997019768,
+        "transferSize": 27492,
+        "decodedBodySize": 69931
+      },
+      {
+        "url": "/assets/ScrollTrigger-kZaVfF_-.js",
+        "durationMs": 12.099999994039536,
+        "transferSize": 17722,
+        "decodedBodySize": 42736
+      }
+    ],
+    "limitations": "One unthrottled desktop localhost sample in an instrumented production page. Browser cache and local environment affect results. Not Lighthouse, field Core Web Vitals, mobile throttling or a guarantee."
+  },
+  "responsive": {
+    "status": "PASSED",
+    "environment": "In-app browser viewport simulation, not physical devices",
+    "samples": [
+      {
+        "label": "questionnaire-step-1",
+        "outsideControls": 0,
+        "overflow": false,
+        "width": 320
+      },
+      {
+        "label": "questionnaire-step-1",
+        "outsideControls": 0,
+        "overflow": false,
+        "width": 390
+      },
+      {
+        "label": "questionnaire-step-1",
+        "outsideControls": 0,
+        "overflow": false,
+        "width": 768
+      },
+      {
+        "label": "questionnaire-step-1",
+        "outsideControls": 0,
+        "overflow": false,
+        "width": 1024
+      },
+      {
+        "label": "questionnaire-step-1",
+        "outsideControls": 0,
+        "overflow": false,
+        "width": 1440
+      },
+      {
+        "label": "questionnaire-step-2",
+        "outsideControls": 0,
+        "overflow": false,
+        "width": 320
+      },
+      {
+        "label": "questionnaire-step-2",
+        "outsideControls": 0,
+        "overflow": false,
+        "width": 390
+      },
+      {
+        "label": "questionnaire-step-2",
+        "outsideControls": 0,
+        "overflow": false,
+        "width": 768
+      },
+      {
+        "label": "questionnaire-step-2",
+        "outsideControls": 0,
+        "overflow": false,
+        "width": 1024
+      },
+      {
+        "label": "questionnaire-step-2",
+        "outsideControls": 0,
+        "overflow": false,
+        "width": 1440
+      },
+      {
+        "label": "questionnaire-step-3",
+        "outsideControls": 0,
+        "overflow": false,
+        "width": 320
+      },
+      {
+        "label": "questionnaire-step-3",
+        "outsideControls": 0,
+        "overflow": false,
+        "width": 390
+      },
+      {
+        "label": "questionnaire-step-3",
+        "outsideControls": 0,
+        "overflow": false,
+        "width": 768
+      },
+      {
+        "label": "questionnaire-step-3",
+        "outsideControls": 0,
+        "overflow": false,
+        "width": 1024
+      },
+      {
+        "label": "questionnaire-step-3",
+        "outsideControls": 0,
+        "overflow": false,
+        "width": 1440
+      },
+      {
+        "label": "questionnaire-step-4",
+        "outsideControls": 0,
+        "overflow": false,
+        "width": 320
+      },
+      {
+        "label": "questionnaire-step-4",
+        "outsideControls": 0,
+        "overflow": false,
+        "width": 390
+      },
+      {
+        "label": "questionnaire-step-4",
+        "outsideControls": 0,
+        "overflow": false,
+        "width": 768
+      },
+      {
+        "label": "questionnaire-step-4",
+        "outsideControls": 0,
+        "overflow": false,
+        "width": 1024
+      },
+      {
+        "label": "questionnaire-step-4",
+        "outsideControls": 0,
+        "overflow": false,
+        "width": 1440
+      },
+      {
+        "label": "roadmap",
+        "outsideControls": 0,
+        "overflow": false,
+        "width": 320
+      },
+      {
+        "label": "roadmap",
+        "outsideControls": 0,
+        "overflow": false,
+        "width": 390
+      },
+      {
+        "label": "roadmap",
+        "outsideControls": 0,
+        "overflow": false,
+        "width": 768
+      },
+      {
+        "label": "roadmap",
+        "outsideControls": 0,
+        "overflow": false,
+        "width": 1024
+      },
+      {
+        "label": "roadmap",
+        "outsideControls": 0,
+        "overflow": false,
+        "width": 1440
+      },
+      {
+        "label": "roadmap-confirmation",
+        "outsideControls": 0,
+        "overflow": false,
+        "width": 320
+      },
+      {
+        "label": "roadmap-confirmation",
+        "outsideControls": 0,
+        "overflow": false,
+        "width": 390
+      },
+      {
+        "label": "roadmap-confirmation",
+        "outsideControls": 0,
+        "overflow": false,
+        "width": 768
+      },
+      {
+        "label": "roadmap-confirmation",
+        "outsideControls": 0,
+        "overflow": false,
+        "width": 1024
+      },
+      {
+        "label": "roadmap-confirmation",
+        "outsideControls": 0,
+        "overflow": false,
+        "width": 1440
+      },
+      {
+        "label": "homepage",
+        "outsideControls": 0,
+        "overflow": false,
+        "width": 320
+      },
+      {
+        "label": "homepage",
+        "outsideControls": 0,
+        "overflow": false,
+        "width": 390
+      },
+      {
+        "label": "homepage",
+        "outsideControls": 0,
+        "overflow": false,
+        "width": 768
+      },
+      {
+        "label": "homepage",
+        "outsideControls": 0,
+        "overflow": false,
+        "width": 1024
+      },
+      {
+        "label": "homepage",
+        "outsideControls": 0,
+        "overflow": false,
+        "width": 1440
+      },
+      {
+        "label": "catalog",
+        "outsideControls": 0,
+        "overflow": false,
+        "width": 320
+      },
+      {
+        "label": "catalog",
+        "outsideControls": 0,
+        "overflow": false,
+        "width": 390
+      },
+      {
+        "label": "catalog",
+        "outsideControls": 0,
+        "overflow": false,
+        "width": 768
+      },
+      {
+        "label": "catalog",
+        "outsideControls": 0,
+        "overflow": false,
+        "width": 1024
+      },
+      {
+        "label": "catalog",
+        "outsideControls": 0,
+        "overflow": false,
+        "width": 1440
+      }
+    ]
+  }
+}

@@ -24,31 +24,32 @@ export function createProgressStore(
   const restored = readLearningData(session);
   const device = readLearningData(local, true);
   let active = restored.data;
-  if (
+  const restoredConflict =
     active?.deviceOptIn &&
-    (!device.data ||
-      answerIdentity(active.answers) !== answerIdentity(device.data.answers))
-  )
-    active = { ...active, deviceOptIn: false };
+    JSON.stringify(active) !== JSON.stringify(device.data);
+  if (restoredConflict && active) active = { ...active, deviceOptIn: false };
   let state = {
     active,
     saved: device.data,
-    notice: [restored.status, device.status].includes("invalid")
-      ? "تجاهلنا بيانات تعلم غير صالحة أو بإصدار غير مدعوم. تقدر تبدأ من جديد."
-      : [restored.status, device.status].includes("unavailable")
-        ? "بعض التخزين غير متاح. تقدر تتعلم هنا؛ قد لا تُستعاد البيانات بعد إغلاق الصفحة."
-        : "",
+    notice: restoredConflict
+      ? "نسخة الجلسة تختلف عن المحفوظة على الجهاز. أبقينا تقدم هذه الجلسة مؤقتًا وأوقفنا الحفظ التلقائي؛ راجع النسخة المحفوظة أو اختر الاستبدال بنفسك."
+      : [restored.status, device.status].includes("invalid")
+        ? "تجاهلنا بيانات تعلم غير صالحة أو بإصدار غير مدعوم. تقدر تبدأ من جديد."
+        : [restored.status, device.status].includes("unavailable")
+          ? "بعض التخزين غير متاح. تقدر تتعلم هنا؛ قد لا تُستعاد البيانات بعد إغلاق الصفحة."
+          : "",
   };
   const listeners = new Set<() => void>();
   const emit = () => listeners.forEach((listener) => listener());
   const persist = (next: SavedRoadmap, notice = "") => {
     let saved = state.saved;
     if (next.deviceOptIn) {
-      // Do not replace another tab's different saved roadmap implicitly.
+      // Protect newer progress as well as different answers. Do not union sets:
+      // another tab may have intentionally undone a completion.
       const current = readLearningData(local, true);
       if (
         !current.data ||
-        answerIdentity(current.data.answers) !== answerIdentity(next.answers)
+        JSON.stringify(current.data) !== JSON.stringify(state.saved)
       ) {
         next = { ...next, deviceOptIn: false };
         saved = current.data;
@@ -167,26 +168,18 @@ export function createProgressStore(
       return true;
     },
     clearDevice() {
-      if (!removeDeviceData(local)) {
-        state = {
-          ...state,
-          notice:
-            "تعذر مسح النسخة المحفوظة. قد تبقى بياناتك على الجهاز؛ امسح بيانات هذا الموقع من إعدادات المتصفح أو حاول مجددًا.",
-        };
-        emit();
-        return false;
-      }
-      state = { ...state, saved: null };
+      const removed = removeDeviceData(local);
+      const notice = removed
+        ? "حُذفت بيانات التعلم المحفوظة دائمًا من الجهاز. تقدم الجلسة الحالية باقٍ مؤقتًا."
+        : "أوقفنا الحفظ التلقائي، لكن تعذر مسح النسخة القديمة من الجهاز. قد تبقى بياناتك؛ امسح بيانات هذا الموقع من إعدادات المتصفح أو حاول مجددًا.";
+      if (removed) state = { ...state, saved: null };
       if (state.active)
-        persist(
-          { ...state.active, deviceOptIn: false },
-          "حُذفت بيانات التعلم المحفوظة دائمًا من الجهاز. تقدم الجلسة الحالية باقٍ مؤقتًا.",
-        );
+        persist({ ...state.active, deviceOptIn: false }, notice);
       else {
-        state = { ...state, notice: "حُذفت بيانات التعلم المحفوظة من الجهاز." };
+        state = { ...state, notice };
         emit();
       }
-      return true;
+      return removed;
     },
     resume(expectedSaved: SavedRoadmap | null = state.saved) {
       const current = readLearningData(local, true);

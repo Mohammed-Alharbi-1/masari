@@ -8,6 +8,7 @@ import "@fontsource/ibm-plex-sans-arabic/arabic-700.css";
 import App from "./App";
 import "./styles/global.css";
 import "./styles/refinements.css";
+import "./styles/premium.css";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

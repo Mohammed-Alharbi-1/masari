@@ -2,7 +2,7 @@
 
 An Arabic-first, anonymous career and certification guidance website for university students in computing-related majors. Masari helps students understand career options and learning credentials without promising employment or requiring an account.
 
-**Current release candidate: Phase 6 — READY WITH LIMITATIONS.** The static catalog contains **70 professional certifications**, **12 providers**, **11 career tracks**, **68 shared skills**, and **33 curated progression stages**. The anonymous questionnaire, rules-based personalized roadmaps and **39 curated free-access learning resources** support self-reported learning progress, session restoration and optional device saving. Phase 6 stabilizes these features without expanding the architecture. See the [release report](PHASE6_RELEASE_REPORT.md) for actual checks, publication evidence and remaining verification limits.
+**Current release: Phase 7 — READY WITH LIMITATIONS.** The static catalog contains **70 professional certifications**, **12 providers**, **11 career tracks**, **68 shared skills**, and **33 curated progression stages**. The anonymous questionnaire, deterministic personalized roadmaps and **39 curated free-access learning resources** retain self-reported progress and optional device saving. Phase 7 fixes active-roadmap navigation, stale-tab overwrites and failed opt-out behavior; adds production CSP protection; and delivers a substantial editorial redesign with coordinated GSAP motion. See the [Phase 7 report](PHASE7_REPORT.md), [debug report](DEBUG_REPORT.md), [security audit](SECURITY_AUDIT.md) and [design review](DESIGN_REVIEW.md) for evidence and limits.
 
 ## Available features
 
@@ -17,12 +17,19 @@ An Arabic-first, anonymous career and certification guidance website for univers
 - Friendly roadmap empty state and an application-level 404 page.
 - Existing editorial templates provide the foundation for deterministic personalization; alternative cloud providers remain separate paths.
 - Verified skill-linked learning resources: 9 Arabic and 30 English, covering 43 canonical skills across all 11 tracks.
-- Refined responsive typography/cards and restrained GSAP/ScrollTrigger enhancement with reduced-motion support.
+- Editorial hero and layered roadmap preview, distinct learning-story sections, guided onboarding, a clearer catalog and a progress dashboard.
+- Lazy coordinated GSAP hero, grouped scroll reveals, questionnaire heading transitions and decorative roadmap-line motion, with reduced-motion and failure fallbacks.
 - Reversible skill, practical milestone and resource completion, honest activity counts, stage summaries and the next unfinished priority.
 - Session-only progress by default; explicit device saving, confirmed resume/replacement, progress reset and persistent-data removal.
-- Lightweight catalog, questionnaire, roadmap, learning-resource and progress validation included in every production build.
+- Lightweight catalog, questionnaire, roadmap, learning-resource, progress and security validation included in every production build.
 
 ## Screenshots
+
+Phase 7 matched desktop/mobile evidence (2026-10-26–27) is under [before](docs/screenshots/phase7/before/) and [after](docs/screenshots/phase7/after/). The [design review](DESIGN_REVIEW.md#matched-screenshot-evidence) links all eight comparisons and their synthetic states.
+
+![Phase 7 homepage](docs/screenshots/phase7/after/home-desktop.jpg)
+
+The following images document earlier phases and are retained as history.
 
 Actual production-build screenshots captured on 2026-10-25. The roadmap uses sample anonymous answers.
 
@@ -158,7 +165,7 @@ src/
     ui/                   # Existing shared icons and UI
   pages/                  # Homepage, catalog, questionnaire, roadmap and 404
   styles/                 # Existing tokens plus scoped page/resource/refinement styles
-scripts/                  # Four dependency-free validation suites
+scripts/                  # Six dependency-free validation suites
 .github/workflows/deploy.yml
 docs/                     # Resource/animation maintenance, evidence and real screenshots
 PHASE4_5_REPORT.md
@@ -183,6 +190,8 @@ npm run validate:catalog
 npm run validate:questionnaire
 npm run validate:roadmap
 npm run validate:learning-resources
+npm run validate:progress
+npm run validate:security
 npm run build
 ```
 
@@ -204,7 +213,7 @@ The questionnaire consumes these canonical track and skill IDs directly. It does
 - Site: [Masari](https://mohammed-alharbi-1.github.io/masari/)
 - Branch: `main`
 
-GitHub Pages is configured to use GitHub Actions. The existing workflow follows the repository's actual default branch, runs `npm ci`, lint, and build, uploads `dist/`, and deploys with the official Pages actions. Catalog, questionnaire, roadmap, learning-resource and progress validation are included through the build command.
+GitHub Pages is configured to use GitHub Actions. The existing workflow follows the repository's actual default branch, runs `npm ci`, lint, and build, uploads `dist/`, and deploys with the official Pages actions. Catalog, questionnaire, roadmap, learning-resource, progress and security validation are included through the build command. Production builds include an origin-restricted meta CSP; development keeps HMR support. See [CSP limitations](SECURITY_AUDIT.md#production-csp). Weekly Dependabot version-update configuration covers npm and GitHub Actions; this does not change account security settings.
 
 For a fork or a new repository, select **Settings → Pages → Build and deployment → Source → GitHub Actions**, and allow the default branch in the `github-pages` environment if protection rules apply. Push to the default branch or run the workflow manually from it. Confirm the actual Actions result; a local build alone does not verify remote publication.
 
@@ -226,7 +235,9 @@ Rebuild after removing the variable to restore a root-path local build. HashRout
 
 ## Deferred work and verification limits
 
-Phase 6 completes the scoped release audit with targeted fixes, current resource reinspection, metadata and English release evidence. The decision is **READY WITH LIMITATIONS**, with no known release-blocking defect in tested flows. Actual screen-reader, native browser zoom/motion switching, independent Firefox/WebKit/Chromium runs, physical-device tests, Lighthouse and field Core Web Vitals were NOT RUN in the available environment. The tested in-app browser exposes viewport simulation, not those audit capabilities. See [machine-readable audit evidence](docs/phase6-check-evidence.json) and the release report for measured local results and their limits.
+Phase 7 is **READY WITH LIMITATIONS**, with no known release-blocking defect in tested flows. Actual screen-reader, native browser zoom/motion switching, independent browser-engine runs, physical-device tests, screen recording, Lighthouse and field Core Web Vitals were NOT RUN. The tested in-app browser exposes viewport simulation and DOM sampling. Local performance timings are single unthrottled observations with uncontrolled cache, not field scores. The entry bundle now slightly exceeds Vite's 500 kB warning threshold. See [machine-readable Phase 7 evidence](docs/phase7-check-evidence.json) and the [release report](PHASE7_REPORT.md).
+
+Device saving is opt-in. If another tab changes the saved snapshot, automatic writes pause and temporary work remains in that tab; review before replacing or resuming. Failed removal stops automatic saving and warns if an old copy remains. Browser storage is unencrypted and read/compare/write is non-atomic; profile sharing, blocked APIs and simultaneous interleaving remain limits.
 
 No accounts, cloud sync, course playback monitoring, verified credentials, gamification or notifications are implemented. Self-reports cannot establish learning quality, professional competence, certification success or employment readiness. Browser-profile storage and external learning pages retain the limitations described above.
 

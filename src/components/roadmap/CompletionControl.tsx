@@ -19,16 +19,23 @@ export function CompletionControl({
   anchor?: boolean;
 }) {
   const checked = controls.completed(kind, activityId);
+  const actionLabel =
+    kind === "skill"
+      ? "أنهيت التعلّم"
+      : kind === "milestone"
+        ? "أنهيت التطبيق العملي"
+        : "أنهيت هذا المصدر";
   return (
     <label className={`completion-control${checked ? " is-completed" : ""}`}>
       <input
         id={anchor ? activityAnchor(kind, activityId) : undefined}
         type="checkbox"
+        aria-label={`${actionLabel} — ${label}`}
         checked={checked}
         onChange={() => controls.toggle(kind, activityId)}
       />
       <span>
-        {label}
+        {actionLabel}
         <small>
           {checked
             ? "أنهيت التعلم · اضغط للتراجع"

@@ -31,6 +31,8 @@ import {
 import { SkillSelector } from "../components/questionnaire/SkillSelector";
 import { QuestionnaireSummary } from "../components/questionnaire/QuestionnaireSummary";
 import "../styles/questionnaire.css";
+import { learningStore } from "../hooks/useLearningProgress";
+import { useStepMotion } from "../hooks/usePageMotion";
 
 const storage = () => window.sessionStorage;
 const unavailableMessage =
@@ -120,6 +122,8 @@ export default function QuestionnairePage() {
           : "",
   );
   const heading = useRef<HTMLHeadingElement>(null);
+  const motionScope = useRef<HTMLElement>(null);
+  useStepMotion(motionScope, step, !!submitted);
   useEffect(() => {
     heading.current?.focus();
   }, [step, submitted]);
@@ -158,6 +162,9 @@ export default function QuestionnairePage() {
       return;
     }
     const saved = saveQuestionnaire(storage, result.answers);
+    // A successful submission is the new active context, including header and
+    // direct roadmap navigation. Resume still leaves this submission untouched.
+    learningStore().open(result.answers);
     setNotice(
       saved === "saved"
         ? "حُفظت إجاباتك المكتملة مؤقتًا في جلسة هذا المتصفح."
@@ -195,6 +202,7 @@ export default function QuestionnairePage() {
   }
   return (
     <section
+      ref={motionScope}
       className="container questionnaire-page"
       aria-label="استبيان اكتشاف المسار"
     >

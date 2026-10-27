@@ -371,6 +371,107 @@ check("Write failures warn, never report opted-in success", () => {
   assert.equal(store.save(null), false);
   assert.equal(store.getSnapshot().active?.deviceOptIn, false);
 });
+check(
+  "Stale same-answer tabs preserve newer saved progress and pause automatic writes",
+  () => {
+    const local = memory(),
+      firstSession = memory(),
+      secondSession = memory();
+    const first = createProgressStore(
+      () => firstSession,
+      () => local,
+    );
+    first.open(answers);
+    first.save(null);
+    const second = createProgressStore(
+      () => secondSession,
+      () => local,
+    );
+    second.resume();
+    first.toggle("skill", "html");
+    second.toggle("skill", "css");
+    assert.deepEqual(
+      readLearningData(() => local, true).data?.progress.completedSkillIds,
+      ["html"],
+    );
+    assert.equal(second.getSnapshot().active?.deviceOptIn, false);
+    assert.deepEqual(second.getSnapshot().active?.progress.completedSkillIds, [
+      "css",
+    ]);
+    assert.ok(second.getSnapshot().notice.includes("تغيرت"));
+  },
+);
+check(
+  "A restored stale opted-in session cannot overwrite newer device completion or undo",
+  () => {
+    const local = memory(),
+      session = memory();
+    const first = createProgressStore(
+      () => session,
+      () => local,
+    );
+    first.open(answers);
+    first.save(null);
+    const staleSession = memory();
+    staleSession.setItem(
+      sessionProgressKey,
+      session.getItem(sessionProgressKey)!,
+    );
+    first.toggle("skill", "html");
+    const restored = createProgressStore(
+      () => staleSession,
+      () => local,
+    );
+    assert.equal(restored.getSnapshot().active?.deviceOptIn, false);
+    restored.toggle("skill", "css");
+    assert.deepEqual(
+      readLearningData(() => local, true).data?.progress.completedSkillIds,
+      ["html"],
+    );
+    assert.equal(restored.save(restored.getSnapshot().saved), true);
+    const other = createProgressStore(
+      () => memory(),
+      () => local,
+    );
+    other.resume();
+    restored.toggle("skill", "css");
+    other.toggle("skill", "html");
+    assert.deepEqual(
+      readLearningData(() => local, true).data?.progress.completedSkillIds,
+      [],
+    );
+    assert.equal(other.getSnapshot().active?.deviceOptIn, false);
+  },
+);
+check(
+  "Failed device deletion revokes future writes while honestly retaining the old snapshot",
+  () => {
+    const local = memory(),
+      session = memory();
+    const store = createProgressStore(
+      () => session,
+      () => local,
+    );
+    store.open(answers);
+    store.save(null);
+    const before = local.getItem(localProgressKey);
+    local.removeItem = () => {
+      throw new Error("Deletion blocked");
+    };
+    assert.equal(store.clearDevice(), false);
+    assert.equal(store.getSnapshot().active?.deviceOptIn, false);
+    store.toggle("skill", "html");
+    assert.equal(local.getItem(localProgressKey), before);
+    assert.equal(readLearningData(() => session).data?.deviceOptIn, false);
+    const reopened = createProgressStore(
+      () => session,
+      () => local,
+    );
+    reopened.toggle("skill", "css");
+    assert.equal(local.getItem(localProgressKey), before);
+    assert.ok(store.getSnapshot().notice.includes("تعذر"));
+  },
+);
 check("Other tabs cannot silently replace a different saved roadmap", () => {
   const session = memory(),
     local = memory(),

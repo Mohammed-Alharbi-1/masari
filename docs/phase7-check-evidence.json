@@ -1,0 +1,662 @@
+{
+  "phase": 7,
+  "reviewed": "2026-10-27",
+  "baselineCommit": "6d06684f26bd4f44e2dc75d1556db2b820a9b109",
+  "checks": {
+    "cleanInstall": "PASS after stopping locked Vite servers",
+    "lint": "PASS zero warnings",
+    "typecheck": "PASS",
+    "catalog": {
+      "credentials": 70,
+      "providers": 12,
+      "skills": 68,
+      "tracks": 11,
+      "stages": 33,
+      "invalidAssertions": 44,
+      "honestStatus": 3,
+      "searchAssertions": 8
+    },
+    "questionnaireGroups": 9,
+    "roadmapGroups": 24,
+    "learningResourceGroups": 24,
+    "resources": 39,
+    "progressGroups": 28,
+    "securityGroups": 8,
+    "build": "PASS, entry >500 kB warning disclosed",
+    "npmAuditVulnerabilities": 0,
+    "dependencyTree": "PASS unchanged versions"
+  },
+  "performance": {
+    "method": "One unthrottled localhost observation per version; 1280x720; external PerformanceObserver; uncontrolled cache; not Lighthouse/field scores",
+    "before": {
+      "labOnly": true,
+      "throttling": "none",
+      "cls": 0.009428168404367013,
+      "lcpMs": 200,
+      "fcpMs": 76,
+      "domContentLoadedMs": 70.19999998807907,
+      "loadMs": 89.8999999910593,
+      "longTaskCount": 1,
+      "longTaskTotalMs": 77,
+      "longTaskMaxMs": 77,
+      "resources": [
+        {
+          "url": "http://127.0.0.1:4173/__qa__/lab.js",
+          "durationMs": 21.19999998807907,
+          "transferSize": 1122,
+          "decodedBodySize": 1459
+        },
+        {
+          "url": "http://127.0.0.1:4173/assets/index-Dg93NiET.css",
+          "durationMs": 13.300000011920929,
+          "transferSize": 300,
+          "decodedBodySize": 54239
+        },
+        {
+          "url": "http://127.0.0.1:4173/assets/index-Bt8Aqo1E.js",
+          "durationMs": 21.30000001192093,
+          "transferSize": 300,
+          "decodedBodySize": 499474
+        },
+        {
+          "url": "http://127.0.0.1:4173/assets/ibm-plex-sans-arabic-arabic-700-normal-DrtBj6UE.woff2",
+          "durationMs": 103.79999999701977,
+          "transferSize": 300,
+          "decodedBodySize": 44280
+        },
+        {
+          "url": "http://127.0.0.1:4173/assets/ibm-plex-sans-arabic-arabic-400-normal-CyU-ddYS.woff2",
+          "durationMs": 112.5,
+          "transferSize": 300,
+          "decodedBodySize": 42848
+        },
+        {
+          "url": "http://127.0.0.1:4173/assets/ibm-plex-sans-arabic-arabic-500-normal-C4MQITzh.woff2",
+          "durationMs": 120.20000000298023,
+          "transferSize": 300,
+          "decodedBodySize": 45296
+        },
+        {
+          "url": "http://127.0.0.1:4173/assets/ibm-plex-sans-arabic-arabic-600-normal-0pRdybE_.woff2",
+          "durationMs": 129.20000000298023,
+          "transferSize": 300,
+          "decodedBodySize": 45688
+        },
+        {
+          "url": "http://127.0.0.1:4173/assets/gsap-CtDIrg4F.js",
+          "durationMs": 53,
+          "transferSize": 300,
+          "decodedBodySize": 69931
+        },
+        {
+          "url": "http://127.0.0.1:4173/assets/ScrollTrigger-kZaVfF_-.js",
+          "durationMs": 60.1000000089407,
+          "transferSize": 300,
+          "decodedBodySize": 42736
+        }
+      ]
+    },
+    "after": {
+      "labOnly": true,
+      "throttling": "none",
+      "cls": 0.010427560940865954,
+      "lcpMs": 112,
+      "fcpMs": 112,
+      "domContentLoadedMs": 81.5,
+      "loadMs": 101.8000000002794,
+      "longTaskCount": 0,
+      "longTaskTotalMs": 0,
+      "longTaskMaxMs": 0,
+      "resources": [
+        {
+          "url": "http://127.0.0.1:4173/__qa__/lab.js",
+          "durationMs": 2.3000000002793968,
+          "transferSize": 300,
+          "decodedBodySize": 1459
+        },
+        {
+          "url": "http://127.0.0.1:4173/assets/index-B3yQ_DG5.js",
+          "durationMs": 9.899999999906868,
+          "transferSize": 300,
+          "decodedBodySize": 504465
+        },
+        {
+          "url": "http://127.0.0.1:4173/assets/index-C_Pf3Y-1.css",
+          "durationMs": 9.300000000279397,
+          "transferSize": 300,
+          "decodedBodySize": 72749
+        },
+        {
+          "url": "http://127.0.0.1:4173/assets/ibm-plex-sans-arabic-arabic-700-normal-DrtBj6UE.woff2",
+          "durationMs": 2.6000000000931323,
+          "transferSize": 300,
+          "decodedBodySize": 0
+        },
+        {
+          "url": "http://127.0.0.1:4173/assets/ibm-plex-sans-arabic-arabic-400-normal-CyU-ddYS.woff2",
+          "durationMs": 3.1000000000931323,
+          "transferSize": 300,
+          "decodedBodySize": 0
+        },
+        {
+          "url": "http://127.0.0.1:4173/assets/ibm-plex-sans-arabic-arabic-500-normal-C4MQITzh.woff2",
+          "durationMs": 3.5,
+          "transferSize": 300,
+          "decodedBodySize": 0
+        },
+        {
+          "url": "http://127.0.0.1:4173/assets/ibm-plex-sans-arabic-arabic-600-normal-0pRdybE_.woff2",
+          "durationMs": 3.8999999999068677,
+          "transferSize": 300,
+          "decodedBodySize": 0
+        },
+        {
+          "url": "http://127.0.0.1:4173/assets/gsap-CtDIrg4F.js",
+          "durationMs": 18.600000000093132,
+          "transferSize": 300,
+          "decodedBodySize": 69931
+        },
+        {
+          "url": "http://127.0.0.1:4173/assets/ScrollTrigger-kZaVfF_-.js",
+          "durationMs": 25.200000000186265,
+          "transferSize": 300,
+          "decodedBodySize": 42736
+        }
+      ]
+    },
+    "beforeAssets": [
+      {
+        "name": "gsap-CtDIrg4F.js",
+        "bytes": 69931,
+        "gzipBytes": 27192
+      },
+      {
+        "name": "ibm-plex-sans-arabic-arabic-400-normal-CyU-ddYS.woff2",
+        "bytes": 42848,
+        "gzipBytes": 42875
+      },
+      {
+        "name": "ibm-plex-sans-arabic-arabic-500-normal-C4MQITzh.woff2",
+        "bytes": 45296,
+        "gzipBytes": 45318
+      },
+      {
+        "name": "ibm-plex-sans-arabic-arabic-600-normal-0pRdybE_.woff2",
+        "bytes": 45688,
+        "gzipBytes": 45721
+      },
+      {
+        "name": "ibm-plex-sans-arabic-arabic-700-normal-DrtBj6UE.woff2",
+        "bytes": 44280,
+        "gzipBytes": 44308
+      },
+      {
+        "name": "index-Bt8Aqo1E.js",
+        "bytes": 499474,
+        "gzipBytes": 135030
+      },
+      {
+        "name": "index-Dg93NiET.css",
+        "bytes": 54239,
+        "gzipBytes": 11113
+      },
+      {
+        "name": "ScrollTrigger-kZaVfF_-.js",
+        "bytes": 42736,
+        "gzipBytes": 17422
+      }
+    ],
+    "afterAssets": [
+      {
+        "name": "gsap-CtDIrg4F.js",
+        "bytes": 69931,
+        "gzip": 27192
+      },
+      {
+        "name": "index-B3yQ_DG5.js",
+        "bytes": 504465,
+        "gzip": 136449
+      },
+      {
+        "name": "index-C_Pf3Y-1.css",
+        "bytes": 72749,
+        "gzip": 14395
+      },
+      {
+        "name": "ScrollTrigger-kZaVfF_-.js",
+        "bytes": 42736,
+        "gzip": 17422
+      }
+    ]
+  },
+  "responsive": [
+    {
+      "client": 305,
+      "overflow": [],
+      "route": "#/",
+      "scroll": 305,
+      "width": 320
+    },
+    {
+      "client": 305,
+      "overflow": [],
+      "route": "#/certifications",
+      "scroll": 305,
+      "width": 320
+    },
+    {
+      "client": 305,
+      "overflow": [],
+      "route": "#/questionnaire",
+      "scroll": 305,
+      "width": 320
+    },
+    {
+      "client": 305,
+      "overflow": [],
+      "route": "#/roadmap",
+      "scroll": 305,
+      "width": 320
+    },
+    {
+      "client": 360,
+      "overflow": [],
+      "route": "#/",
+      "scroll": 360,
+      "width": 375
+    },
+    {
+      "client": 360,
+      "overflow": [],
+      "route": "#/certifications",
+      "scroll": 360,
+      "width": 375
+    },
+    {
+      "client": 360,
+      "overflow": [],
+      "route": "#/questionnaire",
+      "scroll": 360,
+      "width": 375
+    },
+    {
+      "client": 360,
+      "overflow": [],
+      "route": "#/roadmap",
+      "scroll": 360,
+      "width": 375
+    },
+    {
+      "client": 375,
+      "overflow": [],
+      "route": "#/",
+      "scroll": 375,
+      "width": 390
+    },
+    {
+      "client": 375,
+      "overflow": [],
+      "route": "#/certifications",
+      "scroll": 375,
+      "width": 390
+    },
+    {
+      "client": 375,
+      "overflow": [],
+      "route": "#/questionnaire",
+      "scroll": 375,
+      "width": 390
+    },
+    {
+      "client": 375,
+      "overflow": [],
+      "route": "#/roadmap",
+      "scroll": 375,
+      "width": 390
+    },
+    {
+      "client": 415,
+      "overflow": [],
+      "route": "#/",
+      "scroll": 415,
+      "width": 430
+    },
+    {
+      "client": 415,
+      "overflow": [],
+      "route": "#/certifications",
+      "scroll": 415,
+      "width": 430
+    },
+    {
+      "client": 415,
+      "overflow": [],
+      "route": "#/questionnaire",
+      "scroll": 415,
+      "width": 430
+    },
+    {
+      "client": 415,
+      "overflow": [],
+      "route": "#/roadmap",
+      "scroll": 415,
+      "width": 430
+    },
+    {
+      "client": 753,
+      "overflow": [],
+      "route": "#/",
+      "scroll": 753,
+      "width": 768
+    },
+    {
+      "client": 753,
+      "overflow": [],
+      "route": "#/certifications",
+      "scroll": 753,
+      "width": 768
+    },
+    {
+      "client": 753,
+      "overflow": [],
+      "route": "#/questionnaire",
+      "scroll": 753,
+      "width": 768
+    },
+    {
+      "client": 753,
+      "overflow": [],
+      "route": "#/roadmap",
+      "scroll": 753,
+      "width": 768
+    },
+    {
+      "client": 1009,
+      "overflow": [],
+      "route": "#/",
+      "scroll": 1009,
+      "width": 1024
+    },
+    {
+      "client": 1009,
+      "overflow": [],
+      "route": "#/certifications",
+      "scroll": 1009,
+      "width": 1024
+    },
+    {
+      "client": 1009,
+      "overflow": [],
+      "route": "#/questionnaire",
+      "scroll": 1009,
+      "width": 1024
+    },
+    {
+      "client": 1009,
+      "overflow": [],
+      "route": "#/roadmap",
+      "scroll": 1009,
+      "width": 1024
+    },
+    {
+      "client": 1425,
+      "overflow": [],
+      "route": "#/",
+      "scroll": 1425,
+      "width": 1440
+    },
+    {
+      "client": 1425,
+      "overflow": [],
+      "route": "#/certifications",
+      "scroll": 1425,
+      "width": 1440
+    },
+    {
+      "client": 1425,
+      "overflow": [],
+      "route": "#/questionnaire",
+      "scroll": 1425,
+      "width": 1440
+    },
+    {
+      "client": 1425,
+      "overflow": [],
+      "route": "#/roadmap",
+      "scroll": 1425,
+      "width": 1440
+    },
+    {
+      "client": 1905,
+      "overflow": [],
+      "route": "#/",
+      "scroll": 1905,
+      "width": 1920
+    },
+    {
+      "client": 1905,
+      "overflow": [],
+      "route": "#/certifications",
+      "scroll": 1905,
+      "width": 1920
+    },
+    {
+      "client": 1905,
+      "overflow": [],
+      "route": "#/questionnaire",
+      "scroll": 1905,
+      "width": 1920
+    },
+    {
+      "client": 1905,
+      "overflow": [],
+      "route": "#/roadmap",
+      "scroll": 1905,
+      "width": 1920
+    }
+  ],
+  "responsiveStateNote": "Questionnaire matrix uses a submitted summary; first-step form independently inspected at desktop,390 and320 pixels.",
+  "motion": {
+    "heroTransforms": [
+      "none",
+      "matrix(1, 0, 0, 1, 0, 29.0255)",
+      "matrix(1, 0, 0, 1, 0, 18.9891)",
+      "matrix(1, 0, 0, 1, 0, 11.8889)",
+      "matrix(1, 0, 0, 1, 0, 6.641)",
+      "matrix(1, 0, 0, 1, 0, 3.5403)",
+      "matrix(1, 0, 0, 1, 0, 1.5911)",
+      "matrix(1, 0, 0, 1, 0, 0.626)",
+      "matrix(1, 0, 0, 1, 0, 0.1851)",
+      "matrix(1, 0, 0, 1, 0, 0.0327)",
+      "matrix(1, 0, 0, 1, 0, 0.0009)"
+    ],
+    "careerTransforms": [
+      "none",
+      "matrix(1, 0, 0, 1, 0, 24.7594)",
+      "matrix(1, 0, 0, 1, 0, 14.7456)",
+      "matrix(1, 0, 0, 1, 0, 8.1287)",
+      "matrix(1, 0, 0, 1, 0, 4.2259)",
+      "matrix(1, 0, 0, 1, 0, 1.9324)",
+      "matrix(1, 0, 0, 1, 0, 0.6796)",
+      "matrix(1, 0, 0, 1, 0, 0.182)",
+      "matrix(1, 0, 0, 1, 0, 0.0213)",
+      "matrix(1, 0, 0, 1, 0, 0.0003)"
+    ],
+    "routeCleanup": {
+      "homeAfterFourCycles": 9,
+      "catalogAfterExit": 0,
+      "violations": [
+        {
+          "directive": "style-src-elem",
+          "blocked": "inline",
+          "source": "",
+          "line": 126
+        }
+      ]
+    },
+    "strictMode": {
+      "initial": 9,
+      "afterThreeCycles": 9,
+      "afterExit": 0
+    },
+    "reduced": "Simulated matchMedia reduced preference: hero/career none",
+    "failure": "Tightened QA CSP blocked both GSAP and ScrollTrigger; content and questionnaire navigation remained usable"
+  },
+  "csp": {
+    "inlineScriptRan": false,
+    "inlineHandlerRan": false,
+    "evalBlocked": true,
+    "connectBlocked": true,
+    "inlineColor": "rgb(23, 46, 50)",
+    "cssomColor": "rgb(0, 128, 0)",
+    "violations": [
+      {
+        "directive": "style-src-elem",
+        "blocked": "inline"
+      },
+      {
+        "directive": "script-src",
+        "blocked": "eval"
+      },
+      {
+        "directive": "connect-src",
+        "blocked": "https://example.com/masari-synthetic-csp-test"
+      }
+    ]
+  },
+  "browserJourneys": [
+    "web questionnaire HTML→desired JavaScript/React→0/21 roadmap",
+    "new cybersecurity submission→header/reload/history uses cybersecurity 0/20",
+    "same-answer tabs: saved JavaScript preserved after stale HTML toggle, saving paused",
+    "failed device deletion: saving off; later HTML toggle does not change old saved JavaScript",
+    "normal deletion and reset",
+    "corrupt storage→controlled empty state",
+    "blocked storage→complete cloud roadmap, three provider paths, in-memory progress, failed opt-in stays off",
+    "explicit project/resource completion 0→2; next unfinished control focus",
+    "catalog English/Arabic normalization/filter/empty/details",
+    "mobile menu Escape/focus, route title/main focus,404",
+    "external React resource opened official page in new tab"
+  ],
+  "screenshots": {
+    "before": "docs/screenshots/phase7/before/",
+    "after": "docs/screenshots/phase7/after/",
+    "countPerSet": 8,
+    "desktop": [
+      1440,
+      1100
+    ],
+    "mobile": [
+      390,
+      844
+    ],
+    "roadmapState": "synthetic CS/third-year/web; known HTML; desired JavaScript/React; optional null;0/21"
+  },
+  "notRun": [
+    "actual screen reader",
+    "native 200% browser zoom",
+    "native OS motion switching",
+    "independent browser engines",
+    "physical devices",
+    "screen recording",
+    "Lighthouse desktop/mobile",
+    "field Core Web Vitals",
+    "external penetration test"
+  ],
+  "release": "READY WITH LIMITATIONS",
+  "publication": "Pending safe push and live verification",
+  "screenshotExports": [
+    {
+      "path": "docs/screenshots/phase7/after/catalog-desktop.jpg",
+      "width": 1425,
+      "height": 1089
+    },
+    {
+      "path": "docs/screenshots/phase7/after/catalog-mobile.jpg",
+      "width": 375,
+      "height": 812
+    },
+    {
+      "path": "docs/screenshots/phase7/after/home-desktop.jpg",
+      "width": 1425,
+      "height": 1089
+    },
+    {
+      "path": "docs/screenshots/phase7/after/home-mobile.jpg",
+      "width": 375,
+      "height": 812
+    },
+    {
+      "path": "docs/screenshots/phase7/after/questionnaire-desktop.jpg",
+      "width": 1425,
+      "height": 1089
+    },
+    {
+      "path": "docs/screenshots/phase7/after/questionnaire-mobile.jpg",
+      "width": 375,
+      "height": 812
+    },
+    {
+      "path": "docs/screenshots/phase7/after/roadmap-desktop.jpg",
+      "width": 1425,
+      "height": 1089
+    },
+    {
+      "path": "docs/screenshots/phase7/after/roadmap-mobile.jpg",
+      "width": 375,
+      "height": 812
+    },
+    {
+      "path": "docs/screenshots/phase7/before/catalog-desktop.jpg",
+      "width": 1425,
+      "height": 1100
+    },
+    {
+      "path": "docs/screenshots/phase7/before/catalog-mobile.jpg",
+      "width": 375,
+      "height": 844
+    },
+    {
+      "path": "docs/screenshots/phase7/before/home-desktop.jpg",
+      "width": 1425,
+      "height": 1100
+    },
+    {
+      "path": "docs/screenshots/phase7/before/home-mobile.jpg",
+      "width": 375,
+      "height": 844
+    },
+    {
+      "path": "docs/screenshots/phase7/before/questionnaire-desktop.jpg",
+      "width": 1425,
+      "height": 1100
+    },
+    {
+      "path": "docs/screenshots/phase7/before/questionnaire-mobile.jpg",
+      "width": 375,
+      "height": 812
+    },
+    {
+      "path": "docs/screenshots/phase7/before/roadmap-desktop.jpg",
+      "width": 1425,
+      "height": 1089
+    },
+    {
+      "path": "docs/screenshots/phase7/before/roadmap-mobile.jpg",
+      "width": 375,
+      "height": 812
+    }
+  ],
+  "screenshotExportNote": "Requested CSS viewports match; browser-exported bitmap dimensions differ slightly. Original captures are preserved without fabricated pixel matching.",
+  "accessibleCompletionLabels": {
+    "renderedControls": 22,
+    "visiblePrefixMismatches": 0,
+    "skillToggle": "0→1→0",
+    "normalProductionConsoleErrors": 0
+  },
+  "repositoryReview": {
+    "credentialPatternFileHits": 0,
+    "unchangedDataCatalogs": true,
+    "releaseArtifactFiles": 15,
+    "qaFixturesExcluded": true
+  }
+}

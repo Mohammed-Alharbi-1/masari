@@ -26,6 +26,7 @@ import { recommendLearningResources } from "../utils/recommendLearningResources"
 import { RoadmapStageCard } from "../components/roadmap/RoadmapStageCard";
 import { RoadmapCertification } from "../components/roadmap/RoadmapCertification";
 import "../styles/roadmap.css";
+import { Icon } from "../components/ui/Icon";
 
 export default function RoadmapPage() {
   const location = useLocation();
@@ -103,7 +104,13 @@ function LearningRoadmap({
   return (
     <section className="container roadmap-page">
       <header className="roadmap-header">
-        <span className="eyebrow">خارطتك · مبنية على اختياراتك</span>
+        <div className="roadmap-identity">
+          <span className="roadmap-identity-mark">
+            <Icon name="path" />
+          </span>
+          <span className="eyebrow">خارطتك · مبنية على اختياراتك</span>
+          <span className="roadmap-identity-label">تعلّم · طبّق · طوّر</span>
+        </div>
         <h1>مسارك في {track.nameAr}</h1>
         <p className="roadmap-context">
           {getOptionLabel(majorOptions, answers.major)} ·{" "}
@@ -157,20 +164,23 @@ function LearningRoadmap({
           ))}
         </ul>
       </aside>
-      <ol className="roadmap-stages" aria-label="مراحل مسارك المهني">
-        {roadmap.stages.map((stage, index) => (
-          <RoadmapStageCard
-            key={stage.stage}
-            stage={stage}
-            index={index}
-            hasProviderPaths={roadmap.providerPaths.length > 0}
-            resources={resources[stage.stage]}
-            controls={controls}
-            activities={activities}
-            trackId={roadmap.trackId}
-          />
-        ))}
-      </ol>
+      <div className="roadmap-timeline">
+        <span className="journey-line" aria-hidden="true" />
+        <ol className="roadmap-stages" aria-label="مراحل مسارك المهني">
+          {roadmap.stages.map((stage, index) => (
+            <RoadmapStageCard
+              key={stage.stage}
+              stage={stage}
+              index={index}
+              hasProviderPaths={roadmap.providerPaths.length > 0}
+              resources={resources[stage.stage]}
+              controls={controls}
+              activities={activities}
+              trackId={roadmap.trackId}
+            />
+          ))}
+        </ol>
+      </div>
       {roadmap.additionalFocusSkillIds.length > 0 && (
         <section className="roadmap-extra" aria-labelledby="additional-focus">
           <span className="eyebrow">اهتماماتك لها مكان</span>

@@ -1,5 +1,6 @@
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
+import { productionCsp } from "./src/config/securityPolicy.ts";
 
 // GitHub supplies owner/repository. Local development uses the root path.
 const [owner, repository] = process.env.GITHUB_REPOSITORY?.split("/") ?? [];
@@ -26,6 +27,20 @@ if (publicUrl) {
 export default defineConfig({
   plugins: [
     react(),
+    {
+      name: "masari-production-csp",
+      apply: "build",
+      transformIndexHtml: () => [
+        {
+          tag: "meta",
+          attrs: {
+            "http-equiv": "Content-Security-Policy",
+            content: productionCsp,
+          },
+          injectTo: "head-prepend",
+        },
+      ],
+    },
     {
       name: "masari-public-metadata",
       transformIndexHtml: () =>

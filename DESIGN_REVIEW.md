@@ -47,6 +47,8 @@ All are real browser captures with matching requested CSS viewports: desktop **1
 
 The hero composition, product visualization, questionnaire arrangement and roadmap header/progress hierarchy visibly differ from the baseline. Mobile was independently inspected, including narrow 320px onboarding, not inferred from desktop captures.
 
+[Live deployment desktop proof](docs/screenshots/phase7/deployed-home-desktop.jpg) was captured after successful Pages deployment. Live scroll sampling also observed a career-card transform around 30.6px settling to `none` at full opacity.
+
 ## Responsive and accessibility verification
 
 Four routes at 320/375/390/430/768/1024/1440/1920px showed document scroll width equal to client width. This is geometry testing across 32 states, not a claim of pixel-perfect visual inspection of every activity at every size. Desktop/mobile screenshots and narrow onboarding were inspected for Arabic wrapping and usable controls. Essential actions are never hover-only. Native details, radios, checkboxes, labels, progress, validation focus and menu keyboard behavior remain. SVG progress and decorative previews have appropriate accessible treatment.

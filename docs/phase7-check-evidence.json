@@ -563,7 +563,41 @@
     "external penetration test"
   ],
   "release": "READY WITH LIMITATIONS",
-  "publication": "Pending safe push and live verification",
+  "publication": {
+    "implementationCommit": "d4b4aee56fe3a2ad6a94dd2397d0a585cb68ec08",
+    "branch": "main",
+    "repository": "https://github.com/Mohammed-Alharbi-1/masari",
+    "site": "https://mohammed-alharbi-1.github.io/masari/",
+    "actionsRun": 40428220408,
+    "actionsUrl": "https://github.com/Mohammed-Alharbi-1/masari/actions/runs/40428220408",
+    "build": "success",
+    "deploy": "success",
+    "deployedAt": "2026-10-27T00:44:15Z",
+    "changedFiles": 38,
+    "remoteTreeBuildFiles": [],
+    "live": {
+      "newHero": true,
+      "csp": true,
+      "assetBase": "/masari/assets/",
+      "catalogCount": 70,
+      "questionnaire": "synthetic CS/third-year/web/HTML/desired JavaScript+React/null preferences",
+      "stages": 3,
+      "activityToggle": "0/21→1/21→0/21",
+      "reload": true,
+      "normalConsoleErrors": 0,
+      "normalConsoleWarnings": 0,
+      "careerTransform": "matrix(1,0,0,1,0,30.5765)→none",
+      "careerFinalOpacity": 1,
+      "mobile": {
+        "viewport": 390,
+        "client": 375,
+        "scroll": 375
+      }
+    },
+    "proof": "docs/screenshots/phase7/deployed-home-desktop.jpg",
+    "manualSteps": "None for the existing configured repository",
+    "documentationFollowUp": "Publication evidence only; application code unchanged"
+  },
   "screenshotExports": [
     {
       "path": "docs/screenshots/phase7/after/catalog-desktop.jpg",

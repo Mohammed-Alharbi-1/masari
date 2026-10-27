@@ -15,7 +15,7 @@ Release decision: **READY WITH LIMITATIONS**, subject to the publication evidenc
 | Presentation | `usePageMotion.ts`, new `styles/premium.css`, `main.tsx`: scoped optional motion and responsive design |
 | Security/build | new `config/securityPolicy.ts`, `vite.config.ts`, `index.html`, `package.json`, new `.github/dependabot.yml`: build-only CSP, referrer metadata, validator and version-update configuration |
 | Regression | `validate-progress.ts` (25→28 groups), new `validate-security.ts` (8 groups) |
-| Evidence/docs | This report, `DEBUG_REPORT.md`, `SECURITY_AUDIT.md`, `DESIGN_REVIEW.md`, README, `docs/phase7-check-evidence.json`, 16 matched screenshots |
+| Evidence/docs | This report, `DEBUG_REPORT.md`, `SECURITY_AUDIT.md`, `DESIGN_REVIEW.md`, README, `docs/phase7-check-evidence.json`, 16 matched screenshots and live deployment proof |
 
 Catalogs, recommendation algorithms, dependencies/lockfile versions and the existing deploy workflow were not changed. Temporary QA pages are excluded from release artifacts.
 
@@ -117,7 +117,13 @@ The five existing validators and new security validator also run within the prod
 
 Repository: [Mohammed-Alharbi-1/masari](https://github.com/Mohammed-Alharbi-1/masari). Branch: `main`. Site: [Masari](https://mohammed-alharbi-1.github.io/masari/).
 
-Publication is pending the final staged-file review and remote compatibility check. This section will be updated with actual commit, Actions and deployed-browser evidence after publishing; no deployment success is claimed yet. Existing Pages source is GitHub Actions. No new manual settings should be necessary; forks need Settings → Pages → Source → GitHub Actions and applicable environment approval.
+Implementation commit: [`d4b4aee56fe3a2ad6a94dd2397d0a585cb68ec08`](https://github.com/Mohammed-Alharbi-1/masari/commit/d4b4aee56fe3a2ad6a94dd2397d0a585cb68ec08), `feat: harden security and deliver premium Masari UI`. A normal push advanced `main` from the recorded baseline; no force push was used. The commit changes 38 files. Remote Git tree inspection confirmed the reports/source/screenshot paths and no `dist/` or `node_modules/` files.
+
+[Actions run 40428220408](https://github.com/Mohammed-Alharbi-1/masari/actions/runs/40428220408) completed successfully: clean install, lint, TypeScript/build/validators, Pages artifact and deployment. Deployment completed **2026-10-27 00:44:15 UTC**. Pages API reports workflow-based hosting at the site above.
+
+Actual deployed-browser checks passed: new hero headline and product design, production CSP, assets under `/masari/assets/`, 70 catalog records, a complete anonymous web questionnaire producing three stages and 0/21 activities, manual completion/undo (0→1→0), reload and navigation. A live career-card transform was observed at about 30.6px then settled to `none`/opacity 1. Normal live browser console: no errors/warnings. Mobile 390px reflow had client/scroll widths both 375px. [Live desktop screenshot](docs/screenshots/phase7/deployed-home-desktop.jpg).
+
+This deployment-verification note is saved in a documentation follow-up commit; it does not change application code. The final documentation SHA is available in Git history and the delivery response. No manual Pages changes are required for this repository. Forks need Settings → Pages → Source → GitHub Actions and applicable environment approval. No visibility, secrets, collaborators or protection settings were changed.
 
 ## 14. Final Release Decision
 
